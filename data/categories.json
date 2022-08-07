@@ -1,0 +1,62 @@
+[
+{
+  "division_id": 1,
+  "division_en": "General public services",
+  "groups_en": "Executive and legislative organs, financial and fiscal affairs, external affairs; foreign economic aid; general services; basic research; R&D related to general public services; general public services n.e.c.; public debt transactions, transfers of a general character between different levels of government.",
+  "division_it": ""
+}
+,{
+  "division_id": 2,
+  "division_en": "Defence",
+  "groups_en": "Military defence; civil defence; foreign military aid, R&D related to defence; defence n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 3,
+  "division_en": "Public order and safety",
+  "groups_en": "Police services; fire-protection services; law courts; prisons; R&D related to public order and safety; public order and safety n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 4,
+  "division_en": "Economic affairs",
+  "groups_en": "General economic, commercial and labour affairs; agriculture, forestry; fishing and hunting; fuel and energy; mining, manufacturing and construction; transport; communication; other industries, R&D related to economic affairs; economic affairs n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 5,
+  "division_en": "Environmental protection",
+  "groups_en": "Waste management; water waste management; pollution abatement; protection of biodiversity and landscape; R&D related to environmental protection.",
+  "division_it": ""
+}
+,{
+  "division_id": 6,
+  "division_en": "Housing and community amenities",
+  "groups_en": "Housing development; community development; water supply; street lighting; R&D related to housing and community amenities; housing and community amenities n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 7,
+  "division_en": "Health",
+  "groups_en": "Medical products, appliances and equipment; outpatient services; hospital services; public health services; R&D related to health; health n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 8,
+  "division_en": "Recreation, culture and religion",
+  "groups_en": "Recreational and sporting services; cultural services; broadcasting and publishing services; religious and other community services, R&D related to recreation, culture and religion; recreation; culture and religion n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 9,
+  "division_en": "Education",
+  "groups_en": "Pre-primary, primary, secondary and tertiary education, post-secondary non-tertiary education, education non definable by level, subsidiary services to education, R&D; n.e.c.",
+  "division_it": ""
+}
+,{
+  "division_id": 10,
+  "division_en": "Social protection",
+  "groups_en": "Sickness and disability; old age; survivors; family and children; unemployment; housing; R&D; social protection and social exclusion n.e.c.",
+  "division_it": ""
+}
+]

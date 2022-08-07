@@ -1,0 +1,11 @@
+division_id,division_en,groups_en,division_it
+1,General public services,"Executive and legislative organs, financial and fiscal affairs, external affairs; foreign economic aid; general services; basic research; R&D related to general public services; general public services n.e.c.; public debt transactions, transfers of a general character between different levels of government.",
+2,Defence,"Military defence; civil defence; foreign military aid, R&D related to defence; defence n.e.c.",
+3,Public order and safety,Police services; fire-protection services; law courts; prisons; R&D related to public order and safety; public order and safety n.e.c.,
+4,Economic affairs,"General economic, commercial and labour affairs; agriculture, forestry; fishing and hunting; fuel and energy; mining, manufacturing and construction; transport; communication; other industries, R&D related to economic affairs; economic affairs n.e.c.",
+5,Environmental protection,Waste management; water waste management; pollution abatement; protection of biodiversity and landscape; R&D related to environmental protection.,
+6,Housing and community amenities,Housing development; community development; water supply; street lighting; R&D related to housing and community amenities; housing and community amenities n.e.c.,
+7,Health,"Medical products, appliances and equipment; outpatient services; hospital services; public health services; R&D related to health; health n.e.c.",
+8,"Recreation, culture and religion","Recreational and sporting services; cultural services; broadcasting and publishing services; religious and other community services, R&D related to recreation, culture and religion; recreation; culture and religion n.e.c.",
+9,Education,"Pre-primary, primary, secondary and tertiary education, post-secondary non-tertiary education, education non definable by level, subsidiary services to education, R&D; n.e.c.",
+10,Social protection,Sickness and disability; old age; survivors; family and children; unemployment; housing; R&D; social protection and social exclusion n.e.c.,
