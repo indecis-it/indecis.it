@@ -1,0 +1,26 @@
+[
+{
+  "coalizione_id": 1,
+  "coalizione": "test1",
+  "partito": "PD",
+  "symbol_URL": ""
+}
+,{
+  "coalizione_id": 2,
+  "coalizione": "test1",
+  "partito": "Azione",
+  "symbol_URL": ""
+}
+,{
+  "coalizione_id": 3,
+  "coalizione": "test2",
+  "partito": "FdI",
+  "symbol_URL": ""
+}
+,{
+  "coalizione_id": 4,
+  "coalizione": "test2",
+  "partito": "Lega",
+  "symbol_URL": ""
+}
+]
