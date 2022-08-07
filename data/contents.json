@@ -1,6 +1,6 @@
 [
 {
-  "content_it": 1,
+  "content_id": 1,
   "division": "Environmental protection",
   "sub_item": "Ciao",
   "source_title": "Il mio programma bellissimo",
@@ -9,7 +9,7 @@
   "description": "Ciao"
 }
 ,{
-  "content_it": 2,
+  "content_id": 2,
   "division": "General public services",
   "sub_item": "Ciao",
   "source_title": "Il mio programma bellissimo",
@@ -18,7 +18,7 @@
   "description": "Ciao"
 }
 ,{
-  "content_it": 3,
+  "content_id": 3,
   "division": "Education",
   "sub_item": "Ciao",
   "source_title": "Il mio programma bellissimo",

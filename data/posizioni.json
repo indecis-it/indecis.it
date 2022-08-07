@@ -1,18 +1,18 @@
 [
 {
-  "id_posizione": 1,
+  "posizione_id": 1,
   "description": "favorevole",
   "icon": "green",
   "color_code": "#000000"
 }
 ,{
-  "id_posizione": 2,
+  "posizione_id": 2,
   "description": "neutro",
   "icon": "yellow",
   "color_code": "#000000"
 }
 ,{
-  "id_posizione": 3,
+  "posizione_id": 3,
   "description": "contrario",
   "icon": "red",
   "color_code": "#000000"
