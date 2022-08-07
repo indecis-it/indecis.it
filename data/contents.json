@@ -1,0 +1,29 @@
+[
+{
+  "content_it": 1,
+  "division": "Environmental protection",
+  "sub_item": "Ciao",
+  "source_title": "Il mio programma bellissimo",
+  "coalizione": "test2",
+  "icon": "green",
+  "description": "Ciao"
+}
+,{
+  "content_it": 2,
+  "division": "General public services",
+  "sub_item": "Ciao",
+  "source_title": "Il mio programma bellissimo",
+  "coalizione": "test2",
+  "icon": "yellow",
+  "description": "Ciao"
+}
+,{
+  "content_it": 3,
+  "division": "Education",
+  "sub_item": "Ciao",
+  "source_title": "Il mio programma bellissimo",
+  "coalizione": "test2",
+  "icon": "red",
+  "description": "Ciao"
+}
+]
