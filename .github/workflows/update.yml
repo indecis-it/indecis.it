@@ -31,10 +31,10 @@ jobs:
         run: |
           # convert csv2json
           mlr --icsv --ojson --jlistwrap --jvstack cat data/categories.csv > data/categories.json
-          mlr --icsv --ojson --jlistwrap --jvstack cat data/sources.csv > data/sources.json
-          mlr --icsv --ojson --jlistwrap --jvstack cat data/coalizioni.csv > data/coalizioni.json
-          mlr --icsv --ojson --jlistwrap --jvstack cat data/contents.csv > data/contents.json
-          mlr --icsv --ojson --jlistwrap --jvstack cat data/posizioni.csv > data/posizioni.json
+          # mlr --icsv --ojson --jlistwrap --jvstack cat data/sources.csv > data/sources.json
+          # mlr --icsv --ojson --jlistwrap --jvstack cat data/coalizioni.csv > data/coalizioni.json
+          # mlr --icsv --ojson --jlistwrap --jvstack cat data/contents.csv > data/contents.json
+          # mlr --icsv --ojson --jlistwrap --jvstack cat data/posizioni.csv > data/posizioni.json
     
       - name: Update Repository
         run: |-
