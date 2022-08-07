@@ -1,0 +1,30 @@
+[
+{
+  "source_id": 1,
+  "source_title": "Il mio programma bellissimo",
+  "source_type": "programma",
+  "source_URL": "www.google.com",
+  "coalizione": "test2"
+}
+,{
+  "source_id": 2,
+  "source_title": "Il mio programma è più bello",
+  "source_type": "programma",
+  "source_URL": "www.google.com",
+  "coalizione": "test1"
+}
+,{
+  "source_id": "",
+  "source_title": "",
+  "source_type": "post",
+  "source_URL": "",
+  "coalizione": ""
+}
+,{
+  "source_id": "",
+  "source_title": "",
+  "source_type": "dichiarazione",
+  "source_URL": "",
+  "coalizione": ""
+}
+]
