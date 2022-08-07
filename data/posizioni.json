@@ -1,0 +1,20 @@
+[
+{
+  "id_posizione": 1,
+  "description": "favorevole",
+  "icon": "green",
+  "color_code": "#000000"
+}
+,{
+  "id_posizione": 2,
+  "description": "neutro",
+  "icon": "yellow",
+  "color_code": "#000000"
+}
+,{
+  "id_posizione": 3,
+  "description": "contrario",
+  "icon": "red",
+  "color_code": "#000000"
+}
+]
