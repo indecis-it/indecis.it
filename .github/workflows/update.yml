@@ -1,0 +1,46 @@
+name: Update data
+
+on:
+  schedule:
+#    - cron: '0 0 * * 6'
+  workflow_dispatch:
+#  push:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Git checkout
+        uses: actions/checkout@v2
+        
+      - name: Installing miller
+        run: |-
+          sudo apt-get install miller
+        
+      - name: Download and update CSV data
+        run: |
+          # download csv from google sheets
+          curl -kL "https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pub?gid=0&single=true&output=csv" > data/categories.csv
+          curl -kL "https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pub?gid=118291356&single=true&output=csv" > data/sources.csv
+          curl -kL "https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pub?gid=1281477829&single=true&output=csv" > data/coalizioni.csv
+          curl -kL "https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pub?gid=2007202269&single=true&output=csv" > data/contents.csv
+          curl -kL "https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pub?gid=1842162450&single=true&output=csv" > data/posizioni.csv
+          
+      - name: Build JSON
+        run: |
+          # convert csv2json
+          mlr --icsv --ojson cat data/categories.csv > data/categories.json
+          mlr --icsv --ojson cat data/sources.csv > data/sources.json
+          mlr --icsv --ojson cat data/coalizioni.csv > data/coalizioni.json
+          mlr --icsv --ojson cat data/contents.csv > data/contents.json
+          mlr --icsv --ojson cat data/posizioni.csv > data/posizioni.json
+    
+      - name: Update Repository
+        run: |-
+          git config user.name "autoupdate"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          timestamp=$(date --iso-8601=seconds)
+          git commit -m "update: ${timestamp}" || exit 0
+          git push
