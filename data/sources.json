@@ -1,30 +1,44 @@
 [
 {
-  "source_id": 1,
-  "source_title": "Il mio programma bellissimo",
-  "source_type": "programma",
-  "source_URL": "www.google.com",
-  "coalizione": "test2"
+  "id": 1,
+  "title": "Tweet 2022-08-09",
+  "type": "tweet",
+  "url": "https://twitter.com/EnricoLetta/status/1557107004937756672?t=cX1SMWB4b9YJqFMznWSP2g&s=19",
+  "list": "PD/+Europa"
 }
 ,{
-  "source_id": 2,
-  "source_title": "Il mio programma è più bello",
-  "source_type": "programma",
-  "source_URL": "www.google.com",
-  "coalizione": "test1"
+  "id": 2,
+  "title": "Il mio programma bellissimo",
+  "type": "programma",
+  "url": "www.google.com",
+  "list": "test"
 }
 ,{
-  "source_id": "",
-  "source_title": "",
-  "source_type": "post",
-  "source_URL": "",
-  "coalizione": ""
+  "id": 3,
+  "title": "Il mio programma è più bello",
+  "type": "programma",
+  "url": "www.google.com",
+  "list": "test"
 }
 ,{
-  "source_id": "",
-  "source_title": "",
-  "source_type": "dichiarazione",
-  "source_URL": "",
-  "coalizione": ""
+  "id": 4,
+  "title": "Conferenza stampa congiunta +Europa - Partito Democratico",
+  "type": "conferenza stampa",
+  "url": "https://youtu.be/0d-z56K90Js",
+  "list": "PD/+Europa"
+}
+,{
+  "id": "",
+  "title": "",
+  "type": "post ",
+  "url": "",
+  "list": ""
+}
+,{
+  "id": "",
+  "title": "",
+  "type": "dichiarazione ",
+  "url": "",
+  "list": ""
 }
 ]

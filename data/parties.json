@@ -1,0 +1,98 @@
+[
+{
+  "id": 1,
+  "party": "PD",
+  "list": "PD/+Europa",
+  "symbol_url": ""
+}
+,{
+  "id": 2,
+  "party": "+Europa",
+  "list": "PD/+Europa",
+  "symbol_url": ""
+}
+,{
+  "id": 3,
+  "party": "Fratelli d'Italia",
+  "list": "FdI/Lega/FI",
+  "symbol_url": ""
+}
+,{
+  "id": 4,
+  "party": "Lega",
+  "list": "FdI/Lega/FI",
+  "symbol_url": ""
+}
+,{
+  "id": 5,
+  "party": "Forza Ialia",
+  "list": "FdI/Lega/FI",
+  "symbol_url": ""
+}
+,{
+  "id": 6,
+  "party": "Azione",
+  "list": "Azione/IV",
+  "symbol_url": "https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large"
+}
+,{
+  "id": 7,
+  "party": "Italia Viva",
+  "list": "Azione/IV",
+  "symbol_url": "https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large"
+}
+,{
+  "id": 8,
+  "party": "Movimento 5 Stelle",
+  "list": "test",
+  "symbol_url": ""
+}
+,{
+  "id": 9,
+  "party": "Liberi uguali",
+  "list": "test",
+  "symbol_url": ""
+}
+,{
+  "id": 10,
+  "party": "Il popolo della famiglia",
+  "list": "test",
+  "symbol_url": ""
+}
+,{
+  "id": 11,
+  "party": "Democrazia cristiana",
+  "list": "test",
+  "symbol_url": ""
+}
+,{
+  "id": 12,
+  "party": "NOI con l'ITALIA",
+  "list": "NOI moderati",
+  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+}
+,{
+  "id": 13,
+  "party": "Coraggio Italia",
+  "list": "NOI moderati",
+  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+}
+,{
+  "id": 14,
+  "party": "Italia al Centro",
+  "list": "NOI moderati",
+  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+}
+,{
+  "id": 15,
+  "party": "Europa Verde",
+  "list": "Alleanza Verdi e Sinistra",
+  "symbol_url": "https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png"
+}
+,{
+  "id": 16,
+  "party": "Sinistra Italiana",
+  "list": "Alleanza Verdi e Sinistra",
+  "symbol_url": "https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png"
+}
+]

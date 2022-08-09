@@ -1,5 +1,7 @@
-source_id,source_title,source_type,source_URL,coalizione
-1,Il mio programma bellissimo,programma,www.google.com,test2
-2,Il mio programma è più bello,programma,www.google.com,test1
-,,post,,
-,,dichiarazione,,
+id,title,type,url,list
+1,Tweet 2022-08-09,tweet,https://twitter.com/EnricoLetta/status/1557107004937756672?t=cX1SMWB4b9YJqFMznWSP2g&s=19,PD/+Europa
+2,Il mio programma bellissimo,programma,www.google.com,test
+3,Il mio programma è più bello,programma,www.google.com,test
+4,Conferenza stampa congiunta +Europa - Partito Democratico,conferenza stampa,https://youtu.be/0d-z56K90Js,PD/+Europa
+,,post ,,
+,,dichiarazione ,,

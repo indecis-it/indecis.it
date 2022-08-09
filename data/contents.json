@@ -1,29 +1,35 @@
 [
 {
-  "content_id": 1,
-  "division": "Environmental protection",
-  "sub_item": "Ciao",
-  "source_title": "Il mio programma bellissimo",
-  "coalizione": "test2",
+  "id": 1,
+  "category_id": 4,
+  "category": "Economic affairs",
+  "item_slug": "stipendio-docenti",
+  "item": "Stipendio docenti",
+  "source_title": "Tweet 2022-08-09",
+  "list": "PD/+Europa",
   "icon": "green",
-  "description": "Ciao"
+  "description": "Letta: Gli insegnanti 🇮🇹 sono tra i meno pagati in 🇪🇺. Ci impegniamo nell’arco della prossima legislatura ad alzare gli stipendi dei nostri docenti per riportarli nella media europea"
 }
 ,{
-  "content_id": 2,
-  "division": "General public services",
-  "sub_item": "Ciao",
-  "source_title": "Il mio programma bellissimo",
-  "coalizione": "test2",
-  "icon": "yellow",
-  "description": "Ciao"
+  "id": 2,
+  "category_id": 2,
+  "category": "Defence",
+  "item_slug": "",
+  "item": "",
+  "source_title": "",
+  "list": "",
+  "icon": "",
+  "description": ""
 }
 ,{
-  "content_id": 3,
-  "division": "Education",
-  "sub_item": "Ciao",
-  "source_title": "Il mio programma bellissimo",
-  "coalizione": "test2",
-  "icon": "red",
-  "description": "Ciao"
+  "id": 3,
+  "category_id": 7,
+  "category": "Health",
+  "item_slug": "",
+  "item": "",
+  "source_title": "",
+  "list": "",
+  "icon": "",
+  "description": ""
 }
 ]
