@@ -1,17 +1,19 @@
-id,party,list,symbol_url
-1,PD,PD/+Europa,
-2,+Europa,PD/+Europa,
-3,Fratelli d'Italia,FdI/Lega/FI,
-4,Lega,FdI/Lega/FI,
-5,Forza Ialia,FdI/Lega/FI,
-6,Azione,Azione/IV,https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large
-7,Italia Viva,Azione/IV,https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large
-8,Movimento 5 Stelle,test,
-9,Liberi uguali,test,
-10,Il popolo della famiglia,test,
-11,Democrazia cristiana,test,
-12,NOI con l'ITALIA,NOI moderati,https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png
-13,Coraggio Italia,NOI moderati,https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png
-14,Italia al Centro,NOI moderati,https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png
-15,Europa Verde,Alleanza Verdi e Sinistra,https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png
-16,Sinistra Italiana,Alleanza Verdi e Sinistra,https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png
+id,party,list,slug,symbol_name
+1,PD,PD/+Europa,pd--europa,
+2,+Europa,PD/+Europa,pd--europa,
+3,Fratelli d'Italia,FdI/Lega/FI,fdi-lega-fi,
+4,Lega,FdI/Lega/FI,fdi-lega-fi,
+5,Forza Ialia,FdI/Lega/FI,fdi-lega-fi,
+6,Azione,Azione/IV,azione-iv,azione-iv.jpg
+7,Italia Viva,Azione/IV,azione-iv,azione-iv.jpg
+8,Movimento 5 Stelle,test,test,
+9,Liberi uguali,test,test,
+10,Il popolo della famiglia,test,test,
+11,Democrazia cristiana,test,test,
+12,NOI con l'ITALIA,NOI moderati,noi-moderati,noi-moderati.jpg
+13,Coraggio Italia,NOI moderati,noi-moderati,noi-moderati.jpg
+14,Italia al Centro,NOI moderati,noi-moderati,noi-moderati.jpg
+15,Europa Verde,Alleanza Verdi e Sinistra,alleanza-verdi-e-sinistra,alleanza-verdi-e-sinistra.png
+16,Sinistra Italiana,Alleanza Verdi e Sinistra,alleanza-verdi-e-sinistra,alleanza-verdi-e-sinistra.png
+17,Impegno Civico,Impegno Civico,impegno-civico,impegno-civico.jpg
+18,Centro Democratico,Impegno Civico,impegno-civico,impegno-civico.jpg

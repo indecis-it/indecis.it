@@ -3,96 +3,126 @@
   "id": 1,
   "party": "PD",
   "list": "PD/+Europa",
-  "symbol_url": ""
+  "slug": "pd--europa",
+  "symbol_name": ""
 }
 ,{
   "id": 2,
   "party": "+Europa",
   "list": "PD/+Europa",
-  "symbol_url": ""
+  "slug": "pd--europa",
+  "symbol_name": ""
 }
 ,{
   "id": 3,
   "party": "Fratelli d'Italia",
   "list": "FdI/Lega/FI",
-  "symbol_url": ""
+  "slug": "fdi-lega-fi",
+  "symbol_name": ""
 }
 ,{
   "id": 4,
   "party": "Lega",
   "list": "FdI/Lega/FI",
-  "symbol_url": ""
+  "slug": "fdi-lega-fi",
+  "symbol_name": ""
 }
 ,{
   "id": 5,
   "party": "Forza Ialia",
   "list": "FdI/Lega/FI",
-  "symbol_url": ""
+  "slug": "fdi-lega-fi",
+  "symbol_name": ""
 }
 ,{
   "id": 6,
   "party": "Azione",
   "list": "Azione/IV",
-  "symbol_url": "https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large"
+  "slug": "azione-iv",
+  "symbol_name": "azione-iv.jpg"
 }
 ,{
   "id": 7,
   "party": "Italia Viva",
   "list": "Azione/IV",
-  "symbol_url": "https://pbs.twimg.com/media/FZ5b5OGXgAAzVgE?format=jpg&name=large"
+  "slug": "azione-iv",
+  "symbol_name": "azione-iv.jpg"
 }
 ,{
   "id": 8,
   "party": "Movimento 5 Stelle",
   "list": "test",
-  "symbol_url": ""
+  "slug": "test",
+  "symbol_name": ""
 }
 ,{
   "id": 9,
   "party": "Liberi uguali",
   "list": "test",
-  "symbol_url": ""
+  "slug": "test",
+  "symbol_name": ""
 }
 ,{
   "id": 10,
   "party": "Il popolo della famiglia",
   "list": "test",
-  "symbol_url": ""
+  "slug": "test",
+  "symbol_name": ""
 }
 ,{
   "id": 11,
   "party": "Democrazia cristiana",
   "list": "test",
-  "symbol_url": ""
+  "slug": "test",
+  "symbol_name": ""
 }
 ,{
   "id": 12,
   "party": "NOI con l'ITALIA",
   "list": "NOI moderati",
-  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+  "slug": "noi-moderati",
+  "symbol_name": "noi-moderati.jpg"
 }
 ,{
   "id": 13,
   "party": "Coraggio Italia",
   "list": "NOI moderati",
-  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+  "slug": "noi-moderati",
+  "symbol_name": "noi-moderati.jpg"
 }
 ,{
   "id": 14,
   "party": "Italia al Centro",
   "list": "NOI moderati",
-  "symbol_url": "https://www.adnkronos.com/resources/0278-15d770099547-721c7d3507e5-1000/format/big/noi_moderati.png"
+  "slug": "noi-moderati",
+  "symbol_name": "noi-moderati.jpg"
 }
 ,{
   "id": 15,
   "party": "Europa Verde",
   "list": "Alleanza Verdi e Sinistra",
-  "symbol_url": "https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png"
+  "slug": "alleanza-verdi-e-sinistra",
+  "symbol_name": "alleanza-verdi-e-sinistra.png"
 }
 ,{
   "id": 16,
   "party": "Sinistra Italiana",
   "list": "Alleanza Verdi e Sinistra",
-  "symbol_url": "https://www.gedistatic.it/content/gedi/img/huffingtonpost/2022/08/03/180205650-fdd2827e-8ac4-4b24-84e9-f2d37a8a0fbf.png"
+  "slug": "alleanza-verdi-e-sinistra",
+  "symbol_name": "alleanza-verdi-e-sinistra.png"
+}
+,{
+  "id": 17,
+  "party": "Impegno Civico",
+  "list": "Impegno Civico",
+  "slug": "impegno-civico",
+  "symbol_name": "impegno-civico.jpg"
+}
+,{
+  "id": 18,
+  "party": "Centro Democratico",
+  "list": "Impegno Civico",
+  "slug": "impegno-civico",
+  "symbol_name": "impegno-civico.jpg"
 }
 ]
