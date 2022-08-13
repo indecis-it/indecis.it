@@ -20,7 +20,7 @@ jobs:
 
       - name: Delete previously generated files
         run: |-
-          rm data/*
+          rm data/*.{csv,json}
           
       - name: Download and update CSV data
         run: |
