@@ -1,37 +1,35 @@
-import { Accordion, MantineProvider } from "@mantine/core";
-import { getCategories } from "../service/categories";
-import { Content, getContents } from "../service/contents";
+import { Divider, MantineProvider } from "@mantine/core";
+import {
+  CategoryNames,
+  findCategoryBySlug,
+  getCategories,
+} from "../models/categories";
+import { ContentsHeader } from "../../components/ContentsHeader";
+import { getLists, Party } from "../models/parties";
+import { ContentsList } from "../../components/contents-list";
+import { getItems, Items } from "../models/items";
+import { getItemNames } from "../models/contents";
 
 interface StaticPropsParams {
   params: { cat: string };
 }
 
-interface CategoryProps {
-  contents: Content[];
+interface Props {
+  items: Items;
+  lists: Party[];
+  names: CategoryNames;
 }
 
-const List = ({ elements }: { elements: Content[] }) =>
-  elements.map(({ id, item, icon, description, source_title }) => (
-    <div key={id}>
-      <div>{item}</div>
-      <Accordion>
-        <Accordion.Item value={icon}>
-          <Accordion.Control>🟢</Accordion.Control>
-          <Accordion.Panel>{description}</Accordion.Panel>
-        </Accordion.Item>
-      </Accordion>
-    </div>
-  ));
-
-const Category = ({ contents }: CategoryProps) => {
-  const elements = contents.sort((a, b) => a.list_id - b.list_id);
+const App = ({ items, lists, names }: Props) => {
   return (
     <MantineProvider withNormalizeCSS withGlobalStyles>
-      <List elements={elements} />
+      <ContentsHeader lists={lists} />
+      <Divider my="sm" />
+      <ContentsList names={names} items={items} />
     </MantineProvider>
   );
 };
-export default Category;
+export default App;
 
 export async function getStaticPaths() {
   const categories = await getCategories();
@@ -40,9 +38,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: StaticPropsParams) {
-  const categories = await getCategories();
-  const allContents = await getContents();
-  const { id } = categories.find((cat) => params.cat.includes(cat.slug)) || {};
-  const contents = allContents.filter(({ category_id }) => category_id === id);
-  return { props: { contents } } as { props: CategoryProps };
+  const { id } = (await findCategoryBySlug(params.cat)) || {};
+  const names = await getItemNames();
+  const items = await getItems(id as number);
+  const lists = await getLists();
+  return { props: { items, lists, names } };
 }
