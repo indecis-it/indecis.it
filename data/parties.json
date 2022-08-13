@@ -4,125 +4,143 @@
   "party": "PD",
   "list": "PD/+Europa",
   "slug": "pd--europa",
-  "symbol_name": ""
+  "symbol_name": "pd.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/pd.jpg"
 }
 ,{
   "id": 2,
   "party": "+Europa",
   "list": "PD/+Europa",
   "slug": "pd--europa",
-  "symbol_name": ""
+  "symbol_name": "europa.png",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/europa.png"
 }
 ,{
   "id": 3,
   "party": "Fratelli d'Italia",
-  "list": "FdI/Lega/FI",
-  "slug": "fdi-lega-fi",
-  "symbol_name": ""
+  "list": "Lega/FI/FdI",
+  "slug": "lega-fi-fdi",
+  "symbol_name": "lega-fi-fdi.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/lega-fi-fdi.jpg"
 }
 ,{
   "id": 4,
   "party": "Lega",
-  "list": "FdI/Lega/FI",
-  "slug": "fdi-lega-fi",
-  "symbol_name": ""
+  "list": "Lega/FI/FdI",
+  "slug": "lega-fi-fdi",
+  "symbol_name": "lega-fi-fdi.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/lega-fi-fdi.jpg"
 }
 ,{
   "id": 5,
   "party": "Forza Ialia",
-  "list": "FdI/Lega/FI",
-  "slug": "fdi-lega-fi",
-  "symbol_name": ""
+  "list": "Lega/FI/FdI",
+  "slug": "lega-fi-fdi",
+  "symbol_name": "lega-fi-fdi.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/lega-fi-fdi.jpg"
 }
 ,{
   "id": 6,
   "party": "Azione",
   "list": "Azione/IV",
   "slug": "azione-iv",
-  "symbol_name": "azione-iv.jpg"
+  "symbol_name": "azione-iv.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/azione-iv.jpg"
 }
 ,{
   "id": 7,
   "party": "Italia Viva",
   "list": "Azione/IV",
   "slug": "azione-iv",
-  "symbol_name": "azione-iv.jpg"
+  "symbol_name": "azione-iv.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/azione-iv.jpg"
 }
 ,{
   "id": 8,
-  "party": "Movimento 5 Stelle",
-  "list": "test",
-  "slug": "test",
-  "symbol_name": ""
-}
-,{
-  "id": 9,
-  "party": "Liberi uguali",
-  "list": "test",
-  "slug": "test",
-  "symbol_name": ""
-}
-,{
-  "id": 10,
-  "party": "Il popolo della famiglia",
-  "list": "test",
-  "slug": "test",
-  "symbol_name": ""
-}
-,{
-  "id": 11,
-  "party": "Democrazia cristiana",
-  "list": "test",
-  "slug": "test",
-  "symbol_name": ""
-}
-,{
-  "id": 12,
   "party": "NOI con l'ITALIA",
   "list": "NOI moderati",
   "slug": "noi-moderati",
-  "symbol_name": "noi-moderati.png"
+  "symbol_name": "noi-moderati.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/noi-moderati.jpg"
 }
 ,{
-  "id": 13,
+  "id": 9,
   "party": "Coraggio Italia",
   "list": "NOI moderati",
   "slug": "noi-moderati",
-  "symbol_name": "noi-moderati.png"
+  "symbol_name": "noi-moderati.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/noi-moderati.jpg"
 }
 ,{
-  "id": 14,
+  "id": 10,
   "party": "Italia al Centro",
   "list": "NOI moderati",
   "slug": "noi-moderati",
-  "symbol_name": "noi-moderati.png"
+  "symbol_name": "noi-moderati.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/noi-moderati.jpg"
 }
 ,{
-  "id": 15,
+  "id": 11,
   "party": "Europa Verde",
   "list": "Alleanza Verdi e Sinistra",
   "slug": "alleanza-verdi-e-sinistra",
-  "symbol_name": "alleanza-verdi-e-sinistra.png"
+  "symbol_name": "alleanza-verdi-e-sinistra.png",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/alleanza-verdi-e-sinistra.png"
 }
 ,{
-  "id": 16,
+  "id": 12,
   "party": "Sinistra Italiana",
   "list": "Alleanza Verdi e Sinistra",
   "slug": "alleanza-verdi-e-sinistra",
-  "symbol_name": "alleanza-verdi-e-sinistra.png"
+  "symbol_name": "alleanza-verdi-e-sinistra.png",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/alleanza-verdi-e-sinistra.png"
 }
 ,{
-  "id": 17,
+  "id": 13,
   "party": "Impegno Civico",
   "list": "Impegno Civico",
   "slug": "impegno-civico",
-  "symbol_name": "impegno-civico.jpg"
+  "symbol_name": "impegno-civico.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/impegno-civico.jpg"
 }
 ,{
-  "id": 18,
+  "id": 14,
   "party": "Centro Democratico",
   "list": "Impegno Civico",
   "slug": "impegno-civico",
-  "symbol_name": "impegno-civico.jpg"
+  "symbol_name": "impegno-civico.jpg",
+  "symbol_URL": "https://raw.githubusercontent.com/angelogulina/indecis.it/main/public/symbols/impegno-civico.jpg"
+}
+,{
+  "id": 15,
+  "party": "Movimento 5 Stelle",
+  "list": "test",
+  "slug": "test",
+  "symbol_name": "",
+  "symbol_URL": ""
+}
+,{
+  "id": 16,
+  "party": "Liberi uguali",
+  "list": "test",
+  "slug": "test",
+  "symbol_name": "",
+  "symbol_URL": ""
+}
+,{
+  "id": 17,
+  "party": "Il popolo della famiglia",
+  "list": "test",
+  "slug": "test",
+  "symbol_name": "",
+  "symbol_URL": ""
+}
+,{
+  "id": 18,
+  "party": "Democrazia cristiana",
+  "list": "test",
+  "slug": "test",
+  "symbol_name": "",
+  "symbol_URL": ""
 }
 ]
