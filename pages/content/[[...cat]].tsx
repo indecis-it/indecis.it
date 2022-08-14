@@ -1,14 +1,11 @@
-import { Divider, MantineProvider } from "@mantine/core";
-import {
-  CategoryNames,
-  findCategoryBySlug,
-  getCategories,
-} from "../models/categories";
-import { ContentsHeader } from "../../components/ContentsHeader";
+import React from "react";
+import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
+import { findCategoryBySlug, getCategories } from "../models/categories";
 import { getLists, Party } from "../models/parties";
-import { ContentsList } from "../../components/contents-list";
 import { getItems, Items } from "../models/items";
-import { getItemNames } from "../models/contents";
+import { getItemNames, ItemNames } from "../models/contents";
+import { ContentsHeader } from "../../components/ContentsHeader";
+import { ContentRow } from "../../components/ContentRow";
 
 interface StaticPropsParams {
   params: { cat: string };
@@ -17,15 +14,35 @@ interface StaticPropsParams {
 interface Props {
   items: Items;
   lists: Party[];
-  names: CategoryNames;
+  names: ItemNames;
 }
 
 const App = ({ items, lists, names }: Props) => {
   return (
     <MantineProvider withNormalizeCSS withGlobalStyles>
-      <ContentsHeader lists={lists} />
-      <Divider my="sm" />
-      <ContentsList names={names} items={items} />
+      <Grid
+        style={{
+          minHeight: "100vh",
+          margin: 0,
+        }}
+      >
+        <ScrollArea type="never" style={{ height: "100%", width: "100%" }}>
+          <ContentsHeader lists={lists} />
+          <Divider
+            my="sm"
+            style={{
+              marginBottom: 0,
+            }}
+          />
+          {Object.keys(items).map((slug) => (
+            <ContentRow
+              key={slug}
+              contents={items[slug]}
+              item={names[slug].item}
+            />
+          ))}
+        </ScrollArea>
+      </Grid>
     </MantineProvider>
   );
 };
