@@ -1,9 +1,9 @@
 import React from "react";
 import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
-import { findCategoryBySlug, getCategories } from "../models/categories";
-import { getLists, Party } from "../models/parties";
-import { getItems, Items } from "../models/items";
-import { getItemNames, ItemNames } from "../models/contents";
+import { findCategoryBySlug, getCategories } from "../../models/categories";
+import { getLists, Party } from "../../models/parties";
+import { getItems, Items } from "../../models/items";
+import { getContents, getItemNames, ItemNames } from "../../models/contents";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 

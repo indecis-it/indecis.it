@@ -1,6 +1,6 @@
 import { Group } from "@mantine/core";
 import Image from "next/image";
-import { Party } from "../pages/models/parties";
+import { Party } from "../models/parties";
 import React from "react";
 import { DefaultProps } from "@mantine/styles";
 

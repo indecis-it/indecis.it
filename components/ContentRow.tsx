@@ -1,7 +1,7 @@
 import { CloseButton, Grid, Group } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
-import { Content } from "../pages/models/contents";
+import { Content } from "../models/contents";
 
 interface Props extends DefaultProps {
   contents: Content[];
