@@ -1,7 +1,8 @@
-import { CloseButton, Grid, Group } from "@mantine/core";
+import { CloseButton, Group, Transition } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
 import { Content } from "../models/contents";
+import { grey, grey2 } from "../colors";
 
 interface Props extends DefaultProps {
   contents: Content[];
@@ -9,8 +10,8 @@ interface Props extends DefaultProps {
 }
 
 export const ContentRow = ({ contents, item }: Props) => {
-  const [message, setMessage] = useState("");
-  const [selected, setSelected] = useState(-1);
+  const [message, setMessage] = useState<string>("");
+  const [selected, setSelected] = useState<number>(-1);
 
   const onItemSelected = ({ id, description }: Content) => {
     setMessage(description);
@@ -48,7 +49,7 @@ export const ContentRow = ({ contents, item }: Props) => {
             <div
               key={id}
               style={{
-                background: selected === id ? "#F2F0F0" : "white",
+                background: selected === id ? grey : "white",
                 display: "flex",
                 alignItems: "center",
                 height: 60,
@@ -72,7 +73,10 @@ export const ContentRow = ({ contents, item }: Props) => {
       </Group>
       <div
         style={{
-          background: "#F2F0F0",
+          background: grey,
+          borderBottomColor: message ? grey2 : grey,
+          borderBottomStyle: "solid",
+          borderBottomWidth: 1,
           height: message ? "auto" : 1,
           // margin: "8px 0",
           overflow: "hidden",
@@ -80,6 +84,7 @@ export const ContentRow = ({ contents, item }: Props) => {
           position: "sticky",
           left: 0,
           right: 0,
+          transition: "ease",
           width: "100vw",
           maxWidth: "100vw",
         }}

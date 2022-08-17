@@ -1,28 +1,59 @@
-import React from "react";
-import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
-import { findCategoryBySlug, getCategories } from "../../models/categories";
+import React, { useState } from "react";
+import {
+  Divider,
+  Grid,
+  MantineProvider,
+  ScrollArea,
+  Select,
+} from "@mantine/core";
+import {
+  Category,
+  findCategoryBySlug,
+  getCategories,
+} from "../../models/categories";
 import { getLists, Party } from "../../models/parties";
 import { getItems, Items } from "../../models/items";
 import { getContents, getItemNames, ItemNames } from "../../models/contents";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
+import { useRouter } from "next/router";
+import { grey } from "../../colors";
 
 interface StaticPropsParams {
-  params: { cat: string };
+  params: { cat: string[] };
 }
 
 interface Props {
+  categories: Category[];
+  current: Category["slug"];
   items: Items;
   lists: Party[];
   names: ItemNames;
 }
 
-const App = ({ items, lists, names }: Props) => {
+const App = ({ categories, current, items, lists, names }: Props) => {
+  const router = useRouter();
+  const navigate = (value: string) => router.push(value);
   return (
     <MantineProvider withNormalizeCSS withGlobalStyles>
+      <Select
+        data={categories.map(({ name_it, slug }) => ({
+          label: name_it,
+          value: slug,
+        }))}
+        label=""
+        placeholder="Seleziona un argomento"
+        value={current}
+        style={{
+          padding: 20,
+          paddingTop: 30,
+        }}
+        onChange={navigate}
+      />
+      <Divider my="sm" />
       <Grid
         style={{
-          minHeight: "100vh",
+          // minHeight: "100vh",
           margin: 0,
         }}
       >
@@ -31,6 +62,7 @@ const App = ({ items, lists, names }: Props) => {
           <Divider
             my="sm"
             style={{
+              borderTopColor: grey,
               marginBottom: 0,
             }}
           />
@@ -56,8 +88,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: StaticPropsParams) {
   const { id } = (await findCategoryBySlug(params.cat)) || {};
+  const categories = await getCategories();
+  const [current] = params.cat;
   const names = await getItemNames();
   const items = await getItems(id as number);
   const lists = await getLists();
-  return { props: { items, lists, names } };
+  return { props: { categories, current, items, lists, names } };
 }

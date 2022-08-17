@@ -42,6 +42,6 @@ export const getCategoryNames = (() => {
 })();
 
 export const findCategoryBySlug = async (
-  slug: Category["slug"]
+  slug: Category["slug"][]
 ): Promise<Category | undefined> =>
   (await getCategories()).find((cat) => slug.includes(cat.slug));
