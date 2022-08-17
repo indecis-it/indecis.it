@@ -1,11 +1,11 @@
-import { CloseButton, Group, Transition } from "@mantine/core";
+import { CloseButton, Group } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
-import { Content } from "../models/contents";
 import { grey, grey2 } from "../colors";
+import { Item } from "../models/items";
 
 interface Props extends DefaultProps {
-  contents: Content[];
+  contents: Item[];
   item: string;
 }
 
@@ -13,7 +13,7 @@ export const ContentRow = ({ contents, item }: Props) => {
   const [message, setMessage] = useState<string>("");
   const [selected, setSelected] = useState<number>(-1);
 
-  const onItemSelected = ({ id, description }: Content) => {
+  const onItemSelected = ({ id, description }: Item) => {
     setMessage(description);
     setSelected(id);
   };

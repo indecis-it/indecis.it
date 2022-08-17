@@ -1,11 +1,19 @@
 import { Content, getContents } from "./contents";
+import { getEndorsements } from "./endorsements";
+import { Property } from "csstype";
+import Color = Property.Color;
 
-export type Items = Record<Content["item_slug"], Content[]>;
+export interface Item extends Omit<Content, "endorsement"> {
+  endorsement?: Color;
+}
+
+export type Items = Record<Content["item_slug"], Item[]>;
 
 export const getItems = async (id: Content["category_id"]) => {
   if (!id) {
     return {};
   }
+  const endorsements = await getEndorsements();
   const contents = (await getContents())
     .filter(({ category_id }) => category_id === id)
     .sort((a, b) => a.list_id - b.list_id);
@@ -15,6 +23,15 @@ export const getItems = async (id: Content["category_id"]) => {
     if (!item_slug) {
       return acc;
     }
-    return { ...acc, [item_slug]: [...current, content] };
+    const endorsement = endorsements.find((endorsement) =>
+      content.endorsement.includes(endorsement.icon)
+    );
+    return {
+      ...acc,
+      [item_slug]: [
+        ...current,
+        { ...content, endorsement: endorsement?.color_code },
+      ],
+    };
   }, {});
 };

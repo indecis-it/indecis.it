@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Divider,
   Grid,
@@ -13,11 +13,14 @@ import {
 } from "../../models/categories";
 import { getLists, Party } from "../../models/parties";
 import { getItems, Items } from "../../models/items";
-import { getContents, getItemNames, ItemNames } from "../../models/contents";
+import { getItemNames, ItemNames } from "../../models/contents";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { useRouter } from "next/router";
 import { grey } from "../../colors";
+import Image from "next/image";
+
+import { CustomFonts } from "../../fonts";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -35,7 +38,26 @@ const App = ({ categories, current, items, lists, names }: Props) => {
   const router = useRouter();
   const navigate = (value: string) => router.push(value);
   return (
-    <MantineProvider withNormalizeCSS withGlobalStyles>
+    <MantineProvider
+      withNormalizeCSS
+      withGlobalStyles
+      theme={{
+        fontFamily: "Raleway, sans-serif",
+      }}
+    >
+      <header
+        style={{
+          paddingTop: 20,
+          textAlign: "center",
+        }}
+      >
+        <Image
+          src={`/indecis-it-logo.svg`}
+          alt="Il logo di indecis.it"
+          width="80"
+          height="80"
+        />
+      </header>
       <Select
         data={categories.map(({ name_it, slug }) => ({
           label: name_it,
