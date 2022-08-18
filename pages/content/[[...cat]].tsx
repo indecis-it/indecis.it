@@ -15,6 +15,7 @@ import Image from "next/image";
 
 import { CustomFonts } from "../../fonts";
 import { CategorySelection } from "../../components/CategorySelection";
+import { NextLink } from "@mantine/next";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -45,12 +46,14 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
           textAlign: "center",
         }}
       >
-        <Image
-          src={`/indecis-it-logo.svg`}
-          alt="Il logo di indecis.it"
-          width={80}
-          height={80}
-        />
+        <NextLink href={"/"}>
+          <Image
+            src={`/indecis-it-logo-diff.svg`}
+            alt="Il logo di indecis.it"
+            width={80}
+            height={80}
+          />
+        </NextLink>
       </header>
       <CategorySelection categories={categories} current={current} />
       <Divider my="sm" />

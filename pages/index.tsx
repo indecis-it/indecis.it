@@ -33,7 +33,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
             src={`/indecis-it-logo-diff.svg`}
             alt="Il logo di indecis.it"
             height={300}
-            width={440}
+            width={380}
           />
           <Text
             align="center"
