@@ -31,12 +31,12 @@ export const CategorySelect = ({ categories, current }: Props) => {
           placeholder="Seleziona un argomento"
           value={current.slug}
           style={{
-            minWidth: 260,
+            minWidth: 230,
           }}
           onChange={navigate}
         />
         <Button variant="outline" onClick={() => setOpened(true)}>
-          ?
+          Cosa è?
         </Button>
       </Group>
       <Modal
