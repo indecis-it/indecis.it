@@ -1,0 +1,22 @@
+name: Push to mirror
+
+on: push
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: push folder
+        uses: actions/checkout@v2
+        env:
+          ACCESS_TOKEN: '${{ secrets.ACCESS_TOKEN }}'
+      - run: |
+          git config --global user.email "agulina@gitlab.com"
+          git config --global user.name "Angelo Gulina"
+          git config --global credential.helper cache
+          git clone https://${{secrets.ACCESS_TOKEN}}@github.com/angelogulina/indecis-it-mirror
+          rsync -av . --exclude indecis-it-mirror --exclude .git --exclude .github ./indecis-it-mirror
+          cd indecis-it-mirror
+          git add .
+          git commit --amend -m "[GHA] [mirror] $(date)"
+          git push --force
