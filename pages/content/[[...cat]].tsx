@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Divider,
-  Grid,
-  Group,
-  MantineProvider,
-  Modal,
-  ScrollArea,
-  Select,
-} from "@mantine/core";
+import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
 import {
   Category,
   findCategoryBySlug,
@@ -19,12 +10,11 @@ import { getItems, Items } from "../../models/items";
 import { getTopics, Topic } from "../../models/contents";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
-import { useRouter } from "next/router";
 import { grey } from "../../colors";
 import Image from "next/image";
 
 import { CustomFonts } from "../../fonts";
-import { CategorySelect } from "../../components/CategorySelect";
+import { CategorySelection } from "../../components/CategorySelection";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -44,6 +34,7 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
       withNormalizeCSS
       withGlobalStyles
       theme={{
+        colorScheme: "light",
         black: "#363636",
         fontFamily: "Raleway, sans-serif",
       }}
@@ -57,11 +48,11 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
         <Image
           src={`/indecis-it-logo.svg`}
           alt="Il logo di indecis.it"
-          width="80"
-          height="80"
+          width={80}
+          height={80}
         />
       </header>
-      <CategorySelect categories={categories} current={current} />
+      <CategorySelection categories={categories} current={current} />
       <Divider my="sm" />
       <Grid
         style={{

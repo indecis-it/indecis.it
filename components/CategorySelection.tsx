@@ -1,21 +1,16 @@
-import { Button, Group, Modal, Select } from "@mantine/core";
+import { Button, Group, Modal } from "@mantine/core";
 import React, { useState } from "react";
 import { Category } from "../models/categories";
-import { useRouter } from "next/router";
+import { CategorySelector } from "./CategorySelector";
+import { DefaultProps } from "@mantine/styles";
 
-interface Props {
+interface Props extends DefaultProps {
   categories: Category[];
   current: Category;
 }
 
-export const CategorySelect = ({ categories, current }: Props) => {
+export const CategorySelection = ({ categories, current }: Props) => {
   const [opened, setOpened] = useState(false);
-  const router = useRouter();
-  const navigate = (value: string) => router.push(value);
-  const selectData = categories.map(({ name_it, slug }) => ({
-    label: name_it,
-    value: slug,
-  }));
   return (
     <>
       <Group
@@ -25,16 +20,7 @@ export const CategorySelect = ({ categories, current }: Props) => {
           paddingTop: 30,
         }}
       >
-        <Select
-          data={selectData}
-          label=""
-          placeholder="Seleziona un argomento"
-          value={current.slug}
-          style={{
-            minWidth: 230,
-          }}
-          onChange={navigate}
-        />
+        <CategorySelector categories={categories} />
         <Button variant="outline" onClick={() => setOpened(true)}>
           Cosa è?
         </Button>

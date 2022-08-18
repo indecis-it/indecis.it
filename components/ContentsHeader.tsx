@@ -8,11 +8,12 @@ interface Props extends DefaultProps {
   lists: Party[];
 }
 
-export const ContentsHeader = ({ lists }: Props) => {
+export const ContentsHeader = ({ lists, style }: Props) => {
   const symbols = lists.filter(({ symbol_name }) => !!symbol_name);
   return (
     <Group
       style={{
+        ...style,
         paddingTop: 10,
         width: 90 * lists.length + 140,
       }}

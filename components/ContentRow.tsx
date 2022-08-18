@@ -9,7 +9,7 @@ interface Props extends DefaultProps {
   topic: string;
 }
 
-export const ContentRow = ({ items, topic }: Props) => {
+export const ContentRow = ({ items, topic, style }: Props) => {
   const [message, setMessage] = useState<string>("");
   const [selected, setSelected] = useState<number>(-1);
 
@@ -28,6 +28,7 @@ export const ContentRow = ({ items, topic }: Props) => {
       <Group spacing="xs">
         <div
           style={{
+            ...style,
             background: "white",
             minHeight: 60,
             display: "flex",
