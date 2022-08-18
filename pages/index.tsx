@@ -39,8 +39,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
             align="center"
             size={"xl"}
             style={{
-              marginTop: 10,
-              marginBottom: 50,
+              marginBottom: 60,
             }}
           >
             i programmi elettorali a portata di click
