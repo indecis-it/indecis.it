@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Button,
   Divider,
   Grid,
+  Group,
   MantineProvider,
+  Modal,
   ScrollArea,
   Select,
 } from "@mantine/core";
@@ -13,7 +16,7 @@ import {
 } from "../../models/categories";
 import { getLists, Party } from "../../models/parties";
 import { getItems, Items } from "../../models/items";
-import { getItemNames, ItemNames } from "../../models/contents";
+import { getTopics, Topic } from "../../models/contents";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { useRouter } from "next/router";
@@ -21,6 +24,7 @@ import { grey } from "../../colors";
 import Image from "next/image";
 
 import { CustomFonts } from "../../fonts";
+import { CategorySelect } from "../../components/CategorySelect";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -28,15 +32,13 @@ interface StaticPropsParams {
 
 interface Props {
   categories: Category[];
-  current: Category["slug"];
+  current: Category;
   items: Items;
   lists: Party[];
-  names: ItemNames;
+  topics: Topic;
 }
 
-const App = ({ categories, current, items, lists, names }: Props) => {
-  const router = useRouter();
-  const navigate = (value: string) => router.push(value);
+const App = ({ categories, current, items, lists, topics }: Props) => {
   return (
     <MantineProvider
       withNormalizeCSS
@@ -58,20 +60,7 @@ const App = ({ categories, current, items, lists, names }: Props) => {
           height="80"
         />
       </header>
-      <Select
-        data={categories.map(({ name_it, slug }) => ({
-          label: name_it,
-          value: slug,
-        }))}
-        label=""
-        placeholder="Seleziona un argomento"
-        value={current}
-        style={{
-          padding: 20,
-          paddingTop: 30,
-        }}
-        onChange={navigate}
-      />
+      <CategorySelect categories={categories} current={current} />
       <Divider my="sm" />
       <Grid
         style={{
@@ -89,11 +78,7 @@ const App = ({ categories, current, items, lists, names }: Props) => {
             }}
           />
           {Object.keys(items).map((slug) => (
-            <ContentRow
-              key={slug}
-              contents={items[slug]}
-              item={names[slug].item}
-            />
+            <ContentRow key={slug} items={items[slug]} topic={topics[slug]} />
           ))}
         </ScrollArea>
       </Grid>
@@ -109,11 +94,10 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: StaticPropsParams) {
-  const { id } = (await findCategoryBySlug(params.cat)) || {};
+  const current = (await findCategoryBySlug(params.cat)) || ({} as Category);
   const categories = await getCategories();
-  const [current] = params.cat;
-  const names = await getItemNames();
-  const items = await getItems(id as number);
+  const topics = await getTopics();
+  const items = await getItems(current.id);
   const lists = await getLists();
-  return { props: { categories, current, items, lists, names } };
+  return { props: { categories, current, items, lists, topics } };
 }

@@ -5,11 +5,11 @@ import { grey, grey2 } from "../colors";
 import { Item } from "../models/items";
 
 interface Props extends DefaultProps {
-  contents: Item[];
-  item: string;
+  items: Item[];
+  topic: string;
 }
 
-export const ContentRow = ({ contents, item }: Props) => {
+export const ContentRow = ({ items, topic }: Props) => {
   const [message, setMessage] = useState<string>("");
   const [selected, setSelected] = useState<number>(-1);
 
@@ -41,9 +41,9 @@ export const ContentRow = ({ contents, item }: Props) => {
             width: 140,
           }}
         >
-          {item}
+          {topic}
         </div>
-        {contents.map((content) => {
+        {items.map((content) => {
           const { id, endorsement } = content;
           return (
             <div

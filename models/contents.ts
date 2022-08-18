@@ -14,7 +14,7 @@ export interface Content {
   source_title: string;
 }
 
-export type ItemNames = Record<Content["item"], Content>;
+export type Topic = Record<Content["item_slug"], Content["item"]>;
 
 export const getContents = (() => {
   const contentsPath = path.join(process.cwd(), "./data/contents.json");
@@ -28,17 +28,17 @@ export const getContents = (() => {
   };
 })();
 
-export const getItemNames = (() => {
-  let names: ItemNames | null = null;
+export const getTopics = (() => {
+  let names: Topic | null = null;
   return async () => {
     if (!names) {
-      names = (await getContents()).reduce((acc: ItemNames, content) => {
+      names = (await getContents()).reduce((acc: Topic, content) => {
         const { item_slug } = content;
         const current = acc[item_slug];
         if (!item_slug || current) {
           return acc;
         }
-        return { ...acc, [item_slug]: content };
+        return { ...acc, [item_slug]: content.item };
       }, {});
     }
     return names;
