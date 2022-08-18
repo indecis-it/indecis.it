@@ -44,6 +44,7 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
       withNormalizeCSS
       withGlobalStyles
       theme={{
+        black: "#363636",
         fontFamily: "Raleway, sans-serif",
       }}
     >
