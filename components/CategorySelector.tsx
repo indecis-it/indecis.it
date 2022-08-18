@@ -22,6 +22,7 @@ export const CategorySelector = ({ categories, current, style }: Props) => {
       label=""
       placeholder="Seleziona un argomento"
       value={current}
+      searchable
       style={{
         ...style,
         minWidth: 230,

@@ -20,7 +20,7 @@ export const CategorySelection = ({ categories, current }: Props) => {
           paddingTop: 30,
         }}
       >
-        <CategorySelector categories={categories} />
+        <CategorySelector categories={categories} current={current.slug} />
         <Button variant="outline" onClick={() => setOpened(true)}>
           Cosa è?
         </Button>
