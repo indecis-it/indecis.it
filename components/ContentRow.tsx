@@ -25,7 +25,7 @@ export const ContentRow = ({ items, topic, style }: Props) => {
 
   return (
     <>
-      <Group spacing="xs">
+      <Group>
         <div
           style={{
             ...style,
