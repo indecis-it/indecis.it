@@ -1,4 +1,4 @@
-import { Select } from "@mantine/core";
+import { createStyles, Select } from "@mantine/core";
 import React from "react";
 import { Category } from "../models/categories";
 import { useRouter } from "next/router";
@@ -9,7 +9,17 @@ interface Props extends DefaultProps {
   current?: Category["slug"];
 }
 
+const useStyles = createStyles((theme) => ({
+  select: {
+    minWidth: 230,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      minWidth: 400,
+    },
+  },
+}));
+
 export const CategorySelector = ({ categories, current, style }: Props) => {
+  const { classes } = useStyles();
   const router = useRouter();
   const navigate = (value: string) => router.push(`/items/${value}`);
   const selectData = categories.map(({ name_it, slug }) => ({
@@ -23,9 +33,9 @@ export const CategorySelector = ({ categories, current, style }: Props) => {
       placeholder="Seleziona un argomento"
       value={current}
       searchable
+      className={classes.select}
       style={{
         ...style,
-        minWidth: 230,
       }}
       onChange={navigate}
     />

@@ -14,8 +14,10 @@ export const ContentsHeader = ({ lists, style }: Props) => {
     <Group
       style={{
         ...style,
+        margin: "0 auto",
         paddingTop: 10,
         width: 90 * lists.length + 140,
+        maxWidth: 1290,
       }}
     >
       <div

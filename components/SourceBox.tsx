@@ -1,5 +1,5 @@
 import { grey, grey2 } from "../colors";
-import { CloseButton, Group, Text } from "@mantine/core";
+import { CloseButton, createStyles, Group, Text } from "@mantine/core";
 import React, { MouseEventHandler } from "react";
 import { SourceSimple } from "../models/sources";
 import { DefaultProps } from "@mantine/styles";
@@ -8,8 +8,22 @@ interface Props extends DefaultProps {
   source: SourceSimple | null;
   onClose: MouseEventHandler;
 }
+const useStyles = createStyles((theme) => ({
+  boxContent: {
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      margin: "0 auto",
+      maxWidth: 930,
+    },
+  },
+  boxControls: {
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      marginLeft: "auto",
+    },
+  },
+}));
 
 export const SourceBox = ({ source, onClose }: Props) => {
+  const { classes } = useStyles();
   return (
     <div
       style={{
@@ -28,41 +42,45 @@ export const SourceBox = ({ source, onClose }: Props) => {
         maxWidth: "100vw",
       }}
     >
-      <Group
-        position="right"
-        style={{
-          marginBottom: 6,
-        }}
-      >
-        <CloseButton
-          aria-label="Close modal"
-          variant="transparent"
-          onClick={onClose}
-        />
-      </Group>
-      <Text>{source?.content}</Text>
-      {source?.url ? (
-        <Text
-          size={"sm"}
+      <Group className={classes.boxContent}>
+        <Group
+          position="right"
+          className={classes.boxControls}
           style={{
-            marginTop: 30,
-            textAlign: "right",
+            marginBottom: 6,
           }}
         >
-          {
-            <a
-              href={source?.url}
-              target={"_blank"}
-              rel={"noreferrer"}
-              style={{
-                textDecoration: "underline",
-              }}
-            >
-              {source.title}
-            </a>
-          }
-        </Text>
-      ) : null}
+          <CloseButton
+            aria-label="Close modal"
+            variant="transparent"
+            onClick={onClose}
+          />
+        </Group>
+        <Text>{source?.content}</Text>
+        {source?.url ? (
+          <Text
+            size={"sm"}
+            className={classes.boxControls}
+            style={{
+              marginTop: 30,
+              textAlign: "right",
+            }}
+          >
+            {
+              <a
+                href={source?.url}
+                target={"_blank"}
+                rel={"noreferrer"}
+                style={{
+                  textDecoration: "underline",
+                }}
+              >
+                {source.title}
+              </a>
+            }
+          </Text>
+        ) : null}
+      </Group>
     </div>
   );
 };

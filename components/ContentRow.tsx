@@ -39,7 +39,12 @@ export const ContentRow = ({
 
   return (
     <>
-      <Group>
+      <Group
+        style={{
+          margin: "0 auto",
+          maxWidth: 1290,
+        }}
+      >
         <div
           style={{
             ...style,

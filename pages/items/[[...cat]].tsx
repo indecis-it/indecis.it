@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid, ScrollArea } from "@mantine/core";
+import { createStyles, Divider, Grid, ScrollArea } from "@mantine/core";
 import {
   Category,
   findCategoryBySlug,
@@ -33,7 +33,18 @@ interface Props {
   topics: Topics;
 }
 
+const useStyles = createStyles((theme) => ({
+  select: {
+    margin: "0 auto",
+    maxWidth: 500,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      maxWidth: "none",
+    },
+  },
+}));
+
 const App = ({ categories, current, items, lists, topics }: Props) => {
+  const { classes } = useStyles();
   const router = useRouter();
   const currentCategory = current.name_it.toLowerCase();
   const currentUrl = `https://${siteName}${router.asPath}`;
@@ -85,15 +96,12 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
       <CategorySelection
         categories={categories}
         current={current}
-        style={{
-          margin: "0 auto",
-          maxWidth: 500,
-        }}
+        className={classes.select}
       />
       <Divider my="sm" />
       <Grid
         style={{
-          margin: 0,
+          margin: "0 auto",
         }}
       >
         <ScrollArea type="never" style={{ height: "100%", width: "100%" }}>
