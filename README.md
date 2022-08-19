@@ -90,3 +90,7 @@ _tda_
 - [Angelo Gulina](https://twitter.com/angelogulina)
 - [Vittorio Nicoletta](https://twitter.com/vi__enne)
 - [Lorenzo Ruffino](https://twitter.com/Ruffino_Lorenzo)
+
+
+## License
+<a href="https://unlicense.org/"><img src="https://commons.wikimedia.org/wiki/File:PD-icon-black.svg" width="80"/></a>

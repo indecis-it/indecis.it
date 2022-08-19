@@ -6,7 +6,7 @@ import {
   getCategories,
 } from "../../models/categories";
 import { getLists, List } from "../../models/lists";
-import { getItems, getTopics, Items, Subjects } from "../../models/items";
+import { getItems, getSubjects, Items, Subjects } from "../../models/items";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { grey } from "../../colors";
@@ -137,7 +137,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: StaticPropsParams) {
   const current = (await findCategoryBySlug(params.cat)) || ({} as Category);
   const categories = await getCategories();
-  const subjects = await getTopics();
+  const subjects = await getSubjects();
   const items = await getItems(current.id);
   const lists = await getLists();
   return { props: { categories, current, items, lists, subjects } };

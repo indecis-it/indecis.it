@@ -71,11 +71,11 @@ export const getRawItems = (() => {
   };
 })();
 
-export const getTopics = (() => {
-  let names: Subjects | null = null;
+export const getSubjects = (() => {
+  let subjects: Subjects | null = null;
   return async () => {
-    if (!names) {
-      names = (await getRawItems()).reduce((acc: Subjects, content) => {
+    if (!subjects) {
+      subjects = (await getRawItems()).reduce((acc: Subjects, content) => {
         const { subject_slug } = content;
         const current = acc[subject_slug];
         if (!subject_slug || current) {
@@ -84,7 +84,7 @@ export const getTopics = (() => {
         return { ...acc, [subject_slug]: content.subject };
       }, {});
     }
-    return names;
+    return subjects;
   };
 })();
 
