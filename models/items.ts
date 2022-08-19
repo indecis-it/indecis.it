@@ -30,7 +30,7 @@ export type Topics = Record<ItemData["subject_slug"], ItemData["subject"]>;
 const getEndorsement = (
   itemData: ItemData,
   endorsements: Endorsement[]
-): EndorsementSimple | null => {
+): EndorsementSimple => {
   const endorsement = endorsements.find((endorsement) =>
     itemData.endorsement.includes(endorsement.icon)
   );
@@ -39,7 +39,10 @@ const getEndorsement = (
         description: endorsement.description,
         icon: endorsement.icon,
       }
-    : null;
+    : {
+        description: "",
+        icon: "yellow",
+      };
 };
 
 const getSource = (itemData: ItemData, sources: Source[]): SourceSimple => {
@@ -47,7 +50,13 @@ const getSource = (itemData: ItemData, sources: Source[]): SourceSimple => {
     sources.find((sourceData) =>
       itemData.source_slug.includes(sourceData.slug)
     ) || {};
-  return { content: itemData.description || "", title, url };
+  return {
+    content:
+      itemData.description ||
+      "Il tema non è presente nelle fonti a nostra disposizione.",
+    title,
+    url,
+  };
 };
 
 export const getRawItems = (() => {
@@ -95,9 +104,6 @@ export const getItems = async (id: ItemData["category_id"]) => {
       return acc;
     }
     const endorsement = getEndorsement(itemData, endorsements);
-    if (!endorsement) {
-      return acc;
-    }
     const source = getSource(itemData, sources);
     return {
       ...acc,

@@ -3,7 +3,7 @@ import Color = Property.Color;
 
 export interface EndorsementSimple {
   description: string;
-  icon: string;
+  icon: "green" | "red" | "yellow";
 }
 
 export interface Endorsement extends EndorsementSimple {

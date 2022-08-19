@@ -16,9 +16,7 @@ const useStyles = createStyles((theme) => ({
     },
   },
   boxControls: {
-    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      marginLeft: "auto",
-    },
+    marginLeft: "auto",
   },
 }));
 
@@ -42,7 +40,7 @@ export const SourceBox = ({ source, onClose }: Props) => {
         maxWidth: "100vw",
       }}
     >
-      <Group className={classes.boxContent}>
+      <div className={classes.boxContent}>
         <Group
           position="right"
           className={classes.boxControls}
@@ -80,7 +78,7 @@ export const SourceBox = ({ source, onClose }: Props) => {
             }
           </Text>
         ) : null}
-      </Group>
+      </div>
     </div>
   );
 };
