@@ -25,7 +25,7 @@ export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
 }
 
 export type Items = Record<ItemData["subject_slug"], Item[]>;
-export type Topics = Record<ItemData["subject_slug"], ItemData["subject"]>;
+export type Subjects = Record<ItemData["subject_slug"], ItemData["subject"]>;
 
 const getEndorsement = (
   itemData: ItemData,
@@ -72,10 +72,10 @@ export const getRawItems = (() => {
 })();
 
 export const getTopics = (() => {
-  let names: Topics | null = null;
+  let names: Subjects | null = null;
   return async () => {
     if (!names) {
-      names = (await getRawItems()).reduce((acc: Topics, content) => {
+      names = (await getRawItems()).reduce((acc: Subjects, content) => {
         const { subject_slug } = content;
         const current = acc[subject_slug];
         if (!subject_slug || current) {

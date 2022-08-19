@@ -1,6 +1,3 @@
-import path from "path";
-import fsPromises from "fs/promises";
-
 export interface Category {
   id: number;
   description_en: string;
@@ -10,34 +7,15 @@ export interface Category {
   slug: string;
 }
 
-export type CategoryNames = Record<Category["slug"], Category>;
-
 export const getCategories = (() => {
   let categories: Category[] = [];
   return async () => {
     if (!categories.length) {
       categories = await fetch(
-        "https://raw.githubusercontent.com/indecis-it/data/main/data/categories.json?token=GHSAT0AAAAAABXS3HBJ3YJOACEUWL4A3VLMYX6NDJA"
+        "https://raw.githubusercontent.com/indecis-it/data/main/data/categories.json"
       ).then((response) => response.json());
     }
     return categories;
-  };
-})();
-
-export const getCategoryNames = (() => {
-  let names: CategoryNames | null = null;
-  return async () => {
-    if (!names) {
-      names = (await getCategories()).reduce((acc: CategoryNames, content) => {
-        const { slug } = content;
-        const current = acc[slug];
-        if (!slug || current) {
-          return acc;
-        }
-        return { ...acc, [slug]: content };
-      }, {});
-    }
-    return names;
   };
 })();
 

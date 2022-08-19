@@ -6,7 +6,7 @@ import {
   getCategories,
 } from "../../models/categories";
 import { getLists, List } from "../../models/lists";
-import { getItems, getTopics, Items, Topics } from "../../models/items";
+import { getItems, getTopics, Items, Subjects } from "../../models/items";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { grey } from "../../colors";
@@ -30,7 +30,7 @@ interface Props {
   current: Category;
   items: Items;
   lists: List[];
-  topics: Topics;
+  subjects: Subjects;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -43,7 +43,7 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const App = ({ categories, current, items, lists, topics }: Props) => {
+const App = ({ categories, current, items, lists, subjects }: Props) => {
   const { classes } = useStyles();
   const router = useRouter();
   const currentCategory = current.name_it.toLowerCase();
@@ -118,7 +118,7 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
               key={slug}
               initialOpen={key === 0}
               items={items[slug]}
-              topic={topics[slug]}
+              topic={subjects[slug]}
             />
           ))}
         </ScrollArea>
@@ -137,8 +137,8 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: StaticPropsParams) {
   const current = (await findCategoryBySlug(params.cat)) || ({} as Category);
   const categories = await getCategories();
-  const topics = await getTopics();
+  const subjects = await getTopics();
   const items = await getItems(current.id);
   const lists = await getLists();
-  return { props: { categories, current, items, lists, topics } };
+  return { props: { categories, current, items, lists, subjects } };
 }

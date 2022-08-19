@@ -28,11 +28,11 @@ export const CategorySelector = ({ categories, current, style }: Props) => {
   }));
   return (
     <Select
+      dropdownPosition="bottom"
       data={selectData}
       label=""
       placeholder="Seleziona un argomento"
       value={current}
-      searchable
       className={classes.select}
       style={{
         ...style,
