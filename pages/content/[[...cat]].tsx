@@ -14,8 +14,6 @@ import Image from "next/image";
 import { CategorySelection } from "../../components/CategorySelection";
 import { NextLink } from "@mantine/next";
 
-import { CustomFonts } from "../../fonts";
-
 interface StaticPropsParams {
   params: { cat: string[] };
 }
@@ -30,15 +28,7 @@ interface Props {
 
 const App = ({ categories, current, items, lists, topics }: Props) => {
   return (
-    <MantineProvider
-      withNormalizeCSS
-      withGlobalStyles
-      theme={{
-        colorScheme: "light",
-        black: "#363636",
-        fontFamily: "Raleway, sans-serif",
-      }}
-    >
+    <>
       <header
         style={{
           paddingTop: 20,
@@ -81,7 +71,7 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
           ))}
         </ScrollArea>
       </Grid>
-    </MantineProvider>
+    </>
   );
 };
 export default App;

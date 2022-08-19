@@ -21,7 +21,7 @@ export const CategorySelection = ({ categories, current }: Props) => {
         }}
       >
         <CategorySelector categories={categories} current={current.slug} />
-        <Button variant="outline" onClick={() => setOpened(true)}>
+        <Button onClick={() => setOpened(true)} color="indigo-green">
           Cosa è?
         </Button>
       </Group>

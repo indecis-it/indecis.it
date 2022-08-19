@@ -1,7 +1,7 @@
-import { CloseButton, Group, Text } from "@mantine/core";
+import { Group } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
-import { grey, grey2 } from "../colors";
+import { grey } from "../colors";
 import { Item } from "../models/items";
 import Image from "next/image";
 import { SourceSimple } from "../models/sources";

@@ -1,12 +1,12 @@
 import { Group, Text } from "@mantine/core";
-import { grey } from "../colors";
+import { grey3 } from "../colors";
 
 export const Footer = () => {
   return (
     <footer
       style={{
         background: "white",
-        borderTopColor: grey,
+        borderTopColor: grey3,
         borderTopStyle: "solid",
         borderTopWidth: 40,
         padding: 20,
