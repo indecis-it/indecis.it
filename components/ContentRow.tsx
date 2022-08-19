@@ -6,13 +6,21 @@ import { Item } from "../models/items";
 import Image from "next/image";
 
 interface Props extends DefaultProps {
+  initialOpen?: boolean;
   items: Item[];
   topic: string;
 }
 
-export const ContentRow = ({ items, topic, style }: Props) => {
-  const [message, setMessage] = useState<string>("");
-  const [selected, setSelected] = useState<number>(-1);
+export const ContentRow = ({
+  initialOpen = false,
+  items,
+  topic,
+  style,
+}: Props) => {
+  const initialMessage = initialOpen ? items[0].description : "";
+  const initialSelection = initialOpen ? items[0].id : -1;
+  const [message, setMessage] = useState<string>(initialMessage);
+  const [selected, setSelected] = useState<number>(initialSelection);
 
   const onItemSelected = ({ id, description }: Item) => {
     if (selected === id) {
@@ -39,7 +47,7 @@ export const ContentRow = ({ items, topic, style }: Props) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
-            lineHeight: "20px",
+            lineHeight: "18px",
             paddingTop: 0,
             paddingBottom: 0,
             paddingLeft: 20,

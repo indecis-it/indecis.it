@@ -71,8 +71,13 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
               marginBottom: 0,
             }}
           />
-          {Object.keys(items).map((slug) => (
-            <ContentRow key={slug} items={items[slug]} topic={topics[slug]} />
+          {Object.keys(items).map((slug, key) => (
+            <ContentRow
+              key={slug}
+              initialOpen={key === 0}
+              items={items[slug]}
+              topic={topics[slug]}
+            />
           ))}
         </ScrollArea>
       </Grid>
