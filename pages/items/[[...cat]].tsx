@@ -1,5 +1,5 @@
 import React from "react";
-import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
+import { Divider, Grid, ScrollArea } from "@mantine/core";
 import {
   Category,
   findCategoryBySlug,
@@ -13,6 +13,13 @@ import { grey } from "../../colors";
 import Image from "next/image";
 import { CategorySelection } from "../../components/CategorySelection";
 import { NextLink } from "@mantine/next";
+import Head from "next/head";
+import {
+  categoryDescription,
+  originalImage,
+  siteName,
+} from "../../global/config";
+import { useRouter } from "next/router";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -27,8 +34,39 @@ interface Props {
 }
 
 const App = ({ categories, current, items, lists, topics }: Props) => {
+  const router = useRouter();
+  const currentCategory = current.name_it.toLowerCase();
+  const currentUrl = `https://${siteName}${router.asPath}`;
+  const description = categoryDescription(currentCategory);
+  const title = `Le posizioni delle liste su: ${currentCategory} | ${siteName}`;
   return (
     <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary" key="twcard" />
+        <meta
+          property="twitter:card"
+          content="summary_large_image"
+          key="twcard"
+        />
+        <meta name="twitter:title" content={title} key="twtitle" />
+        <meta
+          name="twitter:description"
+          content={description}
+          key="twdescription"
+        />
+        <meta name="twitter:image" content={originalImage} key="twimage" />
+
+        {/* Open Graph */}
+        <meta property="og:url" content={currentUrl} key="ogurl" />
+        <meta property="og:image" content={originalImage} key="ogimage" />
+        <meta property="og:site_name" content={siteName} key="ogsitename" />
+        <meta property="og:title" content={title} key="ogtitle" />
+        <meta property="og:description" content={description} key="ogdesc" />
+      </Head>
       <header
         style={{
           paddingTop: 20,
@@ -44,11 +82,17 @@ const App = ({ categories, current, items, lists, topics }: Props) => {
           />
         </NextLink>
       </header>
-      <CategorySelection categories={categories} current={current} />
+      <CategorySelection
+        categories={categories}
+        current={current}
+        style={{
+          margin: "0 auto",
+          maxWidth: 500,
+        }}
+      />
       <Divider my="sm" />
       <Grid
         style={{
-          // minHeight: "100vh",
           margin: 0,
         }}
       >

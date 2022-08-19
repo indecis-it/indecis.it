@@ -11,7 +11,7 @@ interface Props extends DefaultProps {
 
 export const CategorySelector = ({ categories, current, style }: Props) => {
   const router = useRouter();
-  const navigate = (value: string) => router.push(`/content/${value}`);
+  const navigate = (value: string) => router.push(`/items/${value}`);
   const selectData = categories.map(({ name_it, slug }) => ({
     label: name_it,
     value: slug,

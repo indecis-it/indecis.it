@@ -10,9 +10,11 @@ export const Footer = () => {
         borderTopStyle: "solid",
         borderTopWidth: 40,
         padding: 20,
+        position: "fixed",
         right: 0,
         bottom: 0,
         left: 0,
+        zIndex: 200,
       }}
     >
       <Group>
