@@ -20,7 +20,14 @@ export const ContentsHeader = ({ lists, style }: Props) => {
     >
       <div
         style={{
+          background: "white",
+          boxShadow: "5px 0px 15px 5px white",
+          minHeight: 80,
+          // position: "sticky",
+          left: 0,
+          right: 0,
           width: 140,
+          zIndex: 100,
         }}
       />
       {symbols.map(({ id, list, symbol_name }) => (

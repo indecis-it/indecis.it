@@ -34,16 +34,20 @@ export const ContentRow = ({ items, topic, style }: Props) => {
           style={{
             ...style,
             background: "white",
+            boxShadow: "white 10px 0px 15px",
             minHeight: 60,
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
-            lineHeight: "18px",
-            padding: "0 20px",
+            lineHeight: "20px",
+            paddingTop: 0,
+            paddingBottom: 0,
+            paddingLeft: 20,
             position: "sticky",
             left: 0,
             right: 0,
             width: 140,
+            zIndex: 100,
           }}
         >
           {topic}
@@ -58,10 +62,11 @@ export const ContentRow = ({ items, topic, style }: Props) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                height: 60,
+                height: 80,
                 maxWidth: 80,
                 minWidth: 80,
               }}
+              onClick={() => onItemSelected(content)}
             >
               <Image
                 src={`/endorsement/${endorsement?.icon}.svg`}
@@ -69,7 +74,6 @@ export const ContentRow = ({ items, topic, style }: Props) => {
                 title={`La lista è ${endorsement?.description}`}
                 height={20}
                 width={20}
-                onClick={() => onItemSelected(content)}
               ></Image>
             </div>
           );
@@ -84,7 +88,7 @@ export const ContentRow = ({ items, topic, style }: Props) => {
           height: message ? "auto" : 1,
           // margin: "8px 0",
           overflow: "hidden",
-          padding: message ? "14px 22px" : 0,
+          padding: message ? "14px 22px 26px" : 0,
           position: "sticky",
           left: 0,
           right: 0,
