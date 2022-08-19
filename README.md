@@ -84,3 +84,9 @@ Puoi imparare di più su `Next.js` visitando questi siti:
 _tda_
 
 ## Il team
+
+- [Chiara Adornetto](https://twitter.com/chiadornetto)
+- [Dennis Angemi](https://twitter.com/DennisAngemi)
+- [Angelo Gulina](https://twitter.com/angelogulina)
+- [Vittorio Nicoletta](https://twitter.com/vi__enne)
+- [Lorenzo Ruffino](https://twitter.com/Ruffino_Lorenzo)
