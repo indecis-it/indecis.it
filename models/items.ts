@@ -3,8 +3,7 @@ import {
   EndorsementSimple,
   getEndorsements,
 } from "./endorsements";
-import { Property } from "csstype";
-import Color = Property.Color;
+import { getSources, Source, SourceSimple } from "./sources";
 
 export interface ItemData {
   id: number;
@@ -16,15 +15,40 @@ export interface ItemData {
   subject_slug: string;
   list: string;
   list_id: number;
+  source_slug: string;
   source_title: string;
 }
 
-export interface Item extends Omit<ItemData, "endorsement"> {
-  endorsement?: EndorsementSimple;
+export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
+  endorsement: EndorsementSimple;
+  source: SourceSimple;
 }
 
 export type Items = Record<ItemData["subject_slug"], Item[]>;
 export type Topics = Record<ItemData["subject_slug"], ItemData["subject"]>;
+
+const getEndorsement = (
+  itemData: ItemData,
+  endorsements: Endorsement[]
+): EndorsementSimple | null => {
+  const endorsement = endorsements.find((endorsement) =>
+    itemData.endorsement.includes(endorsement.icon)
+  );
+  return endorsement
+    ? {
+        description: endorsement.description,
+        icon: endorsement.icon,
+      }
+    : null;
+};
+
+const getSource = (itemData: ItemData, sources: Source[]): SourceSimple => {
+  const { url = "", title = "" } =
+    sources.find((sourceData) =>
+      itemData.source_slug.includes(sourceData.slug)
+    ) || {};
+  return { content: itemData.description || "", title, url };
+};
 
 export const getRawItems = (() => {
   let items: ItemData[] = [];
@@ -60,34 +84,29 @@ export const getItems = async (id: ItemData["category_id"]) => {
     return {};
   }
   const endorsements = await getEndorsements();
+  const sources = await getSources();
   const contents = (await getRawItems())
     .filter(({ category_id }) => category_id === id)
     .sort((a, b) => a.list_id - b.list_id);
-  return contents.reduce((acc: Items, content) => {
-    const { subject_slug } = content;
+  return contents.reduce((acc: Items, itemData) => {
+    const { subject_slug } = itemData;
     const current = acc[subject_slug] || [];
     if (!subject_slug) {
       return acc;
     }
-    const endorsement =
-      endorsements.find((endorsement) =>
-        content.endorsement.includes(endorsement.icon)
-      ) || null;
+    const endorsement = getEndorsement(itemData, endorsements);
     if (!endorsement) {
       return acc;
     }
-    const description = content.description || "";
+    const source = getSource(itemData, sources);
     return {
       ...acc,
       [subject_slug]: [
         ...current,
         {
-          ...content,
-          description,
-          endorsement: {
-            description: endorsement.description,
-            icon: endorsement.icon,
-          },
+          ...itemData,
+          endorsement,
+          source,
         },
       ],
     };

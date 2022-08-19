@@ -1,9 +1,11 @@
-import { CloseButton, Group } from "@mantine/core";
+import { CloseButton, Group, Text } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
 import { grey, grey2 } from "../colors";
 import { Item } from "../models/items";
 import Image from "next/image";
+import { SourceSimple } from "../models/sources";
+import { SourceBox } from "./SourceBox";
 
 interface Props extends DefaultProps {
   initialOpen?: boolean;
@@ -17,21 +19,21 @@ export const ContentRow = ({
   topic,
   style,
 }: Props) => {
-  const initialMessage = initialOpen ? items[0].description : "";
+  const initialSource = initialOpen ? items[0].source : null;
   const initialSelection = initialOpen ? items[0].id : -1;
-  const [message, setMessage] = useState<string>(initialMessage);
+  const [source, setSource] = useState<SourceSimple | null>(initialSource);
   const [selected, setSelected] = useState<number>(initialSelection);
 
-  const onItemSelected = ({ id, description }: Item) => {
+  const onItemSelected = ({ id, source }: Item) => {
     if (selected === id) {
       return onResetSelection();
     }
     setSelected(id);
-    setMessage(description);
+    setSource(source);
   };
 
   const onResetSelection = () => {
-    setMessage("");
+    setSource(null);
     setSelected(-1);
   };
 
@@ -60,8 +62,8 @@ export const ContentRow = ({
         >
           {topic}
         </div>
-        {items.map((content) => {
-          const { id, endorsement } = content;
+        {items.map((item) => {
+          const { id, endorsement } = item;
           return (
             <div
               key={id}
@@ -74,7 +76,7 @@ export const ContentRow = ({
                 maxWidth: 80,
                 minWidth: 80,
               }}
-              onClick={() => onItemSelected(content)}
+              onClick={() => onItemSelected(item)}
             >
               <Image
                 src={`/endorsement/${endorsement?.icon}.svg`}
@@ -87,38 +89,7 @@ export const ContentRow = ({
           );
         })}
       </Group>
-      <div
-        style={{
-          background: grey,
-          borderBottomColor: message ? grey2 : grey,
-          borderBottomStyle: "solid",
-          borderBottomWidth: 1,
-          height: message ? "auto" : 1,
-          // margin: "8px 0",
-          overflow: "hidden",
-          padding: message ? "14px 22px 26px" : 0,
-          position: "sticky",
-          left: 0,
-          right: 0,
-          transition: "ease",
-          width: "100vw",
-          maxWidth: "100vw",
-        }}
-      >
-        <Group
-          position="right"
-          style={{
-            marginBottom: 6,
-          }}
-        >
-          <CloseButton
-            aria-label="Close modal"
-            variant="transparent"
-            onClick={onResetSelection}
-          />
-        </Group>
-        {message}
-      </div>
+      <SourceBox source={source} onClose={onResetSelection} />
     </>
   );
 };
