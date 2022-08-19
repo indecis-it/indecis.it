@@ -1,4 +1,8 @@
-import { getEndorsements } from "./endorsements";
+import {
+  Endorsement,
+  EndorsementSimple,
+  getEndorsements,
+} from "./endorsements";
 import { Property } from "csstype";
 import Color = Property.Color;
 
@@ -16,7 +20,7 @@ export interface ItemData {
 }
 
 export interface Item extends Omit<ItemData, "endorsement"> {
-  endorsement?: Color;
+  endorsement?: EndorsementSimple;
 }
 
 export type Items = Record<ItemData["subject_slug"], Item[]>;
@@ -65,14 +69,21 @@ export const getItems = async (id: ItemData["category_id"]) => {
     if (!subject_slug) {
       return acc;
     }
-    const endorsement = endorsements.find((endorsement) =>
-      content.endorsement.includes(endorsement.icon)
-    );
+    const endorsement =
+      endorsements.find((endorsement) =>
+        content.endorsement.includes(endorsement.icon)
+      ) || ({} as Endorsement);
     return {
       ...acc,
       [subject_slug]: [
         ...current,
-        { ...content, endorsement: endorsement?.color_code },
+        {
+          ...content,
+          endorsement: {
+            description: endorsement.description,
+            icon: endorsement.icon,
+          },
+        },
       ],
     };
   }, {});

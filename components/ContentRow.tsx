@@ -3,6 +3,7 @@ import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
 import { grey, grey2 } from "../colors";
 import { Item } from "../models/items";
+import Image from "next/image";
 
 interface Props extends DefaultProps {
   items: Item[];
@@ -56,21 +57,20 @@ export const ContentRow = ({ items, topic, style }: Props) => {
                 background: selected === id ? grey : "white",
                 display: "flex",
                 alignItems: "center",
+                justifyContent: "center",
                 height: 60,
                 maxWidth: 80,
                 minWidth: 80,
               }}
             >
-              <div
+              <Image
+                src={`/endorsement/${endorsement?.icon}.svg`}
+                alt={`La lista è ${endorsement?.description}`}
+                title={`La lista è ${endorsement?.description}`}
+                height={20}
+                width={20}
                 onClick={() => onItemSelected(content)}
-                style={{
-                  background: endorsement,
-                  borderRadius: "100%",
-                  height: 20,
-                  margin: "0 auto",
-                  width: 20,
-                }}
-              ></div>
+              ></Image>
             </div>
           );
         })}

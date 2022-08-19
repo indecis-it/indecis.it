@@ -1,10 +1,13 @@
 import { Property } from "csstype";
 import Color = Property.Color;
 
-interface Endorsement {
-  id: 1;
+export interface EndorsementSimple {
   description: string;
   icon: string;
+}
+
+export interface Endorsement extends EndorsementSimple {
+  id: 1;
   color_code: Color;
 }
 

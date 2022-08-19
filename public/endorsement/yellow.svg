@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200px" height="200px" viewBox="0 0 200 200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-Copy" transform="translate(-479.000000, -295.000000)" fill-rule="nonzero">
+            <g id="Group-3" transform="translate(479.000000, 295.000000)">
+                <path d="M0,100 C0,44.765625 44.765625,0 100,0 C155.234375,0 200,44.765625 200,100 C200,155.234375 155.234375,200 100,200 C44.765625,200 0,155.234375 0,100 Z" id="Path" fill="#EDD019"></path>
+                <path d="M65.625,90.625 C60.4296875,90.625 56.25,94.8046875 56.25,100 C56.25,105.195312 60.4296875,109.375 65.625,109.375 L134.375,109.375 C139.570312,109.375 143.75,105.195312 143.75,100 C143.75,94.8046875 139.570312,90.625 134.375,90.625 L65.625,90.625 Z" id="Path" fill="#FFFFFF" transform="translate(100.000000, 100.000000) rotate(-45.000000) translate(-100.000000, -100.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>
