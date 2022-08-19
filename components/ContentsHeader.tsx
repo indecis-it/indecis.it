@@ -23,12 +23,12 @@ export const ContentsHeader = ({ lists, style }: Props) => {
       <div
         style={{
           background: "white",
-          boxShadow: "5px 0px 15px 5px white",
+          boxShadow: "white 10px 0px 15px",
           minHeight: 80,
-          // position: "sticky",
+          position: "sticky",
           left: 0,
           right: 0,
-          width: 140,
+          width: 160,
           zIndex: 100,
         }}
       />

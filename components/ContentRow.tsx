@@ -49,19 +49,23 @@ export const ContentRow = ({
           style={{
             ...style,
             background: "white",
-            boxShadow: "white 10px 0px 15px",
-            minHeight: 60,
+            boxShadow:
+              selected === -1
+                ? "white 16px 0px 9px -9px"
+                : "white 11px 2px 8px",
+            minHeight: 80,
             display: "flex",
             alignItems: "center",
             justifyContent: "flex-start",
             lineHeight: "18px",
             paddingTop: 0,
+            paddingRight: 20,
             paddingBottom: 0,
             paddingLeft: 20,
             position: "sticky",
             left: 0,
             right: 0,
-            width: 140,
+            width: 160,
             zIndex: 100,
           }}
         >
