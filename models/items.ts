@@ -31,7 +31,7 @@ export const getRawItems = (() => {
   return async () => {
     if (!items.length) {
       items = await fetch(
-        "https://raw.githubusercontent.com/indecis-it/data/4868ec0d41812b1e857f9b375e14678dc90b76b6/data/items.json"
+        "https://raw.githubusercontent.com/indecis-it/data/main/data/items.json"
       ).then((response) => response.json());
     }
     return items;
@@ -72,13 +72,18 @@ export const getItems = async (id: ItemData["category_id"]) => {
     const endorsement =
       endorsements.find((endorsement) =>
         content.endorsement.includes(endorsement.icon)
-      ) || ({} as Endorsement);
+      ) || null;
+    if (!endorsement) {
+      return acc;
+    }
+    const description = content.description || "";
     return {
       ...acc,
       [subject_slug]: [
         ...current,
         {
           ...content,
+          description,
           endorsement: {
             description: endorsement.description,
             icon: endorsement.icon,
