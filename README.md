@@ -75,8 +75,8 @@ Accedi alla versione tramite: [http://localhost:3000](http://localhost:3000).
 
 Puoi imparare di più su `Next.js` visitando questi siti:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Learn Next.js](https://nextjs.org/learn)
 
 
 ## Cosa manca?
