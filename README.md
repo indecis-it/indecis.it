@@ -93,4 +93,4 @@ _tda_
 
 
 ## License
-<a href="https://unlicense.org/"><img src="https://commons.wikimedia.org/wiki/File:PD-icon-black.svg" width="80"/></a>
+<a href="https://unlicense.org/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/PD-icon-black.svg/392px-PD-icon-black.svg.png?20170218184554" alt="Unlicense logo" width="40"/></a>
