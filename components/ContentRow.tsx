@@ -14,8 +14,11 @@ export const ContentRow = ({ items, topic, style }: Props) => {
   const [selected, setSelected] = useState<number>(-1);
 
   const onItemSelected = ({ id, description }: Item) => {
-    setMessage(description);
+    if (selected === id) {
+      return onResetSelection();
+    }
     setSelected(id);
+    setMessage(description);
   };
 
   const onResetSelection = () => {

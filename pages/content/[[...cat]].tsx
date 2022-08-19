@@ -1,21 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { Divider, Grid, MantineProvider, ScrollArea } from "@mantine/core";
 import {
   Category,
   findCategoryBySlug,
   getCategories,
 } from "../../models/categories";
-import { getLists, Party } from "../../models/parties";
-import { getItems, Items } from "../../models/items";
-import { getTopics, Topic } from "../../models/contents";
+import { getLists, List } from "../../models/lists";
+import { getItems, getTopics, Items, Topics } from "../../models/items";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { grey } from "../../colors";
 import Image from "next/image";
-
-import { CustomFonts } from "../../fonts";
 import { CategorySelection } from "../../components/CategorySelection";
 import { NextLink } from "@mantine/next";
+
+import { CustomFonts } from "../../fonts";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -25,8 +24,8 @@ interface Props {
   categories: Category[];
   current: Category;
   items: Items;
-  lists: Party[];
-  topics: Topic;
+  lists: List[];
+  topics: Topics;
 }
 
 const App = ({ categories, current, items, lists, topics }: Props) => {

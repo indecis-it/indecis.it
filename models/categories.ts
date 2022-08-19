@@ -13,12 +13,12 @@ export interface Category {
 export type CategoryNames = Record<Category["slug"], Category>;
 
 export const getCategories = (() => {
-  const categoriesPath = path.join(process.cwd(), "./data/categories.json");
   let categories: Category[] = [];
   return async () => {
     if (!categories.length) {
-      const categoriesData = await fsPromises.readFile(categoriesPath);
-      categories = JSON.parse(categoriesData.toString());
+      categories = await fetch(
+        "https://raw.githubusercontent.com/indecis-it/data/main/data/categories.json?token=GHSAT0AAAAAABXS3HBJ3YJOACEUWL4A3VLMYX6NDJA"
+      ).then((response) => response.json());
     }
     return categories;
   };
