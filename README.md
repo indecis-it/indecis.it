@@ -12,7 +12,7 @@ Il sito è sviluppato in Next.js. Nella repository sono presenti le configurazio
 
 ### Perché?
 
-Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a decidere?". Indecis.it è la soluzione a questo problema.
+Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a decidere?". Indecis.it prova a dare una rispost a queste domande.
 
 ### Come?
 
@@ -47,6 +47,7 @@ Se è tutto chiaro, ma vuoi proporre delle modifiche, ad es.
 - aggiungere o modificare una `category` o un `item`
 - migliorare la descrizione di `category` o un `item`
 - suggerire una nuova fonte che possa colmare le conoscenze mancanti
+- suggerire un modo per colmare [alcune carenze del progetto](#cosa-manca)
 
 Puoi farlo commentando direttamente sul Goole Sheet.
 
@@ -81,7 +82,21 @@ Puoi imparare di più su `Next.js` visitando questi siti:
 
 ## Cosa manca?
 
-_tda_
+### La realizzazione di un programma
+
+indecis.it non aiuta a capire come ogni lista ha intenzione di realizzare il suo programma.  I programmi elettorali
+non sono una guida sufficiente per prendere decisioni, serviono a orientarsi. La loro lettura è un buon primo passo.
+
+Ogni programma presenta delle dichiarazioni di intenti, non sempre dei piani concreti. La fattibilità di queste intenzioni dipende
+da tanti fattori. Ad esempio, per implementare l'assegno unico universale è necessario che si trovino risorse finanziarie. I programmi elettorali
+molto spesso non spiegano come queste risorse saranno trovate. Di conseguenza, indecis.it non presenta questa informazione.
+
+### La coerenza di un programma
+
+indecis.it non individua possibili incongruenze nei programmi elettorali. Prendiamo di nuovo l'esempio dell'assegno unico universale.
+Il programma di una lista potrebbe proporre questo e insieme la riduzione delle tasse. Le due iniziative non sono per forza incoerenti.
+Tuttavia, una lista che si impegni a supportarle entrambe si troverebbe nella posizione di dover spiegare
+come pensa di trovare maggiori risorse finanziare (assegno unico) per mentre decide di reperirne di meno (taglio delle tasse).
 
 ## Il team
 
