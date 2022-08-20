@@ -1,13 +1,23 @@
-import { Badge, Card, Group, ScrollArea, Text } from "@mantine/core";
+import {
+  Badge,
+  Card,
+  Group,
+  ScrollArea,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 import { useCommonStyles } from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
+import { useMediaQuery } from "@mantine/hooks";
 
 const onBoardingImageWidth = 250;
 const onBoardingImageHeight = 400;
 
 export const OnBoarding = () => {
+  const theme = useMantineTheme();
+  const largeScreen = useMediaQuery(`(min-width: ${theme.breakpoints.md}px)`);
   const {
     classes: { homeSection },
   } = useCommonStyles({});
@@ -40,6 +50,7 @@ export const OnBoarding = () => {
         }}
       >
         <Group
+          position={largeScreen ? "center" : "left"}
           style={{
             width: onBoardingImageWidth * 5,
           }}

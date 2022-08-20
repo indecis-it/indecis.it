@@ -19,5 +19,12 @@ export const useCommonStyles = createStyles(
     homeSection: {
       padding: "0 30px",
     },
+    main: {
+      [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+        margin: "0 auto",
+        textAlign: "center",
+        maxWidth: 1250,
+      },
+    },
   })
 );
