@@ -16,7 +16,7 @@ Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a
 
 ### Come?
 
-Il sito permette di navigare in maniera semplice e intuitiva diverse categorie (ad es., servizi pubblici generali, difesa, salute, ecc..) per confrontare le intenzioni delle liste di partiti rispetto a diverse tematiche.
+Il sito permette di navigare in maniera semplice e intuitiva diverse categorie (ad es., servizi pubblici generali, difesa, salute, ecc..) per confrontare le intenzioni delle liste rispetto a diverse tematiche.
 
 Ogni tema puo assumere uno di questi stati:
 

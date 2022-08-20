@@ -8,8 +8,8 @@ import { DefaultProps } from "@mantine/styles";
 import { originalDescription, originalImage, siteName } from "../global/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import icon from "../public/indecis-it-cover.jpg";
 import { CategoryData } from "../services/data";
+import { Main } from "../components/Main";
 
 interface Props extends DefaultProps {
   categories: CategoryData[];
@@ -23,6 +23,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
   const title = `indecis.it | ${originalDescription}`;
   const description =
     "Il confronto tra le liste sui temi a te più cari. Facile e intuitivo.";
+
   return (
     <>
       <Head>
@@ -85,6 +86,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
           maxWidth: 500,
         }}
       />
+      <Main />
     </>
   );
 };

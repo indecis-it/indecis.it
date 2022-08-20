@@ -61,7 +61,7 @@ const getCategoriesData = (): Promise<CategoryData[]> =>
 
 const getEndorsementsData = (): Promise<EndorsementData[]> =>
   fetch(
-    "https://raw.githubusercontent.com/indecis-it/data/de4c0f0375089d11b3fce7429e2eefb095500fc4/data/endorsements.json"
+    "https://raw.githubusercontent.com/indecis-it/data/main/data/endorsements.json"
   ).then((response) => response.json());
 
 const getItemsData = (): Promise<ItemData[]> =>
@@ -71,7 +71,7 @@ const getItemsData = (): Promise<ItemData[]> =>
 
 const getListsData = (): Promise<ListData[]> =>
   fetch(
-    "https://raw.githubusercontent.com/indecis-it/data/de4c0f0375089d11b3fce7429e2eefb095500fc4/data/lists.json"
+    "https://raw.githubusercontent.com/indecis-it/data/main/data/lists.json"
   ).then((response) => response.json());
 
 const getSourcesData = (): Promise<SourceData[]> =>

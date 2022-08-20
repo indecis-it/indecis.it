@@ -151,7 +151,7 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
             {Object.keys(items).map((slug, key) => (
               <ContentRow
                 key={slug}
-                initialOpen={key === 0}
+                initialOpen={false}
                 items={items[slug]}
                 topic={subjects[slug]}
               />

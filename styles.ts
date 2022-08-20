@@ -3,11 +3,11 @@ import { ListData } from "./services/data";
 import { Item } from "./repositories/item";
 
 interface StylesParams {
-  list: ListData[] | Item[];
+  list?: ListData[] | Item[];
 }
 
 export const useCommonStyles = createStyles(
-  (theme, { list }: StylesParams) => ({
+  (theme, { list = [] }: StylesParams) => ({
     scrollingWidth: {
       width: 90 * (list.length + 1) + 140,
       maxWidth: 1290,
@@ -15,6 +15,9 @@ export const useCommonStyles = createStyles(
         margin: "0 auto",
         maxWidth: "none",
       },
+    },
+    homeSection: {
+      padding: "0 30px",
     },
   })
 );
