@@ -21,14 +21,12 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
   const router = useRouter();
   const currentUrl = `https://${siteName}${router.asPath}`;
   const title = `indecis.it | ${originalDescription}`;
-  const description =
-    "Il confronto tra le liste sui temi a te più cari. Facile e intuitivo.";
 
   return (
     <>
       <Head>
         <title>{title}</title>
-        <meta name="description" content={description} />
+        <meta name="description" content={originalDescription} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary" key="twcard" />
@@ -40,7 +38,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
         <meta name="twitter:title" content={title} key="twtitle" />
         <meta
           name="twitter:description"
-          content={description}
+          content={originalDescription}
           key="twdescription"
         />
         <meta name="twitter:image" content={originalImage} key="twimage" />
@@ -50,7 +48,11 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
         <meta property="og:image" content={originalImage} key="ogimage" />
         <meta property="og:site_name" content={siteName} key="ogsitename" />
         <meta property="og:title" content={title} key="ogtitle" />
-        <meta property="og:description" content={description} key="ogdesc" />
+        <meta
+          property="og:description"
+          content={originalDescription}
+          key="ogdesc"
+        />
       </Head>
       <header
         style={{
