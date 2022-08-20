@@ -1,5 +1,5 @@
-import { createStyles, Select } from "@mantine/core";
-import React from "react";
+import { createStyles, NativeSelect } from "@mantine/core";
+import React, { ChangeEventHandler } from "react";
 import { useRouter } from "next/router";
 import { DefaultProps } from "@mantine/styles";
 import { CategoryData } from "../services/data";
@@ -21,14 +21,14 @@ const useStyles = createStyles((theme) => ({
 export const CategorySelector = ({ categories, current, style }: Props) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const navigate = (value: string) => router.push(`/items/${value}`);
+  const navigate: ChangeEventHandler<HTMLSelectElement> = (event) =>
+    router.push(`/items/${event.currentTarget.value}`);
   const selectData = categories.map(({ name_it, slug }) => ({
     label: name_it,
     value: slug,
   }));
   return (
-    <Select
-      dropdownPosition="bottom"
+    <NativeSelect
       data={selectData}
       label=""
       placeholder="Seleziona un argomento"
