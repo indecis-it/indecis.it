@@ -53,12 +53,19 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         <Global
           styles={(theme) => ({
-            "body::-webkit-scrollbar": {
+            "*": {
+              "scrollbar-width": 0,
+            },
+            "::-webkit-scrollbar": {
+              background: "transparent",
+              height: 0,
               display: "none",
+              width: 0,
             },
             body: {
               "-ms-overflow-style": "none",
               "scrollbar-width": "none",
+              overflow: "overlay",
             },
             html: {
               overflow: "overlay",
