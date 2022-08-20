@@ -28,7 +28,7 @@ export const HowToRead = () => {
             />
           }
         >
-          il tema non è presente nelle fonti a nostra disposizione
+          la lista si è espressa a favore del tema
         </List.Item>
         <List.Item
           icon={
@@ -40,7 +40,7 @@ export const HowToRead = () => {
             />
           }
         >
-          il tema non è presente nelle fonti a nostra disposizione
+          la lista <strong>non</strong> si è espressa a favore del tema
         </List.Item>
         <List.Item
           icon={
