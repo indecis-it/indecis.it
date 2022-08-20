@@ -1,34 +1,23 @@
-export interface List {
-  id: number;
-  list: string;
-  slug: string;
-  symbol_name: string;
-}
+import { dataService, ListData } from "../services/data";
 
-export const getListData = (() => {
-  let parties: List[] = [];
-  return async () => {
-    if (!parties.length) {
-      parties = await fetch(
-        "https://raw.githubusercontent.com/indecis-it/data/de4c0f0375089d11b3fce7429e2eefb095500fc4/data/lists.json"
-      ).then((response) => response.json());
-    }
-    return parties;
-  };
-})();
+export const ListModel = (service: typeof dataService = dataService) => {
+  const getLists = (() => {
+    let lists: ListData[] = [];
+    return async () => {
+      if (!lists.length) {
+        lists = (await service.getListsData()).reduce((acc, list) => {
+          const excludeList = acc.find(({ slug }) => slug === list.slug);
+          if (excludeList || !list.symbol_url) {
+            return acc;
+          }
+          return [...acc, list];
+        }, [] as ListData[]);
+      }
+      return lists;
+    };
+  })();
 
-export const getLists = (() => {
-  let lists: List[] = [];
-  return async () => {
-    if (!lists.length) {
-      lists = (await getListData()).reduce((acc, party) => {
-        const excludeParty = acc.find(({ slug }) => slug === party.slug);
-        if (excludeParty) {
-          return acc;
-        }
-        return [...acc, party];
-      }, [] as List[]);
-    }
-    return lists;
+  return {
+    getLists,
   };
-})();
+};

@@ -1,11 +1,11 @@
 import { Group } from "@mantine/core";
 import Image from "next/image";
-import { List } from "../models/lists";
 import React from "react";
 import { DefaultProps } from "@mantine/styles";
+import { ListData } from "../services/data";
 
 interface Props extends DefaultProps {
-  lists: List[];
+  lists: ListData[];
 }
 
 export const ContentsHeader = ({ lists, style }: Props) => {
@@ -16,7 +16,7 @@ export const ContentsHeader = ({ lists, style }: Props) => {
         ...style,
         margin: "0 auto",
         paddingTop: 10,
-        width: 90 * lists.length + 140,
+        width: 90 * (lists.length + 1) + 140,
         maxWidth: 1290,
       }}
     >

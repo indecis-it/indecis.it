@@ -1,12 +1,7 @@
 import React from "react";
 import { createStyles, Divider, Grid, ScrollArea } from "@mantine/core";
-import {
-  Category,
-  findCategoryBySlug,
-  getCategories,
-} from "../../models/categories";
-import { getLists, List } from "../../models/lists";
-import { getItems, getSubjects, Items, Subjects } from "../../models/items";
+import { ListModel } from "../../models/lists";
+import { ItemRepository, Items, Subjects } from "../../repositories/item";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { grey } from "../../colors";
@@ -20,16 +15,18 @@ import {
   siteName,
 } from "../../global/config";
 import { useRouter } from "next/router";
+import { CategoryData, ListData } from "../../services/data";
+import { CategoryModel } from "../../models/categories";
 
 interface StaticPropsParams {
   params: { cat: string[] };
 }
 
 interface Props {
-  categories: Category[];
-  current: Category;
+  categories: CategoryData[];
+  current: CategoryData;
   items: Items;
-  lists: List[];
+  lists: ListData[];
   subjects: Subjects;
 }
 
@@ -42,6 +39,10 @@ const useStyles = createStyles((theme) => ({
     },
   },
 }));
+
+const categoryModel = CategoryModel();
+const itemRepo = ItemRepository();
+const listModel = ListModel();
 
 const App = ({ categories, current, items, lists, subjects }: Props) => {
   const { classes } = useStyles();
@@ -104,7 +105,10 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
           margin: "0 auto",
         }}
       >
-        <ScrollArea type="never" style={{ height: "100%", width: "100%" }}>
+        <ScrollArea
+          type="never"
+          style={{ cursor: "ew-resize", height: "100%", width: "100%" }}
+        >
           <ContentsHeader lists={lists} />
           <Divider
             my="sm"
@@ -129,16 +133,18 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
 export default App;
 
 export async function getStaticPaths() {
-  const categories = await getCategories();
+  const categories = await categoryModel.getCategories();
   const paths = categories.map(({ slug }) => ({ params: { cat: [slug] } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }: StaticPropsParams) {
-  const current = (await findCategoryBySlug(params.cat)) || ({} as Category);
-  const categories = await getCategories();
-  const subjects = await getSubjects();
-  const items = await getItems(current.id);
-  const lists = await getLists();
+  const current =
+    (await categoryModel.findCategoryBySlug(params.cat)) ||
+    ({} as CategoryData);
+  const categories = await categoryModel.getCategories();
+  const subjects = await itemRepo.getSubjects();
+  const items = await itemRepo.getItems(current.id);
+  const lists = await listModel.getLists();
   return { props: { categories, current, items, lists, subjects } };
 }

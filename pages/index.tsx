@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { Text } from "@mantine/core";
-import { Category, getCategories } from "../models/categories";
+import { CategoryModel } from "../models/categories";
 import React from "react";
 import { CategorySelector } from "../components/CategorySelector";
 import Image from "next/image";
@@ -9,10 +9,13 @@ import { originalDescription, originalImage, siteName } from "../global/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import icon from "../public/indecis-it-cover.jpg";
+import { CategoryData } from "../services/data";
 
 interface Props extends DefaultProps {
-  categories: Category[];
+  categories: CategoryData[];
 }
+
+const categoryModel = CategoryModel();
 
 const Home: NextPage<Props> = ({ categories, style }: Props) => {
   const router = useRouter();
@@ -88,6 +91,6 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
 export default Home;
 
 export async function getStaticProps() {
-  const categories = await getCategories();
+  const categories = await categoryModel.getCategories();
   return { props: { categories } as Props };
 }
