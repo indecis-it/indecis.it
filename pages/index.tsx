@@ -77,6 +77,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
       <CategorySelector
         categories={categories}
         current={""}
+        size={"md"}
         style={{
           margin: "0 auto",
           padding: 20,

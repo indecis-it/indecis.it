@@ -1,4 +1,4 @@
-import { Button, Group, Modal } from "@mantine/core";
+import { Button, Group, MantineSize, Modal } from "@mantine/core";
 import React, { useState } from "react";
 import { CategorySelector } from "./CategorySelector";
 import { DefaultProps } from "@mantine/styles";
@@ -7,12 +7,14 @@ import { CategoryData } from "../services/data";
 interface Props extends DefaultProps {
   categories: CategoryData[];
   current: CategoryData;
+  size?: MantineSize;
 }
 
 export const CategorySelection = ({
   categories,
   className,
   current,
+  size = "sm",
   style,
 }: Props) => {
   const [opened, setOpened] = useState(false);
@@ -23,10 +25,19 @@ export const CategorySelection = ({
         className={className}
         style={{
           ...style,
+          paddingTop: 30,
         }}
       >
-        <CategorySelector categories={categories} current={current.slug} />
-        <Button onClick={() => setOpened(true)} color="indigo-green">
+        <CategorySelector
+          categories={categories}
+          current={current.slug}
+          size={size}
+        />
+        <Button
+          onClick={() => setOpened(true)}
+          color="indigo-green"
+          size={size}
+        >
           Cosa è?
         </Button>
       </Group>

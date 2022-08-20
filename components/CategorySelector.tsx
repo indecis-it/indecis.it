@@ -1,4 +1,4 @@
-import { createStyles, NativeSelect } from "@mantine/core";
+import { createStyles, MantineSize, NativeSelect } from "@mantine/core";
 import React, { ChangeEventHandler } from "react";
 import { useRouter } from "next/router";
 import { DefaultProps } from "@mantine/styles";
@@ -7,6 +7,7 @@ import { CategoryData } from "../services/data";
 interface Props extends DefaultProps {
   categories: CategoryData[];
   current?: CategoryData["slug"];
+  size?: MantineSize;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -18,7 +19,12 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const CategorySelector = ({ categories, current, style }: Props) => {
+export const CategorySelector = ({
+  categories,
+  current,
+  size,
+  style,
+}: Props) => {
   const { classes } = useStyles();
   const router = useRouter();
   const navigate: ChangeEventHandler<HTMLSelectElement> = (event) =>
@@ -34,6 +40,7 @@ export const CategorySelector = ({ categories, current, style }: Props) => {
       placeholder="Seleziona un argomento"
       value={current}
       className={classes.select}
+      size={size}
       style={{
         ...style,
       }}
