@@ -2,10 +2,9 @@ import { Group } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
 import { grey } from "../colors";
-import { Item } from "../models/items";
 import Image from "next/image";
-import { SourceSimple } from "../models/sources";
 import { SourceBox } from "./SourceBox";
+import { Item, SourceSimple } from "../repositories/item";
 
 interface Props extends DefaultProps {
   initialOpen?: boolean;

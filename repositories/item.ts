@@ -2,10 +2,12 @@ import {
   dataService,
   EndorsementData,
   ItemData,
+  ListData,
   SourceData,
 } from "../services/data";
 import { EndorsementModel } from "../models/endorsements";
 import { ListModel } from "../models/lists";
+import { list } from "postcss";
 
 export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
   endorsement: EndorsementSimple;
@@ -25,6 +27,15 @@ export interface SourceSimple {
 
 export type Items = Record<ItemData["subject_slug"], Item[]>;
 export type Subjects = Record<ItemData["subject_slug"], ItemData["subject"]>;
+
+const getDefaultItems = (
+  lists: ListData[],
+  subject_slug: Item["subject_slug"]
+): Partial<Item>[] =>
+  lists.map(({ id }) => ({
+    list_id: id,
+    subject_slug,
+  }));
 
 const getEndorsement = (
   itemData: ItemData,
@@ -87,29 +98,26 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
       return {};
     }
     const endorsements = await endorsementModel.getEndorsements();
+    const lists = await listModel.getLists();
     const sources = await service.getSourcesData();
     const itemsData = (await service.getItemsData())
-      .filter(({ category_id }) => category_id === id)
+      .filter(
+        ({ list_id, category_id, subject_slug }) =>
+          category_id === id && list_id && subject_slug
+      )
       .sort((a, b) => (a.list_id as number) - (b.list_id as number));
+
     return itemsData.reduce((acc: Items, itemData) => {
       const { subject_slug } = itemData;
-      const current = acc[subject_slug] || [];
-      if (!subject_slug) {
-        return acc;
-      }
+      const current = acc[subject_slug] || getDefaultItems(lists, subject_slug);
       const endorsement = getEndorsement(itemData, endorsements);
       const source = getSource(itemData, sources);
-      return {
-        ...acc,
-        [subject_slug]: [
-          ...current,
-          {
-            ...itemData,
-            endorsement,
-            source,
-          },
-        ],
+      current[(itemData.list_id as number) - 1] = {
+        ...itemData,
+        endorsement,
+        source,
       };
+      return { ...acc, [subject_slug]: current };
     }, {});
   };
 
