@@ -45,13 +45,13 @@ export const OnBoarding = () => {
         type={"never"}
         style={{
           height: onBoardingImageHeight + 100,
-          paddingLeft: 30,
           width: "100%",
         }}
       >
         <Group
           position={largeScreen ? "center" : "left"}
           style={{
+            marginLeft: 30,
             width: onBoardingImageWidth * 5,
           }}
         >
