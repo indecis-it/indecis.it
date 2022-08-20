@@ -19,11 +19,8 @@ const itemModel = ItemRepository(mockedDtaService);
 describe("Items", () => {
   describe("with empty list id", () => {
     it("excludes the items", async () => {
-      const lists = await mockedDtaService.getListsData();
       const items = await itemModel.getItems(4);
-      return expect(items["apprendistato-retribuito"]).toHaveLength(
-        lists.length
-      );
+      return expect(items["apprendistato-retribuito"]).toHaveLength(11);
     });
   });
 
@@ -41,10 +38,6 @@ describe("Items", () => {
       expect.objectContaining({ list_id: 9 }),
       expect.objectContaining({ list_id: 10 }),
       expect.objectContaining({ list_id: 11 }),
-      expect.objectContaining({ list_id: 12 }),
-      expect.objectContaining({ list_id: 13 }),
-      expect.objectContaining({ list_id: 14 }),
-      expect.objectContaining({ list_id: 15 }),
     ]);
   });
 });

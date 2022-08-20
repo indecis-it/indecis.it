@@ -19,15 +19,15 @@ export const ContentRow = ({
   style,
 }: Props) => {
   const initialSource = initialOpen ? items[0].source : null;
-  const initialSelection = initialOpen ? items[0].id : -1;
+  const initialSelection = initialOpen ? items[0].uid : -1;
   const [source, setSource] = useState<SourceSimple | null>(initialSource);
-  const [selected, setSelected] = useState<number>(initialSelection);
+  const [selected, setSelected] = useState<Item["uid"]>(initialSelection);
 
-  const onItemSelected = ({ id, source }: Item) => {
-    if (selected === id) {
+  const onItemSelected = ({ uid, source }: Item) => {
+    if (selected === uid) {
       return onResetSelection();
     }
-    setSelected(id);
+    setSelected(uid);
     setSource(source);
   };
 
@@ -71,12 +71,14 @@ export const ContentRow = ({
           {topic}
         </div>
         {items.map((item) => {
-          const { id, endorsement } = item;
+          const { empty, endorsement, list_id, subject_slug } = item;
+          const uid = `${subject_slug}-${list_id}`;
           return (
             <div
-              key={id}
+              key={uid}
               style={{
-                background: selected === id ? grey : "white",
+                background: selected === uid ? grey : "white",
+                cursor: !empty ? "pointer" : "inherit",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
@@ -86,13 +88,15 @@ export const ContentRow = ({
               }}
               onClick={() => onItemSelected(item)}
             >
-              <Image
-                src={`/endorsement/${endorsement?.icon}.svg`}
-                alt={`La lista è ${endorsement?.description}`}
-                title={`La lista è ${endorsement?.description}`}
-                height={20}
-                width={20}
-              ></Image>
+              {!empty ? (
+                <Image
+                  src={`/endorsement/${endorsement?.icon}.svg`}
+                  alt={`La lista è ${endorsement?.description}`}
+                  title={`La lista è ${endorsement?.description}`}
+                  height={20}
+                  width={20}
+                ></Image>
+              ) : null}
             </div>
           );
         })}

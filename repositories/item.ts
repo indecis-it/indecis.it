@@ -1,4 +1,5 @@
 import {
+  CategoryData,
   dataService,
   EndorsementData,
   ItemData,
@@ -7,11 +8,12 @@ import {
 } from "../services/data";
 import { EndorsementModel } from "../models/endorsements";
 import { ListModel } from "../models/lists";
-import { list } from "postcss";
 
 export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
+  empty: boolean;
   endorsement: EndorsementSimple;
   source: SourceSimple;
+  uid: string | -1;
 }
 
 export interface EndorsementSimple {
@@ -28,6 +30,14 @@ export interface SourceSimple {
 export type Items = Record<ItemData["subject_slug"], Item[]>;
 export type Subjects = Record<ItemData["subject_slug"], ItemData["subject"]>;
 
+const byListId = (a: ItemData, b: ItemData) =>
+  (a.list_id as number) - (b.list_id as number);
+
+const isValidItem =
+  (id: CategoryData["id"]) =>
+  ({ list_id, category_id, subject_slug }: ItemData) =>
+    category_id === id && list_id && subject_slug;
+
 const getDefaultItems = (
   lists: ListData[],
   subject_slug: Item["subject_slug"]
@@ -35,6 +45,7 @@ const getDefaultItems = (
   lists.map(({ id }) => ({
     list_id: id,
     subject_slug,
+    empty: true,
   }));
 
 const getEndorsement = (
@@ -93,7 +104,7 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
     };
   })();
 
-  const getItems = async (id: ItemData["category_id"]) => {
+  const getItems = async (id: ItemData["category_id"]): Promise<Items> => {
     if (!id) {
       return {};
     }
@@ -101,19 +112,18 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
     const lists = await listModel.getLists();
     const sources = await service.getSourcesData();
     const itemsData = (await service.getItemsData())
-      .filter(
-        ({ list_id, category_id, subject_slug }) =>
-          category_id === id && list_id && subject_slug
-      )
-      .sort((a, b) => (a.list_id as number) - (b.list_id as number));
-
+      .filter(isValidItem(id))
+      .sort(byListId);
     return itemsData.reduce((acc: Items, itemData) => {
       const { subject_slug } = itemData;
       const current = acc[subject_slug] || getDefaultItems(lists, subject_slug);
       const endorsement = getEndorsement(itemData, endorsements);
       const source = getSource(itemData, sources);
-      current[(itemData.list_id as number) - 1] = {
+      const listPosition = (itemData.list_id as number) - 1;
+      current[listPosition] = {
         ...itemData,
+        empty: false,
+        uid: `${subject_slug}-${itemData.list_id}`,
         endorsement,
         source,
       };

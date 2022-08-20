@@ -105,7 +105,10 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
           margin: "0 auto",
         }}
       >
-        <ScrollArea type="never" style={{ height: "100%", width: "100%" }}>
+        <ScrollArea
+          type="never"
+          style={{ cursor: "ew-resize", height: "100%", width: "100%" }}
+        >
           <ContentsHeader lists={lists} />
           <Divider
             my="sm"

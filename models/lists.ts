@@ -5,12 +5,12 @@ export const ListModel = (service: typeof dataService = dataService) => {
     let lists: ListData[] = [];
     return async () => {
       if (!lists.length) {
-        lists = (await service.getListsData()).reduce((acc, party) => {
-          const excludeParty = acc.find(({ slug }) => slug === party.slug);
-          if (excludeParty) {
+        lists = (await service.getListsData()).reduce((acc, list) => {
+          const excludeList = acc.find(({ slug }) => slug === list.slug);
+          if (excludeList || !list.symbol_url) {
             return acc;
           }
-          return [...acc, party];
+          return [...acc, list];
         }, [] as ListData[]);
       }
       return lists;
