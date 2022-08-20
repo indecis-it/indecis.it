@@ -1,12 +1,12 @@
 import { createStyles, Select } from "@mantine/core";
 import React from "react";
-import { Category } from "../models/categories";
 import { useRouter } from "next/router";
 import { DefaultProps } from "@mantine/styles";
+import { CategoryData } from "../services/data";
 
 interface Props extends DefaultProps {
-  categories: Category[];
-  current?: Category["slug"];
+  categories: CategoryData[];
+  current?: CategoryData["slug"];
 }
 
 const useStyles = createStyles((theme) => ({

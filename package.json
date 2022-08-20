@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "check": "tsc --noEmit",
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch --no-cache"

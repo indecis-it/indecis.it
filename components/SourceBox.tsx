@@ -1,13 +1,14 @@
 import { grey, grey2 } from "../colors";
 import { CloseButton, createStyles, Group, Text } from "@mantine/core";
 import React, { MouseEventHandler } from "react";
-import { SourceSimple } from "../models/sources";
 import { DefaultProps } from "@mantine/styles";
+import { SourceSimple } from "../repositories/item";
 
 interface Props extends DefaultProps {
   source: SourceSimple | null;
   onClose: MouseEventHandler;
 }
+
 const useStyles = createStyles((theme) => ({
   boxContent: {
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {

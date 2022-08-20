@@ -1,12 +1,12 @@
 import { Button, Group, Modal } from "@mantine/core";
 import React, { useState } from "react";
-import { Category } from "../models/categories";
 import { CategorySelector } from "./CategorySelector";
 import { DefaultProps } from "@mantine/styles";
+import { CategoryData } from "../services/data";
 
 interface Props extends DefaultProps {
-  categories: Category[];
-  current: Category;
+  categories: CategoryData[];
+  current: CategoryData;
 }
 
 export const CategorySelection = ({ categories, current, style }: Props) => {
