@@ -45,6 +45,9 @@ export const CategorySelection = ({
         opened={opened}
         onClose={() => setOpened(false)}
         title={current.name_it}
+        style={{
+          zIndex: 3000,
+        }}
       >
         {current.description_it}
       </Modal>
