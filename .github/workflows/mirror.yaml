@@ -18,5 +18,5 @@ jobs:
           rsync -av . --exclude indecis-it-mirror --exclude .git --exclude .github ./indecis-it-mirror
           cd indecis-it-mirror
           git add .
-          git commit -m "[GHA] [mirror] $(date)"
+          git commit --allow-empty -m "[GHA] [mirror] $(date)"
           git push
