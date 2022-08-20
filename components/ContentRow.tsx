@@ -5,6 +5,7 @@ import { grey } from "../colors";
 import Image from "next/image";
 import { SourceBox } from "./SourceBox";
 import { Item, SourceSimple } from "../repositories/item";
+import { useCommonStyles } from "../styles";
 
 interface Props extends DefaultProps {
   initialOpen?: boolean;
@@ -18,6 +19,9 @@ export const ContentRow = ({
   topic,
   style,
 }: Props) => {
+  const {
+    classes: { scrollingWidth },
+  } = useCommonStyles({ list: items });
   const initialSource = initialOpen ? items[0].source : null;
   const initialSelection = initialOpen ? items[0].uid : -1;
   const [source, setSource] = useState<SourceSimple | null>(initialSource);
@@ -38,12 +42,7 @@ export const ContentRow = ({
 
   return (
     <>
-      <Group
-        style={{
-          margin: "0 auto",
-          maxWidth: 1290,
-        }}
-      >
+      <Group className={scrollingWidth}>
         <div
           style={{
             ...style,
@@ -101,7 +100,13 @@ export const ContentRow = ({
           );
         })}
       </Group>
-      <SourceBox source={source} onClose={onResetSelection} />
+      <SourceBox
+        source={source}
+        onClose={onResetSelection}
+        style={{
+          width: 90 * (items.length + 1) + 140,
+        }}
+      />
     </>
   );
 };

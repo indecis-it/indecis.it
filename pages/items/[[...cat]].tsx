@@ -1,5 +1,5 @@
 import React from "react";
-import { createStyles, Divider, Grid, ScrollArea } from "@mantine/core";
+import { createStyles, Divider, Grid } from "@mantine/core";
 import { ListModel } from "../../models/lists";
 import { ItemRepository, Items, Subjects } from "../../repositories/item";
 import { ContentsHeader } from "../../components/ContentsHeader";
@@ -17,6 +17,7 @@ import {
 import { useRouter } from "next/router";
 import { CategoryData, ListData } from "../../services/data";
 import { CategoryModel } from "../../models/categories";
+import { useCommonStyles } from "../../styles";
 
 interface StaticPropsParams {
   params: { cat: string[] };
@@ -31,12 +32,14 @@ interface Props {
 }
 
 const useStyles = createStyles((theme) => ({
-  select: {
-    margin: "0 auto",
-    maxWidth: 500,
-    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      maxWidth: "none",
-    },
+  header: {
+    background: "white",
+    paddingTop: 20,
+  },
+  sticky: {
+    maxWidth: "100vw",
+    position: "sticky",
+    left: 0,
   },
 }));
 
@@ -46,6 +49,9 @@ const listModel = ListModel();
 
 const App = ({ categories, current, items, lists, subjects }: Props) => {
   const { classes } = useStyles();
+  const {
+    classes: { scrollingWidth },
+  } = useCommonStyles({ list: lists });
   const router = useRouter();
   const currentCategory = current.name_it.toLowerCase();
   const currentUrl = `https://${siteName}${router.asPath}`;
@@ -79,54 +85,80 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
         <meta property="og:title" content={title} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
       </Head>
-      <header
-        style={{
-          paddingTop: 20,
-          textAlign: "center",
-        }}
-      >
-        <NextLink href={"/"}>
-          <Image
-            src={`/indecis-it-logo-diff.svg`}
-            alt="Il logo di indecis.it"
-            width={80}
-            height={80}
-          />
-        </NextLink>
-      </header>
-      <CategorySelection
-        categories={categories}
-        current={current}
-        className={classes.select}
-      />
-      <Divider my="sm" />
-      <Grid
-        style={{
-          margin: "0 auto",
-        }}
-      >
-        <ScrollArea
-          type="never"
-          style={{ cursor: "ew-resize", height: "100%", width: "100%" }}
+      <header className={`${classes.header} ${scrollingWidth}`}>
+        <h1
+          className={classes.sticky}
+          style={{
+            margin: 0,
+            textAlign: "center",
+          }}
         >
-          <ContentsHeader lists={lists} />
-          <Divider
-            my="sm"
-            style={{
-              borderTopColor: grey,
-              marginBottom: 0,
-            }}
-          />
-          {Object.keys(items).map((slug, key) => (
-            <ContentRow
-              key={slug}
-              initialOpen={key === 0}
-              items={items[slug]}
-              topic={subjects[slug]}
+          <NextLink href={"/"}>
+            <Image
+              src={`/indecis-it-logo-diff.svg`}
+              alt="Il logo di indecis.it"
+              width={80}
+              height={80}
             />
-          ))}
-        </ScrollArea>
-      </Grid>
+          </NextLink>
+        </h1>
+        <CategorySelection
+          categories={categories}
+          current={current}
+          className={classes.sticky}
+          style={{
+            marginBottom: 30,
+          }}
+        />
+        <Divider my="sm" />
+      </header>
+      <main
+        style={{
+          background: "white",
+        }}
+      >
+        <Grid
+          style={{
+            margin: "0 auto",
+          }}
+        >
+          <div
+            style={{
+              // @ts-ignore
+              "--radix-scroll-area-corner-height": 0,
+              "--radix-scroll-area-corner-width": 0,
+              height: "100%",
+              width: "100%",
+            }}
+          >
+            <ContentsHeader
+              lists={lists}
+              style={{
+                position: "sticky",
+                top: 0,
+                left: 0,
+                right: 0,
+                zIndex: 500,
+              }}
+            />
+            <Divider
+              my="sm"
+              style={{
+                borderTopColor: grey,
+                marginBottom: 0,
+              }}
+            />
+            {Object.keys(items).map((slug, key) => (
+              <ContentRow
+                key={slug}
+                initialOpen={key === 0}
+                items={items[slug]}
+                topic={subjects[slug]}
+              />
+            ))}
+          </div>
+        </Grid>
+      </main>
     </>
   );
 };

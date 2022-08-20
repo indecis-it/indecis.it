@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { Footer } from "../components/Footer";
-import { MantineProvider, Space } from "@mantine/core";
+import { Global, MantineProvider, Space } from "@mantine/core";
 import Head from "next/head";
 
 import { CustomFonts } from "../fonts";
@@ -51,6 +51,20 @@ function MyApp({ Component, pageProps }: AppProps) {
           fontFamily: "Raleway, sans-serif",
         }}
       >
+        <Global
+          styles={(theme) => ({
+            "body::-webkit-scrollbar": {
+              display: "none",
+            },
+            body: {
+              "-ms-overflow-style": "none",
+              "scrollbar-width": "none",
+            },
+            html: {
+              overflow: "overlay",
+            },
+          })}
+        />
         <Component {...pageProps} />
         <Space
           style={{

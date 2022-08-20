@@ -5,15 +5,15 @@ import { DefaultProps } from "@mantine/styles";
 import { SourceSimple } from "../repositories/item";
 
 interface Props extends DefaultProps {
-  source: SourceSimple | null;
   onClose: MouseEventHandler;
+  source: SourceSimple | null;
 }
 
 const useStyles = createStyles((theme) => ({
   boxContent: {
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       margin: "0 auto",
-      maxWidth: 930,
+      maxWidth: 1290,
     },
   },
   boxControls: {
@@ -21,65 +21,70 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const SourceBox = ({ source, onClose }: Props) => {
+export const SourceBox = ({ onClose, source, style }: Props) => {
   const { classes } = useStyles();
   return (
     <div
+      className={classes.boxContent}
       style={{
+        ...style,
         background: grey,
         borderBottomColor: source ? grey2 : grey,
         borderBottomStyle: "solid",
         borderBottomWidth: 1,
         height: source ? "auto" : 1,
-        overflow: "hidden",
         padding: source ? "14px 40px 26px" : 0,
-        position: "sticky",
-        left: 0,
-        right: 0,
         transition: "ease",
-        width: "100vw",
-        maxWidth: "100vw",
+        zIndex: 200,
       }}
     >
-      <div className={classes.boxContent}>
-        <Group
-          position="right"
-          className={classes.boxControls}
+      {source ? (
+        <div
           style={{
-            marginBottom: 6,
+            position: "sticky",
+            left: 40,
+            maxWidth: "calc(100vw - 80px)",
           }}
         >
-          <CloseButton
-            aria-label="Close modal"
-            variant="transparent"
-            onClick={onClose}
-          />
-        </Group>
-        <Text>{source?.content}</Text>
-        {source?.url ? (
-          <Text
-            size={"sm"}
+          <Group
+            position="right"
             className={classes.boxControls}
             style={{
-              marginTop: 30,
-              textAlign: "right",
+              marginBottom: 6,
             }}
           >
-            {
-              <a
-                href={source?.url}
-                target={"_blank"}
-                rel={"noreferrer"}
-                style={{
-                  textDecoration: "underline",
-                }}
-              >
-                {source.title}
-              </a>
-            }
-          </Text>
-        ) : null}
-      </div>
+            <CloseButton
+              aria-label="Close modal"
+              variant="transparent"
+              onClick={onClose}
+            />
+          </Group>
+          <Text>{source?.content}</Text>
+          {source?.url ? (
+            <Text
+              size={"sm"}
+              className={classes.boxControls}
+              style={{
+                marginTop: 30,
+                textAlign: "right",
+              }}
+            >
+              {
+                <a
+                  href={source?.url}
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                  style={{
+                    textDecoration: "underline",
+                  }}
+                >
+                  {source.title}
+                </a>
+              }
+            </Text>
+          ) : null}
+        </div>
+      ) : null}
     </div>
   );
 };

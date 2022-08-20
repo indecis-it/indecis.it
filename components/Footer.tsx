@@ -19,7 +19,7 @@ export const Footer = () => {
         right: 0,
         bottom: 0,
         left: 0,
-        zIndex: 200,
+        zIndex: 2000,
       }}
     >
       <Group>

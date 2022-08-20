@@ -9,16 +9,20 @@ interface Props extends DefaultProps {
   current: CategoryData;
 }
 
-export const CategorySelection = ({ categories, current, style }: Props) => {
+export const CategorySelection = ({
+  categories,
+  className,
+  current,
+  style,
+}: Props) => {
   const [opened, setOpened] = useState(false);
   return (
     <>
       <Group
         position="center"
+        className={className}
         style={{
           ...style,
-          padding: 20,
-          paddingTop: 30,
         }}
       >
         <CategorySelector categories={categories} current={current.slug} />
