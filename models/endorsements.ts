@@ -1,31 +1,25 @@
-import { Property } from "csstype";
-import Color = Property.Color;
+import { dataService, EndorsementData } from "../services/data";
 
-export interface EndorsementSimple {
-  description: string;
-  icon: "green" | "red" | "yellow";
-}
+export const EndorsementModel = (service: typeof dataService = dataService) => {
+  const getEndorsements = (() => {
+    let endorsements: EndorsementData[] = [];
+    return async () => {
+      if (!endorsements.length) {
+        endorsements = await service.getEndorsementsData();
+      }
+      return endorsements;
+    };
+  })();
 
-export interface Endorsement extends EndorsementSimple {
-  id: 1;
-  color_code: Color;
-}
+  const findEndorsementByIcon = async (
+    icon: EndorsementData["icon"]
+  ): Promise<EndorsementData | undefined> =>
+    (await getEndorsements()).find((endorsement) =>
+      icon.includes(endorsement.icon)
+    );
 
-export const getEndorsements = (() => {
-  let endorsements: Endorsement[] = [];
-  return async () => {
-    if (!endorsements.length) {
-      endorsements = await fetch(
-        "https://raw.githubusercontent.com/indecis-it/data/de4c0f0375089d11b3fce7429e2eefb095500fc4/data/endorsements.json"
-      ).then((response) => response.json());
-    }
-    return endorsements;
+  return {
+    findEndorsementByIcon,
+    getEndorsements,
   };
-})();
-
-export const findEndorsementByIcon = async (
-  icon: Endorsement["icon"]
-): Promise<Endorsement | undefined> =>
-  (await getEndorsements()).find((endorsement) =>
-    icon.includes(endorsement.icon)
-  );
+};
