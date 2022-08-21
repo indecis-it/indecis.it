@@ -12,7 +12,7 @@ Il sito è sviluppato in Next.js. Nella repository sono presenti le configurazio
 
 ### Perché?
 
-Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a decidere?". Indecis.it prova a dare una rispost a queste domande.
+Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a decidere?". Indecis.it prova a dare una risposta a queste domande.
 
 ### Come?
 
