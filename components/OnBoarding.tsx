@@ -8,12 +8,14 @@ import {
 } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
-import { useCommonStyles } from "../styles";
+import {
+  onBoardingFontSize,
+  onBoardingImageHeight,
+  onBoardingImageWidth,
+  useCommonStyles,
+} from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
 import { useMediaQuery } from "@mantine/hooks";
-
-const onBoardingImageWidth = 250;
-const onBoardingImageHeight = 400;
 
 export const OnBoarding = () => {
   const theme = useMantineTheme();
@@ -35,6 +37,7 @@ export const OnBoarding = () => {
       <Text
         className={homeSection}
         style={{
+          fontSize: onBoardingFontSize,
           margin: "0 auto 40px",
         }}
       >
@@ -51,7 +54,7 @@ export const OnBoarding = () => {
         <Group
           position={largeScreen ? "center" : "left"}
           style={{
-            marginLeft: 30,
+            marginLeft: largeScreen ? 0 : 30,
             width: onBoardingImageWidth * 5,
           }}
         >

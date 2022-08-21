@@ -6,6 +6,10 @@ interface StylesParams {
   list?: ListData[] | Item[];
 }
 
+export const onBoardingImageWidth = 250;
+export const onBoardingImageHeight = 400;
+export const onBoardingFontSize = "18px";
+
 export const useCommonStyles = createStyles(
   (theme, { list = [] }: StylesParams) => ({
     scrollingWidth: {

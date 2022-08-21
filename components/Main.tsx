@@ -1,3 +1,4 @@
+import { Text } from "@mantine/core";
 import { OnBoarding } from "./OnBoarding";
 import React from "react";
 import { HowToRead } from "./HowToRead";
@@ -22,17 +23,23 @@ export const Main = () => {
           textAlign: "center",
         }}
       >
-        Con{" "}
-        <h1
+        <Text
           style={{
-            fontSize: 16,
-            display: "inline",
+            fontSize: 24,
           }}
         >
-          indecis.it
-        </h1>{" "}
-        confronti i programmi elettorali per le elezioni politiche del 25
-        settembre 2022. In maniera facile e intuitiva.
+          Con{" "}
+          <h1
+            style={{
+              fontSize: "inherit",
+              display: "inline",
+            }}
+          >
+            indecis.it
+          </h1>{" "}
+          confronti i programmi elettorali per le elezioni politiche del 25
+          settembre 2022. In maniera facile e intuitiva.
+        </Text>
       </header>
       <OnBoarding />
       <HowToRead />

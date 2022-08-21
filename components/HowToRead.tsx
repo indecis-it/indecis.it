@@ -1,7 +1,7 @@
 import React from "react";
 import { List, Text } from "@mantine/core";
 import Image from "next/image";
-import { useCommonStyles } from "../styles";
+import { onBoardingFontSize, useCommonStyles } from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
 
 export const HowToRead = () => {
@@ -28,7 +28,13 @@ export const HowToRead = () => {
             />
           }
         >
-          la lista si è espressa a favore del tema
+          <Text
+            style={{
+              fontSize: onBoardingFontSize,
+            }}
+          >
+            la lista si è espressa a supporto del tema
+          </Text>
         </List.Item>
         <List.Item
           icon={
@@ -40,7 +46,13 @@ export const HowToRead = () => {
             />
           }
         >
-          la lista <strong>non</strong> si è espressa a favore del tema
+          <Text
+            style={{
+              fontSize: onBoardingFontSize,
+            }}
+          >
+            la lista si è espressa in opposizione del tema
+          </Text>
         </List.Item>
         <List.Item
           icon={
@@ -52,7 +64,13 @@ export const HowToRead = () => {
             />
           }
         >
-          il tema non è presente nelle fonti a nostra disposizione
+          <Text
+            style={{
+              fontSize: onBoardingFontSize,
+            }}
+          >
+            il tema non è presente nelle fonti a nostra disposizione
+          </Text>
         </List.Item>
       </List>
     </section>
