@@ -90,8 +90,8 @@ export const ContentRow = ({
               {!empty ? (
                 <Image
                   src={`/endorsement/${endorsement?.icon}.svg`}
-                  alt={`La lista è ${endorsement?.description}`}
-                  title={`La lista è ${endorsement?.description}`}
+                  alt={endorsement?.description}
+                  title={endorsement?.description}
                   height={20}
                   width={20}
                 ></Image>

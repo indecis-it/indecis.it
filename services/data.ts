@@ -1,6 +1,12 @@
 import { Property } from "csstype";
 import Color = Property.Color;
 
+export enum Endorsement {
+  GREEN = "green",
+  RED = "red",
+  YELLOW = "yellow",
+}
+
 export interface CategoryData {
   id: number;
   description_en: string;
@@ -15,7 +21,7 @@ export interface EndorsementData {
   id: number;
   color_code: Color;
   description: string;
-  icon: "green" | "red" | "yellow";
+  icon: Endorsement;
 }
 
 export interface ItemData {

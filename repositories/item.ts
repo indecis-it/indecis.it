@@ -1,6 +1,7 @@
 import {
   CategoryData,
   dataService,
+  Endorsement,
   EndorsementData,
   ItemData,
   ListData,
@@ -47,24 +48,6 @@ const getDefaultItems = (
     subject_slug,
     empty: true,
   }));
-
-const getEndorsement = (
-  itemData: ItemData,
-  endorsements: EndorsementData[]
-): EndorsementSimple => {
-  const endorsement = endorsements.find((endorsement) =>
-    itemData.endorsement.includes(endorsement.icon)
-  );
-  return endorsement
-    ? {
-        description: endorsement.description,
-        icon: endorsement.icon,
-      }
-    : {
-        description: "",
-        icon: "yellow",
-      };
-};
 
 const getSource = (itemData: ItemData, sources: SourceData[]): SourceSimple => {
   const { url = "", title = "" } =
@@ -117,7 +100,10 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
     return itemsData.reduce((acc: Items, itemData) => {
       const { subject_slug } = itemData;
       const current = acc[subject_slug] || getDefaultItems(lists, subject_slug);
-      const endorsement = getEndorsement(itemData, endorsements);
+      const endorsement = endorsementModel.getEndorsement(
+        itemData,
+        endorsements
+      );
       const source = getSource(itemData, sources);
       const listPosition = (itemData.list_id as number) - 1;
       current[listPosition] = {

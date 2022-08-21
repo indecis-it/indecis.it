@@ -50,7 +50,7 @@ export const HowToRead = () => {
               fontSize: onBoardingFontSize,
             }}
           >
-            la lista si è espressa a supporto del tema
+            La lista si è espressa a supporto del tema
           </Text>
         </List.Item>
         <List.Item
@@ -68,7 +68,7 @@ export const HowToRead = () => {
               fontSize: onBoardingFontSize,
             }}
           >
-            la lista si è espressa in opposizione al tema
+            La lista si è espressa in opposizione al tema
           </Text>
         </List.Item>
         <List.Item
@@ -86,7 +86,7 @@ export const HowToRead = () => {
               fontSize: onBoardingFontSize,
             }}
           >
-            il tema non è presente nelle fonti a nostra disposizione
+            Il tema non è presente nelle fonti a nostra disposizione
           </Text>
         </List.Item>
       </List>
