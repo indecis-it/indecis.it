@@ -1,6 +1,7 @@
 import {
   Badge,
   Card,
+  createStyles,
   Group,
   ScrollArea,
   Text,
@@ -17,12 +18,28 @@ import {
 import { HomeSectionTitle } from "./HomeSectionTitle";
 import { useMediaQuery } from "@mantine/hooks";
 
+const useStyles = createStyles((theme) => ({
+  scrollGroup: {
+    marginLeft: 30,
+    width: onBoardingImageWidth * 4 + 90,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      marginLeft: 0,
+    },
+  },
+}));
+
 export const OnBoarding = () => {
   const theme = useMantineTheme();
-  const largeScreen = useMediaQuery(`(min-width: ${theme.breakpoints.md}px)`);
+  const largeScreen = useMediaQuery(
+    `(min-width: ${theme.breakpoints.md}px)`,
+    true
+  );
   const {
     classes: { homeSection },
   } = useCommonStyles({});
+  const {
+    classes: { scrollGroup },
+  } = useStyles();
 
   return (
     <section>
@@ -51,13 +68,7 @@ export const OnBoarding = () => {
           width: "100%",
         }}
       >
-        <Group
-          position={largeScreen ? "center" : "left"}
-          style={{
-            marginLeft: largeScreen ? 0 : 30,
-            width: onBoardingImageWidth * 5,
-          }}
-        >
+        <Group position={largeScreen ? "center" : "left"}>
           <Card shadow={"sm"} radius="md" withBorder>
             <Card.Section>
               <Image
