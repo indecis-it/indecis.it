@@ -45,7 +45,7 @@ export const Footer = () => {
               paddingLeft: 4,
             }}
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faGithub} size={"lg"} />
           </a>
         </Text>
       </Group>
