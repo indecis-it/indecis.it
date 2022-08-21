@@ -23,7 +23,8 @@ const useStyles = createStyles((theme) => ({
     marginLeft: 30,
     width: onBoardingImageWidth * 4 + 90,
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      marginLeft: 0,
+      marginRight: "auto",
+      marginLeft: "auto",
     },
   },
 }));
@@ -68,7 +69,10 @@ export const OnBoarding = () => {
           width: "100%",
         }}
       >
-        <Group position={largeScreen ? "center" : "left"}>
+        <Group
+          position={largeScreen ? "center" : "left"}
+          className={scrollGroup}
+        >
           <Card shadow={"sm"} radius="md" withBorder>
             <Card.Section>
               <Image
