@@ -76,7 +76,7 @@ npm run dev
 
 Accedi alla versione locale tramite: [http://localhost:3000](http://localhost:3000).
 
-Poi, crea un nuobo `branch` e apri una `Pull request` (taggando @angelogulina).
+Poi crea un nuovo `branch` e apri una `Pull request` (taggando @angelogulina).
 
 Puoi imparare di più su `Next.js` visitando questi siti:
 
