@@ -59,7 +59,8 @@ Verifica i commenti già presenti, perché c'è la possiblità che tu possa dare
 Se trovi dei bug o degli aspetti che possono essere migliorati, puoi vedere [qui](https://github.com/indecis-it/indecis.it/issues?q=is%3Aissue+is%3Aopen+label%3Abug) se qualcun'altra se n'è già accorta.
 Altrimenti [apri una Issue](https://github.com/indecis-it/indecis.it/issues/new?assignees=&labels=community%2C+bug&template=bug-report.md&title=).
 
-Per prima cosa clona la repository:
+Se trovi dei `bug` o `enhancement` che ritieni interessanti e vuoi contribuire allo sviluppo,
+per prima cosa clona la repository:
 
 ```bash
 git clone git@github.com:indecis-it/indecis.it.git
@@ -73,13 +74,16 @@ npm install
 npm run dev
 ```
 
-Accedi alla versione tramite: [http://localhost:3000](http://localhost:3000).
+Accedi alla versione locale tramite: [http://localhost:3000](http://localhost:3000).
+
+Poi, crea un nuobo `branch` e apri una `Pull request` (taggando @angelogulina).
 
 Puoi imparare di più su `Next.js` visitando questi siti:
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Learn Next.js](https://nextjs.org/learn)
 
+Buona contribuzione 🎉
 
 ## Cosa manca?
 
