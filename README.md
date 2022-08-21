@@ -26,7 +26,7 @@ Ogni tema puo assumere uno di questi stati:
 
 ## Le cose importanti
 
-In questa sezioni ci occupiamo di alcuni aspetti importanti legati al progetto. Ossia, i dati e come poter contribuire.
+In questa sezione ci occupiamo di alcuni aspetti importanti legati al progetto. Ossia, i dati e come poter contribuire.
 
 ### I dati
 
