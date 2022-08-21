@@ -1,11 +1,46 @@
-import { dataService, EndorsementData } from "../services/data";
+import {
+  dataService,
+  Endorsement,
+  EndorsementData,
+  ItemData,
+} from "../services/data";
+import { EndorsementSimple } from "../repositories/item";
+
+const endorsementDescription: Record<Endorsement, string> = {
+  [Endorsement.GREEN]: "La lista supporta il tema",
+  [Endorsement.RED]: "La lista si oppone al tema",
+  [Endorsement.YELLOW]: "Il tema non è presente nelle fonti",
+};
 
 export const EndorsementModel = (service: typeof dataService = dataService) => {
+  const getEndorsement = (
+    itemData: ItemData,
+    endorsements: EndorsementData[]
+  ): EndorsementSimple => {
+    const endorsement = endorsements.find((endorsement) =>
+      itemData.endorsement.includes(endorsement.icon)
+    );
+    return endorsement
+      ? {
+          description: endorsement.description,
+          icon: endorsement.icon,
+        }
+      : {
+          description: endorsementDescription[Endorsement.YELLOW],
+          icon: Endorsement.YELLOW,
+        };
+  };
+
   const getEndorsements = (() => {
     let endorsements: EndorsementData[] = [];
     return async () => {
       if (!endorsements.length) {
-        endorsements = await service.getEndorsementsData();
+        endorsements = (await service.getEndorsementsData()).map(
+          (endorsement) => ({
+            ...endorsement,
+            description: endorsementDescription[endorsement.icon],
+          })
+        );
       }
       return endorsements;
     };
@@ -20,6 +55,7 @@ export const EndorsementModel = (service: typeof dataService = dataService) => {
 
   return {
     findEndorsementByIcon,
+    getEndorsement,
     getEndorsements,
   };
 };
