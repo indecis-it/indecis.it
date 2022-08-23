@@ -3,6 +3,7 @@ import Color = Property.Color;
 
 export enum Endorsement {
   GREEN = "green",
+  GREY = "grey",
   RED = "red",
   YELLOW = "yellow",
 }

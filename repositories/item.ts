@@ -2,7 +2,6 @@ import {
   CategoryData,
   dataService,
   Endorsement,
-  EndorsementData,
   ItemData,
   ListData,
   SourceData,
@@ -19,7 +18,7 @@ export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
 
 export interface EndorsementSimple {
   description: string;
-  icon: "green" | "red" | "yellow";
+  icon: Endorsement;
 }
 
 export interface SourceSimple {
