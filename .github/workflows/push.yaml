@@ -1,0 +1,23 @@
+name: empty commit
+
+on:
+  schedule:
+  # once a day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      
+      - name: Git checkout
+        uses: actions/checkout@v2
+          
+      - name: Empty commit & push
+        run: |-
+          git config user.name "autoupdate"
+          git config user.email "actions@users.noreply.github.com"
+          timestamp=$(date --iso-8601=seconds)
+          git commit --allow-empty -m "[empty commit] update: ${timestamp}" || exit 0
+          git push
