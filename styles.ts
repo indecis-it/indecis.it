@@ -13,7 +13,7 @@ export const onBoardingFontSize = "18px";
 export const useCommonStyles = createStyles(
   (theme, { list = [] }: StylesParams) => ({
     scrollingWidth: {
-      width: 95 * (list.length + 1) + 140,
+      width: 92 * (list.length + 1) + 140,
       [`@media (min-width: ${theme.breakpoints.md}px)`]: {
         margin: "0 auto",
       },
