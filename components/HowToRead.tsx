@@ -10,9 +10,9 @@ const useStyles = createStyles((theme) => ({
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       marginLeft: "auto !important",
       position: "relative",
-      left: 30,
+      left: 80,
       textAlign: "left",
-      maxWidth: 490,
+      maxWidth: 580,
     },
   },
 }));
@@ -75,6 +75,24 @@ export const HowToRead = () => {
           icon={
             <Image
               src="/endorsement/yellow.svg"
+              alt="green"
+              height={20}
+              width={20}
+            />
+          }
+        >
+          <Text
+            style={{
+              fontSize: onBoardingFontSize,
+            }}
+          >
+            La lista esprime una posizione né favorevole né contraria (neutra)
+          </Text>
+        </List.Item>
+        <List.Item
+          icon={
+            <Image
+              src="/endorsement/grey.svg"
               alt="green"
               height={20}
               width={20}

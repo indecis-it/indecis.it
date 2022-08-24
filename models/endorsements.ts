@@ -9,7 +9,8 @@ import { EndorsementSimple } from "../repositories/item";
 const endorsementDescription: Record<Endorsement, string> = {
   [Endorsement.GREEN]: "La lista supporta il tema",
   [Endorsement.RED]: "La lista si oppone al tema",
-  [Endorsement.YELLOW]: "Il tema non è presente nelle fonti",
+  [Endorsement.YELLOW]: "La lista è neutra sul tema",
+  [Endorsement.GREY]: "Il tema non è presente nelle fonti",
 };
 
 export const EndorsementModel = (service: typeof dataService = dataService) => {
@@ -26,8 +27,8 @@ export const EndorsementModel = (service: typeof dataService = dataService) => {
           icon: endorsement.icon,
         }
       : {
-          description: endorsementDescription[Endorsement.YELLOW],
-          icon: Endorsement.YELLOW,
+          description: endorsementDescription[Endorsement.GREY],
+          icon: Endorsement.GREY,
         };
   };
 

@@ -21,8 +21,9 @@ Il sito permette di navigare in maniera semplice e intuitiva diverse categorie (
 Ogni tema puo assumere uno di questi stati:
 
 - <img src="public/endorsement/green.svg" alt="green" style="height:20px;width:20px;"/> la lista si è espressa a supporto del tema
-- <img src="public/endorsement/red.svg" alt="green" style="height:20px;width:20px;"/> la lista si è espressa in opposizione al tema
-- <img src="public/endorsement/yellow.svg" alt="green" style="height:20px;width:20px;"/> il tema non è presente nelle fonti a nostra disposizione
+- <img src="public/endorsement/red.svg" alt="red" style="height:20px;width:20px;"/> la lista si è espressa in opposizione al tema
+- <img src="public/endorsement/yellow.svg" alt="yellow" style="height:20px;width:20px;"/> la lista esprime una posizione né favorevole né contraria (neutra)
+- <img src="public/endorsement/grey.svg" alt="grey" style="height:20px;width:20px;"/> il tema non è presente nelle fonti a nostra disposizione
 
 ## Le cose importanti
 
