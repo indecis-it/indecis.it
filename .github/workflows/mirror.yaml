@@ -1,6 +1,9 @@
 name: Push to mirror
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   mirror:
