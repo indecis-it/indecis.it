@@ -1,4 +1,4 @@
-# indecs.it
+# indecis.it
 
 _I programmi elettorali delle elezioni politiche del 25 settembre 2022 a portata di click._
 
