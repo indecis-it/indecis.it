@@ -18,7 +18,7 @@ Un'amica mi ha chiesto: "Ma cosa dovrei votare io il 25 Settembre? Come faccio a
 
 Il sito permette di navigare in maniera semplice e intuitiva diverse categorie (ad es., servizi pubblici generali, difesa, salute, ecc..) per confrontare le intenzioni delle liste rispetto a diverse tematiche.
 
-Ogni tema puo assumere uno di questi stati:
+Ogni tema può assumere uno di questi stati:
 
 - <img src="public/endorsement/green.svg" alt="green" style="height:20px;width:20px;"/> la lista si è espressa a supporto del tema
 - <img src="public/endorsement/red.svg" alt="red" style="height:20px;width:20px;"/> la lista si è espressa in opposizione al tema
