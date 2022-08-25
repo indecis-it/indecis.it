@@ -91,7 +91,7 @@ Buona contribuzione 🎉
 ### La realizzazione di un programma
 
 indecis.it non aiuta a capire come ogni lista ha intenzione di realizzare il suo programma.  I programmi elettorali
-non sono una guida sufficiente per prendere decisioni, serviono a orientarsi. La loro lettura è un buon primo passo.
+non sono una guida sufficiente per prendere decisioni, servono a orientarsi. La loro lettura è un buon primo passo.
 
 Ogni programma presenta delle dichiarazioni di intenti, non sempre dei piani concreti. La fattibilità di queste intenzioni dipende
 da tanti fattori. Ad esempio, per implementare l'assegno unico universale è necessario che si trovino risorse finanziarie. I programmi elettorali
