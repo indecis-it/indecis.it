@@ -108,7 +108,7 @@ come pensa di trovare maggiori risorse finanziare (assegno unico) per mentre dec
 
 - [Chiara Adornetto](https://twitter.com/chiadornetto)
 - [Dennis Angemi](https://twitter.com/DennisAngemi)
-- [Moreno Colaiavovo](https://twitter.com/emmecola)
+- [Moreno Colaiacovo](https://twitter.com/emmecola)
 - [Angelo Gulina](https://twitter.com/angelogulina)
 - [Vittorio Nicoletta](https://twitter.com/vi__enne)
 - [Lorenzo Ruffino](https://twitter.com/Ruffino_Lorenzo)
