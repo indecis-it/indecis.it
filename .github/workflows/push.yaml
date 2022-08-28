@@ -4,6 +4,8 @@ on:
   schedule:
   # once a day
     - cron: '0 0 * * *'
+  repository_dispatch:
+    types: [sample_push]
   workflow_dispatch:
 
 jobs:
