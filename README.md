@@ -39,7 +39,7 @@ In questa sezione ci occupiamo di alcuni aspetti importanti legati al progetto. 
 
 #### 📝 ... sei appassionata di politica
 
-Per prima cosa, apri questo [Google Sheet](https://docs.google.com/spreadsheets/d/13YKVLtayxu0m2keOi1KHsLJqoshc9P279RLJ_sdhnAk/edit#gid=734919268) e leggi come è composto (_README_).
+Per prima cosa, apri questo [Google Sheet](https://docs.google.com/spreadsheets/d/13YKVLtayxu0m2keOi1KHsLJqoshc9P279RLJ_sdhnAk/edit#gid=734919268) e leggi come è composto ([_README_](https://docs.google.com/spreadsheets/d/e/2PACX-1vRY42hEclKzUGEN3YfhZ_v_x2EiVC-kxjtiLBJR_Gm2zmLqftenCTQqK7lwnEat1CyhBbec2r0czvsb/pubhtml?gid=734919268&single=true)).
 Se hai qualche dubbio, qualcosa non è chiaro, guardare [la lista delle Issue già aperte](https://github.com/indecis-it/indecis.it/issues?q=is%3Aissue+is%3Aopen+label%3Acommunity)
 e verifica che un'altra persona non abbia già espresso lo stesso dubbio. Se è così, puoi [aprire una Issue](https://github.com/indecis-it/indecis.it/issues/new?assignees=&labels=community%2C+question&template=google-sheet-generic-question.md&title=%5BSHEET%5D%3A+Vorrei+fare+una+domanda+a+proposito+di...)
 e inoltraci la tua richiesta.
