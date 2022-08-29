@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [sample_push]
+  workflow_dispatch:
 
 jobs:
   mirror:
