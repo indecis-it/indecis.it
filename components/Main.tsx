@@ -2,7 +2,8 @@ import { Text } from "@mantine/core";
 import { OnBoarding } from "./OnBoarding";
 import React from "react";
 import { HowToRead } from "./HowToRead";
-import { useCommonStyles } from "../styles";
+import { onBoardingFontSize, useCommonStyles } from "../styles";
+import { Contribute } from "./Disclaimer";
 
 export const Main = () => {
   const {
@@ -20,12 +21,11 @@ export const Main = () => {
         style={{
           margin: "0 auto",
           padding: 30,
-          // textAlign: "center",
         }}
       >
         <Text
           style={{
-            fontSize: 18,
+            fontSize: onBoardingFontSize,
           }}
         >
           Arrivi al 25 settembre 2022 con le idee chiare.{" "}
@@ -42,6 +42,7 @@ export const Main = () => {
       </header>
       <OnBoarding />
       <HowToRead />
+      <Contribute />
     </main>
   );
 };
