@@ -20,15 +20,15 @@ export const Main = () => {
         style={{
           margin: "0 auto",
           padding: 30,
-          textAlign: "center",
+          // textAlign: "center",
         }}
       >
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 18,
           }}
         >
-          Con{" "}
+          Arrivi al 25 settembre 2022 con le idee chiare.{" "}
           <h1
             style={{
               fontSize: "inherit",
@@ -37,8 +37,7 @@ export const Main = () => {
           >
             indecis.it
           </h1>{" "}
-          confronti i programmi elettorali per le elezioni politiche del 25
-          settembre 2022. In maniera facile e intuitiva.
+          è uno strumento facile e intuitivo per un voto consapevole.
         </Text>
       </header>
       <OnBoarding />

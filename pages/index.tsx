@@ -74,7 +74,7 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
             marginBottom: 60,
           }}
         >
-          I programmi elettorali a portata di click.
+          I programmi elettorali a portata di click
         </Text>
       </header>
       <CategorySelector

@@ -37,7 +37,7 @@ export const CategorySelector = ({
     <NativeSelect
       data={selectData}
       label=""
-      placeholder="Seleziona un argomento"
+      placeholder="Scegli la tematica"
       value={current}
       className={classes.select}
       size={size}

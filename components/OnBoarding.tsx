@@ -50,7 +50,7 @@ export const OnBoarding = () => {
           margin: "0 auto 20px",
         }}
       >
-        Come funziona?
+        Bella idea, ma come funziona?
       </HomeSectionTitle>
       <Text
         className={homeSection}
@@ -59,8 +59,9 @@ export const OnBoarding = () => {
           margin: "0 auto 40px",
         }}
       >
-        Naviga le categorie per confrontare le intenzioni delle liste rispetto
-        alle diverse tematiche. Ecco come fare in 4 passaggi:
+        Seleziona dal menu le tematiche al centro dei programmi elettorali. Per
+        ognuna potrai confrontare la posizione di ogni singolo partito e capire
+        chi è più in linea con le tue idee. Il tutto in 4 semplici mosse:
       </Text>
       <ScrollArea
         type={"never"}
@@ -82,7 +83,7 @@ export const OnBoarding = () => {
               />
             </Card.Section>
             <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Scegli un argomento</Text>
+              <Text weight={500}>Scegli una tematica</Text>
               <Badge color="red" variant="light">
                 1
               </Badge>
@@ -97,7 +98,7 @@ export const OnBoarding = () => {
               />
             </Card.Section>
             <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Scorri i temi della lista</Text>
+              <Text weight={500}>Scorri i temi</Text>
               <Badge color="red" variant="light">
                 2
               </Badge>
@@ -112,7 +113,7 @@ export const OnBoarding = () => {
               />
             </Card.Section>
             <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Vai alla fonte</Text>
+              <Text weight={500}>Visiona la fonte</Text>
               <Badge color="red" variant="light">
                 3
               </Badge>

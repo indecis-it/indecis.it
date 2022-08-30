@@ -73,7 +73,8 @@ const getEndorsementsData = (): Promise<EndorsementData[]> =>
 
 const getItemsData = (): Promise<ItemData[]> =>
   fetch(
-    "https://raw.githubusercontent.com/indecis-it/data/main/data/items.json"
+    // "https://raw.githubusercontent.com/indecis-it/data/main/data/items.json"
+    "https://raw.githubusercontent.com/indecis-it/data/main/data/new_items.json"
   ).then((response) => response.json());
 
 const getListsData = (): Promise<ListData[]> =>
