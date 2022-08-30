@@ -13,11 +13,20 @@ const useStyles = createStyles((theme) => ({
   boxContent: {
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       margin: "0 auto",
-      width: "100%",
     },
   },
   boxControls: {
     marginLeft: "auto",
+  },
+  boxSource: {
+    position: "sticky",
+    left: 40,
+    maxWidth: "calc(100vw - 80px)",
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      left: 60,
+      paddingLeft: 140,
+      maxWidth: "calc(100vw - 120px)",
+    },
   },
 }));
 
@@ -39,13 +48,7 @@ export const SourceBox = ({ className, onClose, source, style }: Props) => {
       }}
     >
       {source ? (
-        <div
-          style={{
-            position: "sticky",
-            left: 40,
-            maxWidth: "calc(100vw - 80px)",
-          }}
-        >
+        <div className={classes.boxSource}>
           <Group
             position="right"
             className={classes.boxControls}
