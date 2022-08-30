@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => ({
   boxContent: {
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       margin: "0 auto",
-      maxWidth: 1290,
+      width: "100%",
     },
   },
   boxControls: {
@@ -21,11 +21,11 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const SourceBox = ({ onClose, source, style }: Props) => {
+export const SourceBox = ({ className, onClose, source, style }: Props) => {
   const { classes } = useStyles();
   return (
     <div
-      className={classes.boxContent}
+      className={`${className} ${classes.boxContent}`}
       style={{
         ...style,
         background: grey,

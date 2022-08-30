@@ -101,11 +101,9 @@ export const ContentRow = ({
         })}
       </Group>
       <SourceBox
+        className={scrollingWidth}
         source={source}
         onClose={onResetSelection}
-        style={{
-          width: 90 * (items.length + 1) + 140,
-        }}
       />
     </>
   );
