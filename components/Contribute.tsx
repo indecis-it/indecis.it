@@ -33,8 +33,9 @@ export const Contribute = () => {
           fontSize: onBoardingFontSize,
         }}
       >
-        Le informazioni sono raccolte al meglio delle nostre capacità e in
-        continuo aggiornamento, seguendo l'evoluzione della campagna elettorale.
+        {
+          "Le informazioni sono raccolte al meglio delle nostre capacità e in continuo aggiornamento, seguendo l'evoluzione della campagna elettorale."
+        }
       </Text>
       <Text>
         <br />

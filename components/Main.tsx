@@ -3,7 +3,7 @@ import { OnBoarding } from "./OnBoarding";
 import React from "react";
 import { HowToRead } from "./HowToRead";
 import { onBoardingFontSize, useCommonStyles } from "../styles";
-import { Contribute } from "./Disclaimer";
+import { Contribute } from "./Contribute";
 
 export const Main = () => {
   const {
