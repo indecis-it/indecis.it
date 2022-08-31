@@ -59,7 +59,7 @@ export const Contribute = () => {
         >
           questo form
         </a>{" "}
-        (anonimo). Facci aveere i tuoi suggerimenti.
+        (anonimo). Facci avere i tuoi suggerimenti.
       </Text>
     </section>
   );
