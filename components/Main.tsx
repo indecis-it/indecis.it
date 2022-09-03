@@ -29,11 +29,13 @@ export const Main = () => {
             fontSize: onBoardingFontSize,
           }}
         >
-          Arrivi al 25 settembre 2022 con le idee chiare.{" "}
+          <strong>Arrivi al 25 settembre 2022 con le idee chiare.</strong>{" "}
+          <br />
           <h1
             style={{
-              fontSize: "inherit",
               display: "inline",
+              fontSize: "inherit",
+              fontWeight: "normal",
             }}
           >
             indecis.it

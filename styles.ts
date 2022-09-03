@@ -8,7 +8,7 @@ interface StylesParams {
 
 export const onBoardingImageWidth = 250;
 export const onBoardingImageHeight = 400;
-export const onBoardingFontSize = "18px";
+export const onBoardingFontSize = "20px";
 
 export const useCommonStyles = createStyles(
   (theme, { list = [] }: StylesParams) => ({
