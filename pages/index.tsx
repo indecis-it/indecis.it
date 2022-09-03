@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { Text } from "@mantine/core";
-import { CategoryModel } from "../models/categories";
+import { CategoryModel, CategorySimple } from "../models/categories";
 import React from "react";
 import { CategorySelector } from "../components/CategorySelector";
 import Image from "next/image";
@@ -8,11 +8,10 @@ import { DefaultProps } from "@mantine/styles";
 import { originalDescription, originalImage, siteName } from "../global/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { CategoryData } from "../services/data";
 import { Main } from "../components/Main";
 
 interface Props extends DefaultProps {
-  categories: CategoryData[];
+  categories: CategorySimple[];
 }
 
 const categoryModel = CategoryModel();

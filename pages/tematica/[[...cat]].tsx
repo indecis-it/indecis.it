@@ -16,7 +16,7 @@ import {
 } from "../../global/config";
 import { useRouter } from "next/router";
 import { CategoryData, ListData } from "../../services/data";
-import { CategoryModel } from "../../models/categories";
+import { CategoryModel, CategorySimple } from "../../models/categories";
 import { useCommonStyles } from "../../styles";
 
 interface StaticPropsParams {
@@ -24,8 +24,8 @@ interface StaticPropsParams {
 }
 
 interface Props {
-  categories: CategoryData[];
-  current: CategoryData;
+  categories: CategorySimple[];
+  current: CategorySimple;
   items: Items;
   lists: ListData[];
   subjects: Subjects;
@@ -53,7 +53,7 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
     classes: { scrollingWidth },
   } = useCommonStyles({ list: lists });
   const router = useRouter();
-  const currentCategory = current.name_it.toLowerCase();
+  const currentCategory = current.name.toLowerCase();
   const currentUrl = `https://${siteName}${router.asPath}`;
   const description = categoryDescription(currentCategory);
   const title = `Le posizioni delle liste su: ${currentCategory} | ${siteName}`;

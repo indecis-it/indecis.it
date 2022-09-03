@@ -10,6 +10,8 @@ export enum Endorsement {
 
 export interface CategoryData {
   id: number;
+  description?: string;
+  name?: string;
   description_en: string;
   description_it: string;
   name_en: string;

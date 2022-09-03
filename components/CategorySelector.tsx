@@ -2,11 +2,11 @@ import { createStyles, MantineSize, NativeSelect } from "@mantine/core";
 import React, { ChangeEventHandler } from "react";
 import { useRouter } from "next/router";
 import { DefaultProps } from "@mantine/styles";
-import { CategoryData } from "../services/data";
+import { CategorySimple } from "../models/categories";
 
 interface Props extends DefaultProps {
-  categories: CategoryData[];
-  current?: CategoryData["slug"];
+  categories: CategorySimple[];
+  current?: CategorySimple["slug"];
   size?: MantineSize;
 }
 
@@ -28,16 +28,18 @@ export const CategorySelector = ({
   const { classes } = useStyles();
   const router = useRouter();
   const navigate: ChangeEventHandler<HTMLSelectElement> = (event) =>
-    router.push(`/items/${event.currentTarget.value}`);
-  const selectData = categories.map(({ name_it, slug }) => ({
-    label: name_it,
+    router.push(`/tematica/${event.currentTarget.value}`);
+  const selectData = categories.map(({ name, slug }) => ({
+    label: name,
     value: slug,
   }));
   return (
     <NativeSelect
+      // @ts-ignore
       data={selectData}
       label=""
       placeholder="Scegli la tematica"
+      // @ts-ignore
       value={current}
       className={classes.select}
       size={size}

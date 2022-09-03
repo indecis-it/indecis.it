@@ -5,12 +5,14 @@ export const categoriesData: CategoryData[] = [
     id: 1,
     slug: "general-public-services",
     source: "EUROSTAT",
+    name: "Servizi pubblici generali",
+    description:
+      "Organi esecutivi e legislativi, affari finanziari e fiscali, affari esterni; aiuti economici stranieri; servizi generali; ricerca di base; R&S relativa ai servizi pubblici generali; Servizi pubblici generali N.E.C.; Transazioni del debito pubblico, trasferimenti di un carattere generale tra diversi livelli di governo.",
     name_en: "General public services",
     description_en:
       "Executive and legislative organs, financial and fiscal affairs, external affairs; foreign economic aid; general services; basic research; R&D related to general public services; general public services n.e.c.; public debt transactions, transfers of a general character between different levels of government.",
-    name_it: "Servizi pubblici generali",
-    description_it:
-      "Organi esecutivi e legislativi, affari finanziari e fiscali, affari esterni; aiuti economici stranieri; servizi generali; ricerca di base; R&S relativa ai servizi pubblici generali; Servizi pubblici generali N.E.C.; Transazioni del debito pubblico, trasferimenti di un carattere generale tra diversi livelli di governo.",
+    name_it: "",
+    description_it: "",
   },
   {
     id: 2,
