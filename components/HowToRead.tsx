@@ -1,18 +1,17 @@
 import React from "react";
-import { createStyles, List, Text } from "@mantine/core";
+import { createStyles, Group, SimpleGrid, Text } from "@mantine/core";
 import Image from "next/image";
-import { onBoardingFontSize, useCommonStyles } from "../styles";
+import { useCommonStyles } from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
+
+const iconSize = 24;
 
 const useStyles = createStyles((theme) => ({
   list: {
-    marginLeft: "30px !important",
+    gridTemplateColumns: "1fr 1fr",
+    gridAutoFlow: "row dense",
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      marginLeft: "auto !important",
-      position: "relative",
-      left: 80,
-      textAlign: "left",
-      maxWidth: 580,
+      gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
     },
   },
 }));
@@ -27,87 +26,87 @@ export const HowToRead = () => {
   } = useStyles();
 
   return (
-    <section>
+    <section
+      style={{
+        margin: "0 auto",
+        maxWidth: "80%",
+      }}
+    >
       <HomeSectionTitle>Come leggere la tabella?</HomeSectionTitle>
-      <List
-        className={`${homeSection}, ${list}`}
+      <SimpleGrid
+        cols={4}
+        className={`${homeSection} ${list}`}
         style={{
           margin: "0 auto 40px",
         }}
       >
-        <List.Item
-          icon={
-            <Image
-              src="/endorsement/green.svg"
-              alt="green"
-              height={20}
-              width={20}
-            />
-          }
+        <Group
+          align="flex-start"
+          style={{
+            flexDirection: "column",
+          }}
         >
-          <Text
-            style={{
-              fontSize: onBoardingFontSize,
-            }}
-          >
-            La lista si è espressa a supporto del tema
+          <Image
+            src="/endorsement/green.svg"
+            alt="green"
+            height={iconSize}
+            width={iconSize}
+          />
+          <Text>
+            La lista si è espressa <strong>a supporto</strong> del tema
           </Text>
-        </List.Item>
-        <List.Item
-          icon={
-            <Image
-              src="/endorsement/red.svg"
-              alt="green"
-              height={20}
-              width={20}
-            />
-          }
+        </Group>
+        <Group
+          align="flex-start"
+          style={{
+            flexDirection: "column",
+          }}
         >
-          <Text
-            style={{
-              fontSize: onBoardingFontSize,
-            }}
-          >
-            La lista si è espressa in opposizione al tema
+          <Image
+            src="/endorsement/red.svg"
+            alt="green"
+            height={iconSize}
+            width={iconSize}
+          />
+          <Text>
+            La lista si è espressa <strong>in opposizione</strong> al tema
           </Text>
-        </List.Item>
-        <List.Item
-          icon={
-            <Image
-              src="/endorsement/yellow.svg"
-              alt="green"
-              height={20}
-              width={20}
-            />
-          }
+        </Group>
+        <Group
+          align="flex-start"
+          style={{
+            flexDirection: "column",
+          }}
         >
-          <Text
-            style={{
-              fontSize: onBoardingFontSize,
-            }}
-          >
-            La lista esprime una posizione né favorevole né contraria (neutra)
+          <Image
+            src="/endorsement/yellow.svg"
+            alt="green"
+            height={iconSize}
+            width={iconSize}
+          />
+          <Text>
+            La lista esprime una posizione né favorevole né contraria (
+            <strong>neutra</strong>)
           </Text>
-        </List.Item>
-        <List.Item
-          icon={
-            <Image
-              src="/endorsement/grey.svg"
-              alt="green"
-              height={20}
-              width={20}
-            />
-          }
+        </Group>
+        <Group
+          align="flex-start"
+          style={{
+            flexDirection: "column",
+          }}
         >
-          <Text
-            style={{
-              fontSize: onBoardingFontSize,
-            }}
-          >
-            Il tema non è presente nelle fonti a nostra disposizione
+          <Image
+            src="/endorsement/grey.svg"
+            alt="green"
+            height={iconSize}
+            width={iconSize}
+          />
+          <Text>
+            Il tema <strong>non è presente</strong> nelle fonti a nostra
+            disposizione
           </Text>
-        </List.Item>
-      </List>
+        </Group>
+      </SimpleGrid>
     </section>
   );
 };
