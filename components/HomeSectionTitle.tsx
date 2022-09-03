@@ -13,7 +13,6 @@ export const HomeSectionTitle: FunctionComponent<Props> = ({
     <h3
       className={className}
       style={{
-        margin: "0 auto",
         padding: 30,
       }}
     >
