@@ -21,7 +21,9 @@ export const useCommonStyles = createStyles(
     homeSection: {
       margin: "0 auto",
       padding: "0 30px",
-      maxWidth: "80%",
+      [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+        maxWidth: "70%",
+      },
     },
     main: {
       [`@media (min-width: ${theme.breakpoints.md}px)`]: {
