@@ -44,19 +44,14 @@ export const OnBoarding = () => {
 
   return (
     <section>
-      <HomeSectionTitle
-        className={homeSection}
-        style={{
-          margin: "0 auto 20px",
-        }}
-      >
+      <HomeSectionTitle className={homeSection}>
         Bella idea, ma come funziona?
       </HomeSectionTitle>
       <Text
         className={homeSection}
         style={{
           fontSize: onBoardingFontSize,
-          margin: "0 auto 40px",
+          marginBottom: 40,
         }}
       >
         Seleziona dal menu le tematiche al centro dei programmi elettorali. Per

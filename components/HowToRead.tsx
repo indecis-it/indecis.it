@@ -26,16 +26,11 @@ export const HowToRead = () => {
   } = useStyles();
 
   return (
-    <section
-      style={{
-        margin: "0 auto",
-        maxWidth: "80%",
-      }}
-    >
+    <section className={homeSection}>
       <HomeSectionTitle>Come leggere la tabella?</HomeSectionTitle>
       <SimpleGrid
         cols={4}
-        className={`${homeSection} ${list}`}
+        className={list}
         style={{
           margin: "0 auto 40px",
         }}

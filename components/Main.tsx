@@ -7,7 +7,7 @@ import { Contribute } from "./Contribute";
 
 export const Main = () => {
   const {
-    classes: { main },
+    classes: { homeSection, main },
   } = useCommonStyles({});
 
   return (
@@ -18,6 +18,7 @@ export const Main = () => {
       }}
     >
       <header
+        className={homeSection}
         style={{
           margin: "0 auto",
           padding: 30,

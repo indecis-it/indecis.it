@@ -6,29 +6,15 @@ import { HomeSectionTitle } from "./HomeSectionTitle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
-const useStyles = createStyles((theme) => ({
-  contribute: {
-    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      margin: "0 auto",
-      maxWidth: "90%",
-    },
-  },
-}));
-
 export const Contribute = () => {
   const {
     classes: { homeSection },
   } = useCommonStyles({});
 
-  const {
-    classes: { contribute },
-  } = useStyles();
-
   return (
-    <section className={contribute}>
+    <section className={homeSection}>
       <HomeSectionTitle>Come contribuisco al progetto?</HomeSectionTitle>
       <Text
-        className={`${homeSection}`}
         style={{
           fontSize: onBoardingFontSize,
         }}
@@ -41,7 +27,6 @@ export const Contribute = () => {
         <br />
       </Text>
       <Text
-        className={`${homeSection}`}
         style={{
           fontSize: onBoardingFontSize,
         }}
