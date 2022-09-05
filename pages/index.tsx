@@ -28,6 +28,7 @@ const useStyles = createStyles((theme) => ({
   collaboration: {
     margin: "0 auto",
     width: 300,
+    justifyContent: "space-evenly",
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       position: "absolute",
       top: 10,
