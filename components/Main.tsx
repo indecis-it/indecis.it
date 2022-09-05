@@ -29,7 +29,7 @@ export const Main = () => {
             fontSize: onBoardingFontSize,
           }}
         >
-          <strong>Arrivi al 25 settembre 2022 con le idee chiare.</strong>{" "}
+          <strong>Per arrivare al 25 settembre 2022 con le idee chiare.</strong>{" "}
           <br />
           <h1
             style={{
