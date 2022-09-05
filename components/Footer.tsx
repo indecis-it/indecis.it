@@ -25,6 +25,19 @@ export const Footer = () => {
     >
       <Group position="apart">
         <Text size={"sm"}>
+          Con il supporto di{" "}
+          <a
+            target={"_blank"}
+            rel={"noreferrer"}
+            style={{
+              color: "#009FC4",
+            }}
+            href={"https://pop-eye.studio/"}
+          >
+            Popeye Studio
+          </a>
+        </Text>
+        <Text size={"sm"}>
           <Link
             style={{
               textDecoration: "underline",
@@ -33,7 +46,7 @@ export const Footer = () => {
           >
             indecis.it
           </Link>{" "}
-          – &copy; {new Date().getFullYear()}
+          &copy; {new Date().getFullYear()}
         </Text>
         <Text size={"sm"}>
           Maggiori info su{" "}
