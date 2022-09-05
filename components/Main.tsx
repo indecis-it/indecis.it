@@ -22,6 +22,7 @@ export const Main = () => {
         style={{
           margin: "0 auto",
           padding: 30,
+          marginBottom: 20,
         }}
       >
         <Text
@@ -43,7 +44,11 @@ export const Main = () => {
           è uno strumento facile e intuitivo per un voto consapevole.
         </Text>
       </header>
-      <OnBoarding />
+      <OnBoarding
+        style={{
+          marginBottom: 60,
+        }}
+      />
       <HowToRead />
       <Contribute />
     </main>

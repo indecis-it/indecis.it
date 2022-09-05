@@ -35,13 +35,13 @@ export const CategorySelector = ({
   }));
   return (
     <NativeSelect
+      className={classes.select}
       // @ts-ignore
       data={selectData}
       label=""
       placeholder="Scegli la tematica"
       // @ts-ignore
       value={current}
-      className={classes.select}
       size={size}
       style={{
         ...style,

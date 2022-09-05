@@ -9,6 +9,7 @@ interface Props extends DefaultProps {
 export const HomeSectionTitle: FunctionComponent<Props> = ({
   children,
   className,
+  style,
 }) => {
   return (
     <Title
@@ -16,9 +17,11 @@ export const HomeSectionTitle: FunctionComponent<Props> = ({
       className={className}
       color="#009FC4"
       style={{
+        // fontFamily: "Source Serif Pro, serif",
         fontSize: 22,
         paddingTop: 30,
         paddingBottom: 30,
+        ...style,
       }}
     >
       {children}

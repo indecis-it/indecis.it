@@ -1,5 +1,4 @@
 import {
-  Badge,
   Card,
   createStyles,
   Group,
@@ -17,8 +16,13 @@ import {
 } from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
 import { useMediaQuery } from "@mantine/hooks";
+import { DefaultProps } from "@mantine/styles";
 
 const useStyles = createStyles((theme) => ({
+  card: {
+    flexDirection: "column",
+    alignItems: "baseline",
+  },
   scrollGroup: {
     marginLeft: 30,
     width: onBoardingImageWidth * 4 + 90,
@@ -29,7 +33,9 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const OnBoarding = () => {
+interface Props extends DefaultProps {}
+
+export const OnBoarding = ({ style }: Props) => {
   const theme = useMantineTheme();
   const largeScreen = useMediaQuery(
     `(min-width: ${theme.breakpoints.md}px)`,
@@ -39,11 +45,15 @@ export const OnBoarding = () => {
     classes: { homeSection },
   } = useCommonStyles({});
   const {
-    classes: { scrollGroup },
+    classes: { card, scrollGroup },
   } = useStyles();
 
   return (
-    <section>
+    <section
+      style={{
+        ...style,
+      }}
+    >
       <HomeSectionTitle className={homeSection}>
         Bella idea, ma come funziona?
       </HomeSectionTitle>
@@ -69,66 +79,106 @@ export const OnBoarding = () => {
           position={largeScreen ? "center" : "left"}
           className={scrollGroup}
         >
-          <Card shadow={"sm"} radius="md" withBorder>
-            <Card.Section>
-              <Image
-                src={"/onboarding/001-seleziona-argomento.jpg"}
-                height={onBoardingImageHeight}
-                width={onBoardingImageWidth}
-              />
-            </Card.Section>
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Scegli una tematica</Text>
-              <Badge color="red" variant="light">
-                1
-              </Badge>
-            </Group>
-          </Card>
-          <Card shadow={"sm"} radius="md" withBorder>
-            <Card.Section>
-              <Image
-                src={"/onboarding/002-scorri-lista.jpg"}
-                height={onBoardingImageHeight}
-                width={onBoardingImageWidth}
-              />
-            </Card.Section>
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Scorri i temi</Text>
-              <Badge color="red" variant="light">
-                2
-              </Badge>
-            </Group>
-          </Card>
-          <Card shadow={"sm"} radius="md" withBorder>
-            <Card.Section>
-              <Image
-                src={"/onboarding/003-espandi-argomento.jpg"}
-                height={onBoardingImageHeight}
-                width={onBoardingImageWidth}
-              />
-            </Card.Section>
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Visiona la fonte</Text>
-              <Badge color="red" variant="light">
-                3
-              </Badge>
-            </Group>
-          </Card>
-          <Card shadow={"sm"} radius="md" withBorder>
-            <Card.Section>
-              <Image
-                src={"/onboarding/004-naviga-orizzontale.jpg"}
-                height={onBoardingImageHeight}
-                width={onBoardingImageWidth}
-              />
-            </Card.Section>
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>Naviga le altre liste</Text>
-              <Badge color="red" variant="light">
-                4
-              </Badge>
-            </Group>
-          </Card>
+          <Group className={card}>
+            <HomeSectionTitle
+              style={{
+                paddingBottom: 0,
+              }}
+            >
+              1. Scegli la tematica
+            </HomeSectionTitle>
+            <Card
+              shadow={"sm"}
+              radius="md"
+              withBorder
+              style={{
+                border: "none !important",
+              }}
+            >
+              <Card.Section>
+                <Image
+                  src={"/onboarding/01_tematica.png"}
+                  height={onBoardingImageHeight}
+                  width={onBoardingImageWidth}
+                />
+              </Card.Section>
+            </Card>
+          </Group>
+          <Group className={card}>
+            <HomeSectionTitle
+              style={{
+                paddingBottom: 0,
+              }}
+            >
+              2. Scorri i temi
+            </HomeSectionTitle>
+            <Card
+              shadow={"sm"}
+              radius="md"
+              withBorder
+              style={{
+                border: "none !important",
+              }}
+            >
+              <Card.Section>
+                <Image
+                  src={"/onboarding/02_temi.png"}
+                  height={onBoardingImageHeight}
+                  width={onBoardingImageWidth}
+                />
+              </Card.Section>
+            </Card>
+          </Group>
+          <Group className={card}>
+            <HomeSectionTitle
+              style={{
+                paddingBottom: 0,
+              }}
+            >
+              3. Visiona la fonte
+            </HomeSectionTitle>
+            <Card
+              shadow={"sm"}
+              radius="md"
+              withBorder
+              style={{
+                border: "none !important",
+              }}
+            >
+              <Card.Section>
+                <Image
+                  src={"/onboarding/03_fonte.png"}
+                  height={onBoardingImageHeight}
+                  width={onBoardingImageWidth}
+                />
+              </Card.Section>
+            </Card>
+          </Group>
+          <Group className={card}>
+            <HomeSectionTitle
+              style={{
+                paddingBottom: 0,
+              }}
+            >
+              4. Naviga le altre liste
+            </HomeSectionTitle>
+            <Card
+              shadow={"sm"}
+              radius="md"
+              withBorder
+              style={{
+                border: "none !important",
+              }}
+            >
+              <Card.Section>
+                <Image
+                  src={"/onboarding/04_naviga.png"}
+                  height={onBoardingImageHeight}
+                  width={onBoardingImageWidth}
+                />
+              </Card.Section>
+            </Card>
+          </Group>
         </Group>
       </ScrollArea>
     </section>

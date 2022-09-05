@@ -5,6 +5,7 @@ import { Global, MantineProvider, Space } from "@mantine/core";
 import Head from "next/head";
 
 import { CustomFonts } from "../fonts";
+
 // The following import prevents a Font Awesome icon server-side rendering bug,
 // where the icons flash from a very large icon down to a properly sized one:
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -21,6 +22,11 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <meta charSet="utf-8" />
+        {/*<link rel="preconnect" href="https://fonts.googleapis.com" />*/}
+        {/*<link*/}
+        {/*  href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap"*/}
+        {/*  rel="stylesheet"*/}
+        {/*/>*/}
       </Head>
       <MantineProvider
         withNormalizeCSS
