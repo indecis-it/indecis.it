@@ -15,13 +15,17 @@ interface Props extends DefaultProps {
 
 const useStyles = createStyles((theme) => ({
   row: {
-    "&:hover": {
-      backgroundColor: theme.fn.lighten(grey3, 0.5),
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      "&:hover": {
+        backgroundColor: theme.fn.lighten(grey3, 0.5),
+      },
     },
   },
   item: {
-    "&:hover": {
-      backgroundColor: `${grey3} !important`,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      "&:hover": {
+        backgroundColor: `${grey3} !important`,
+      },
     },
   },
 }));
@@ -61,7 +65,7 @@ export const ContentRow = ({
         <div
           style={{
             ...style,
-            // background: "white",
+            background: "white",
             // boxShadow:
             //   selected === -1
             //     ? "white 16px 0px 9px -9px"
