@@ -102,7 +102,7 @@ molto spesso non spiegano come queste risorse saranno trovate. Di conseguenza, i
 indecis.it non individua possibili incongruenze nei programmi elettorali. Prendiamo di nuovo l'esempio dell'assegno unico universale.
 Il programma di una lista potrebbe proporre questo e insieme la riduzione delle tasse. Le due iniziative non sono per forza incoerenti.
 Tuttavia, una lista che si impegni a supportarle entrambe si troverebbe nella posizione di dover spiegare
-come pensa di trovare maggiori risorse finanziare (assegno unico) per mentre decide di reperirne di meno (taglio delle tasse).
+come pensa di trovare maggiori risorse finanziare (assegno unico) mentre decide di reperirne di meno (taglio delle tasse).
 
 ## Il team
 
