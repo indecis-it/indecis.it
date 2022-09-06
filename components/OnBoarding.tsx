@@ -20,6 +20,7 @@ import { DefaultProps } from "@mantine/styles";
 
 const useStyles = createStyles((theme) => ({
   card: {
+    borderRadius: 8,
     flexDirection: "column",
     alignItems: "baseline",
   },
@@ -87,22 +88,13 @@ export const OnBoarding = ({ style }: Props) => {
             >
               1. Scegli la tematica
             </HomeSectionTitle>
-            <Card
-              shadow={"sm"}
-              radius="md"
-              withBorder
-              style={{
-                border: "none !important",
-              }}
-            >
-              <Card.Section>
-                <Image
-                  src={"/onboarding/01_tematica.png"}
-                  height={onBoardingImageHeight}
-                  width={onBoardingImageWidth}
-                />
-              </Card.Section>
-            </Card>
+            <div>
+              <Image
+                src={"/onboarding/01_tematica.jpg"}
+                height={onBoardingImageHeight}
+                width={onBoardingImageWidth}
+              />
+            </div>
           </Group>
           <Group className={card}>
             <HomeSectionTitle
@@ -112,22 +104,13 @@ export const OnBoarding = ({ style }: Props) => {
             >
               2. Scorri i temi
             </HomeSectionTitle>
-            <Card
-              shadow={"sm"}
-              radius="md"
-              withBorder
-              style={{
-                border: "none !important",
-              }}
-            >
-              <Card.Section>
-                <Image
-                  src={"/onboarding/02_temi.png"}
-                  height={onBoardingImageHeight}
-                  width={onBoardingImageWidth}
-                />
-              </Card.Section>
-            </Card>
+            <div>
+              <Image
+                src={"/onboarding/02_temi.jpg"}
+                height={onBoardingImageHeight}
+                width={onBoardingImageWidth}
+              />
+            </div>
           </Group>
           <Group className={card}>
             <HomeSectionTitle
@@ -137,22 +120,13 @@ export const OnBoarding = ({ style }: Props) => {
             >
               3. Visiona la fonte
             </HomeSectionTitle>
-            <Card
-              shadow={"sm"}
-              radius="md"
-              withBorder
-              style={{
-                border: "none !important",
-              }}
-            >
-              <Card.Section>
-                <Image
-                  src={"/onboarding/03_fonte.png"}
-                  height={onBoardingImageHeight}
-                  width={onBoardingImageWidth}
-                />
-              </Card.Section>
-            </Card>
+            <div>
+              <Image
+                src={"/onboarding/03_fonte.jpg"}
+                height={onBoardingImageHeight}
+                width={onBoardingImageWidth}
+              />
+            </div>
           </Group>
           <Group className={card}>
             <HomeSectionTitle
@@ -162,22 +136,13 @@ export const OnBoarding = ({ style }: Props) => {
             >
               4. Naviga le altre liste
             </HomeSectionTitle>
-            <Card
-              shadow={"sm"}
-              radius="md"
-              withBorder
-              style={{
-                border: "none !important",
-              }}
-            >
-              <Card.Section>
-                <Image
-                  src={"/onboarding/04_naviga.png"}
-                  height={onBoardingImageHeight}
-                  width={onBoardingImageWidth}
-                />
-              </Card.Section>
-            </Card>
+            <div>
+              <Image
+                src={"/onboarding/04_naviga.jpg"}
+                height={onBoardingImageHeight}
+                width={onBoardingImageWidth}
+              />
+            </div>
           </Group>
         </Group>
       </ScrollArea>

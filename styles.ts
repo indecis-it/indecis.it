@@ -6,8 +6,8 @@ interface StylesParams {
   list?: ListData[] | Item[];
 }
 
-export const onBoardingImageWidth = 250;
-export const onBoardingImageHeight = 250;
+export const onBoardingImageWidth = 284;
+export const onBoardingImageHeight = 274;
 export const onBoardingFontSize = "20px";
 
 export const useCommonStyles = createStyles(
