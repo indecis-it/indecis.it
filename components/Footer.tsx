@@ -48,7 +48,7 @@ export const Footer = () => {
             }}
             href={"https://pop-eye.studio/"}
           >
-            Popeye Studio
+            pop-eye
           </a>
         </Text>
         <Text size={"sm"}>
