@@ -11,6 +11,8 @@ import { CustomFonts } from "../fonts";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 // Prevent fontawesome from adding its CSS since we did it manually above:
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { CookieBanner } from "../components/CookieBanner";
+import { GoogleAnalytics } from "../components/GoogleAnalytics";
 config.autoAddCss = false; /* eslint-disable import/first */
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -22,11 +24,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
         <meta charSet="utf-8" />
-        {/*<link rel="preconnect" href="https://fonts.googleapis.com" />*/}
-        {/*<link*/}
-        {/*  href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;700&display=swap"*/}
-        {/*  rel="stylesheet"*/}
-        {/*/>*/}
       </Head>
       <MantineProvider
         withNormalizeCSS
@@ -63,6 +60,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           fontFamily: "Raleway, sans-serif",
         }}
       >
+        <GoogleAnalytics />
+        <CookieBanner />
         <Global
           styles={() => ({
             "*": {
