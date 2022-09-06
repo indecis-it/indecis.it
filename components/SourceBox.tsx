@@ -1,4 +1,4 @@
-import { grey, grey2 } from "../colors";
+import { grey2, grey3 } from "../colors";
 import { CloseButton, createStyles, Group, Text } from "@mantine/core";
 import React, { MouseEventHandler } from "react";
 import { DefaultProps } from "@mantine/styles";
@@ -37,8 +37,8 @@ export const SourceBox = ({ className, onClose, source, style }: Props) => {
       className={`${className} ${classes.boxContent}`}
       style={{
         ...style,
-        background: grey,
-        borderBottomColor: source ? grey2 : grey,
+        background: grey3,
+        borderBottomColor: source ? grey2 : grey3,
         borderBottomStyle: "solid",
         borderBottomWidth: 1,
         height: source ? "auto" : 1,
