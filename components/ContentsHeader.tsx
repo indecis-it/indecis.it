@@ -1,18 +1,32 @@
-import { Group } from "@mantine/core";
+import { createStyles, Group, Text } from "@mantine/core";
 import Image from "next/image";
 import React from "react";
 import { DefaultProps } from "@mantine/styles";
 import { ListData } from "../services/data";
 import { useCommonStyles } from "../styles";
+import { grey, grey2, grey3 } from "../colors";
 
 interface Props extends DefaultProps {
   lists: ListData[];
 }
 
+const useStyles = createStyles((theme) => ({
+  swipe: {
+    color: "#009FC4",
+    fontSize: 12,
+    marginTop: 25,
+    paddingLeft: 20,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      display: "none",
+    },
+  },
+}));
+
 export const ContentsHeader = ({ lists, style }: Props) => {
   const {
     classes: { scrollingWidth },
   } = useCommonStyles({ list: lists });
+  const { classes } = useStyles();
   const symbols = lists.filter(({ symbol_name }) => !!symbol_name);
   return (
     <Group
@@ -35,7 +49,18 @@ export const ContentsHeader = ({ lists, style }: Props) => {
           width: 160,
           zIndex: 200,
         }}
-      />
+      >
+        <Group className={classes.swipe}>
+          <Text>{"Scorri le liste >>"}</Text>
+          {/*<Image*/}
+          {/*  src="/swipe.png"*/}
+          {/*  alt="Scorri le liste"*/}
+          {/*  title="Scorri le liste"*/}
+          {/*  width="20"*/}
+          {/*  height="20"*/}
+          {/*/>*/}
+        </Group>
+      </div>
       {symbols.map(({ id, list, symbol_name }) => (
         <div
           key={id}
