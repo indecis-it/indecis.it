@@ -110,7 +110,7 @@ come pensa di trovare maggiori risorse finanziare (assegno unico) per mentre dec
 - [Dennis Angemi](https://twitter.com/DennisAngemi)
 - [Carlo Canepa](https://twitter.com/carlo_canepa)
 - [Moreno Colaiacovo](https://twitter.com/emmecola)
-- Alice Nicole Ginosa
+- [Alice Nicole Ginosa](https://www.linkedin.com/in/alice-nicole-ginosa-2499a372/)
 - [Angelo Gulina](https://twitter.com/angelogulina)
 - [Vittorio Nicoletta](https://twitter.com/vi__enne)
 - [Lorenzo Ruffino](https://twitter.com/Ruffino_Lorenzo)
