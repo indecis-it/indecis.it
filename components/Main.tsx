@@ -14,7 +14,7 @@ export const Main = () => {
     <main
       className={main}
       style={{
-        margin: "20px auto",
+        margin: "0 auto",
       }}
     >
       <header
@@ -22,7 +22,6 @@ export const Main = () => {
         style={{
           margin: "0 auto",
           padding: 30,
-          marginBottom: 20,
         }}
       >
         <Text

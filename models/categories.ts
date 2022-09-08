@@ -31,17 +31,23 @@ export const CategoryModel = (service: typeof dataService = dataService) => {
           })
         );
       }
-      return categories;
+      return categories.sort((a, b) => a.name.localeCompare(b.name));
     };
   })();
 
-  const findCategoryBySlug = async (
+  const getCategoryById = async (
+    id: CategorySimple["id"]
+  ): Promise<CategorySimple | undefined> =>
+    (await getCategories()).find((cat) => id === cat.id);
+
+  const getCategoryBySlug = async (
     slug: CategorySimple["slug"][]
   ): Promise<CategorySimple | undefined> =>
     (await getCategories()).find((cat) => slug.includes(cat.slug));
 
   return {
-    findCategoryBySlug,
+    getCategoryById,
+    getCategoryBySlug,
     getCategories,
   };
 };

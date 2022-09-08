@@ -1,16 +1,18 @@
 import { createStyles, Group } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
-import { grey, grey3 } from "../colors";
-import Image from "next/image";
+import { bluePP, grey3 } from "../colors";
 import { SourceBox } from "./SourceBox";
 import { Item, SourceSimple } from "../repositories/item";
-import { useCommonStyles } from "../styles";
+import { rowMinHeight, useCommonStyles } from "../styles";
+import { ItemContent } from "./ItemContent";
+import { NextLink } from "@mantine/next";
 
 interface Props extends DefaultProps {
   initialOpen?: boolean;
   items: Item[];
-  topic: string;
+  subjectSlug: string;
+  subjectTitle: string;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -21,10 +23,34 @@ const useStyles = createStyles((theme) => ({
       },
     },
   },
-  item: {
+  rowContent: {
+    background: "white",
+    minHeight: rowMinHeight,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    lineHeight: "18px",
+    paddingTop: 0,
+    paddingRight: 20,
+    paddingBottom: 0,
+    paddingLeft: 20,
+    position: "sticky",
+    left: 0,
+    right: 0,
+    width: 160,
+    zIndex: 100,
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       "&:hover": {
-        backgroundColor: `${grey3} !important`,
+        backgroundColor: theme.fn.lighten(grey3, 0.5),
+      },
+    },
+  },
+  subjectLink: {
+    color: bluePP,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "underline",
       },
     },
   },
@@ -33,96 +59,60 @@ const useStyles = createStyles((theme) => ({
 export const ContentRow = ({
   initialOpen = false,
   items,
-  topic,
+  subjectSlug,
+  subjectTitle,
   style,
 }: Props) => {
   const {
     classes: { scrollingWidth },
   } = useCommonStyles({ list: items });
-  const initialSource = initialOpen ? items[0].source : null;
-  const initialSelection = initialOpen ? items[0].uid : -1;
-  const [source, setSource] = useState<SourceSimple | null>(initialSource);
-  const [selected, setSelected] = useState<Item["uid"]>(initialSelection);
+  const { classes } = useStyles();
+  const initialSelection = initialOpen ? items[0] : ({} as Item);
+  const [selected, setSelected] = useState<Item>(initialSelection);
 
-  const onItemSelected = ({ uid, source }: Item) => {
-    if (selected === uid) {
+  const onItemSelected = (item: Item) => {
+    if (selected.id === item.id) {
       return onResetSelection();
     }
-    setSelected(uid);
-    setSource(source);
+    setSelected(item);
   };
 
   const onResetSelection = () => {
-    setSource(null);
-    setSelected(-1);
+    setSelected({} as Item);
   };
-
-  const { classes } = useStyles();
 
   return (
     <>
       <Group className={`${scrollingWidth} ${classes.row}`}>
         <div
+          className={classes.rowContent}
           style={{
             ...style,
-            background: "white",
-            // boxShadow:
-            //   selected === -1
-            //     ? "white 16px 0px 9px -9px"
-            //     : "white 11px 2px 8px",
-            minHeight: 80,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "flex-start",
-            lineHeight: "18px",
-            paddingTop: 0,
-            paddingRight: 20,
-            paddingBottom: 0,
-            paddingLeft: 20,
-            position: "sticky",
-            left: 0,
-            right: 0,
-            width: 160,
-            zIndex: 100,
           }}
         >
-          {topic}
+          <NextLink
+            href={`/argomenti/${subjectSlug}`}
+            className={classes.subjectLink}
+          >
+            {subjectTitle}
+          </NextLink>
         </div>
         {items.map((item) => {
-          const { empty, endorsement, list_id, subject_slug } = item;
+          const { list_id, subject_slug } = item;
           const uid = `${subject_slug}-${list_id}`;
           return (
-            <div
+            <ItemContent
               key={uid}
-              style={{
-                background: selected === uid ? grey3 : "inherit",
-                cursor: !empty ? "pointer" : "inherit",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                height: 80,
-                maxWidth: 80,
-                minWidth: 80,
-              }}
-              className={classes.item}
-              onClick={() => onItemSelected(item)}
-            >
-              {!empty ? (
-                <Image
-                  src={`/endorsement/${endorsement?.icon}.svg`}
-                  alt={endorsement?.description}
-                  title={endorsement?.description}
-                  height={20}
-                  width={20}
-                ></Image>
-              ) : null}
-            </div>
+              item={item}
+              selected={selected.id === item.id}
+              onItemSelected={onItemSelected}
+            />
           );
         })}
       </Group>
       <SourceBox
         className={scrollingWidth}
-        source={source}
+        source={selected.source}
         onClose={onResetSelection}
       />
     </>

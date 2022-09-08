@@ -2,6 +2,7 @@ import React from "react";
 import { Paper, Text } from "@mantine/core";
 import { onBoardingFontSize, useCommonStyles } from "../styles";
 import { HomeSectionTitle } from "./HomeSectionTitle";
+import { bluePP } from "../colors";
 
 export const Contribute = () => {
   const {
@@ -44,7 +45,7 @@ export const Contribute = () => {
             target={"_blank"}
             rel={"noreferrer"}
             style={{
-              color: "#009FC4",
+              color: bluePP,
             }}
           >
             questo form

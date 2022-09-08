@@ -1,6 +1,7 @@
 import { FunctionComponent, ReactNode } from "react";
 import { DefaultProps } from "@mantine/styles";
 import { Title } from "@mantine/core";
+import { bluePP } from "../colors";
 
 interface Props extends DefaultProps {
   children: ReactNode;
@@ -15,7 +16,7 @@ export const HomeSectionTitle: FunctionComponent<Props> = ({
     <Title
       order={3}
       className={className}
-      color="#009FC4"
+      color={bluePP}
       style={{
         // fontFamily: "Source Serif Pro, serif",
         fontSize: 22,

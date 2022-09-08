@@ -8,6 +8,20 @@ export enum Endorsement {
   YELLOW = "yellow",
 }
 
+export interface ArticleData {
+  id: number;
+  post_id: number;
+  url: string;
+  post_title: string;
+  post_subtitle: string;
+  type: string;
+  source: string;
+  subject: string;
+  list: string;
+  subject_id: number | "";
+  list_id: number | "";
+}
+
 export interface CategoryData {
   id: number;
   description?: string;
@@ -63,6 +77,21 @@ export interface SourceData {
   url: string;
 }
 
+export interface SubjectData {
+  id: number;
+  description: string;
+  slug: string;
+  source?: string;
+  subject: string;
+  title?: string;
+  url: string;
+}
+
+const getArticlesData = (): Promise<ArticleData[]> =>
+  fetch(
+    "https://raw.githubusercontent.com/indecis-it/data/main/data/press.json"
+  ).then((response) => response.json());
+
 const getCategoriesData = (): Promise<CategoryData[]> =>
   fetch(
     "https://raw.githubusercontent.com/indecis-it/data/main/data/categories.json"
@@ -88,10 +117,17 @@ const getSourcesData = (): Promise<SourceData[]> =>
     "https://raw.githubusercontent.com/indecis-it/data/main/data/sources.json"
   ).then((response) => response.json());
 
+const getSubjectsData = (): Promise<SubjectData[]> =>
+  fetch(
+    "https://raw.githubusercontent.com/indecis-it/data/main/data/glossary.json"
+  ).then((response) => response.json());
+
 export const dataService = {
+  getArticlesData,
   getCategoriesData,
   getEndorsementsData,
   getListsData,
   getItemsData,
   getSourcesData,
+  getSubjectsData,
 };

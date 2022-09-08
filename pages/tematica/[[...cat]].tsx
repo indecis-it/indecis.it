@@ -1,13 +1,10 @@
 import React from "react";
 import { createStyles, Divider, Grid } from "@mantine/core";
 import { ListModel } from "../../models/lists";
-import { ItemRepository, Items, Subjects } from "../../repositories/item";
+import { ItemRepository, Items } from "../../repositories/item";
 import { ContentsHeader } from "../../components/ContentsHeader";
 import { ContentRow } from "../../components/ContentRow";
 import { grey } from "../../colors";
-import Image from "next/image";
-import { CategorySelection } from "../../components/CategorySelection";
-import { NextLink } from "@mantine/next";
 import Head from "next/head";
 import {
   categoryDescription,
@@ -18,37 +15,26 @@ import { useRouter } from "next/router";
 import { CategoryData, ListData } from "../../services/data";
 import { CategoryModel, CategorySimple } from "../../models/categories";
 import { useCommonStyles } from "../../styles";
+import { SubjectRepository, SubjectSimple } from "../../repositories/subject";
+import { MainHeader } from "../../components/MainHeader";
 
 interface StaticPropsParams {
   params: { cat: string[] };
 }
 
 interface Props {
-  categories: CategorySimple[];
   current: CategorySimple;
   items: Items;
   lists: ListData[];
-  subjects: Subjects;
+  subjectTitles: Record<SubjectSimple["slug"], SubjectSimple["subject"]>;
 }
-
-const useStyles = createStyles((theme) => ({
-  header: {
-    background: "white",
-    paddingTop: 20,
-  },
-  sticky: {
-    maxWidth: "100vw",
-    position: "sticky",
-    left: 0,
-  },
-}));
 
 const categoryModel = CategoryModel();
 const itemRepo = ItemRepository();
 const listModel = ListModel();
+const subjectRepo = SubjectRepository();
 
-const App = ({ categories, current, items, lists, subjects }: Props) => {
-  const { classes } = useStyles();
+const App = ({ current, items, lists, subjectTitles }: Props) => {
   const {
     classes: { scrollingWidth },
   } = useCommonStyles({ list: lists });
@@ -85,33 +71,14 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
         <meta property="og:title" content={title} key="ogtitle" />
         <meta property="og:description" content={description} key="ogdesc" />
       </Head>
-      <header className={`${classes.header} ${scrollingWidth}`}>
-        <h1
-          className={classes.sticky}
-          style={{
-            margin: 0,
-            textAlign: "center",
-          }}
-        >
-          <NextLink href={"/"}>
-            <Image
-              src={`/indecis-it-logo-diff.svg`}
-              alt="Il logo di indecis.it"
-              width={80}
-              height={80}
-            />
-          </NextLink>
-        </h1>
-        <CategorySelection
-          categories={categories}
-          current={current}
-          className={classes.sticky}
-          style={{
-            marginBottom: 30,
-          }}
-        />
-        <Divider my="sm" />
-      </header>
+      <MainHeader className={scrollingWidth} />
+      <Divider
+        my="sm"
+        style={{
+          borderTopColor: grey,
+          marginBottom: 30,
+        }}
+      />
       <main
         style={{
           background: "white",
@@ -148,14 +115,17 @@ const App = ({ categories, current, items, lists, subjects }: Props) => {
                 marginBottom: 0,
               }}
             />
-            {Object.keys(items).map((slug, key) => (
-              <ContentRow
-                key={slug}
-                initialOpen={false}
-                items={items[slug]}
-                topic={subjects[slug]}
-              />
-            ))}
+            {Object.keys(items).map((slug, key) => {
+              return (
+                <ContentRow
+                  key={slug}
+                  initialOpen={false}
+                  items={items[slug]}
+                  subjectSlug={slug}
+                  subjectTitle={subjectTitles[slug]}
+                />
+              );
+            })}
           </div>
         </Grid>
       </main>
@@ -172,11 +142,10 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }: StaticPropsParams) {
   const current =
-    (await categoryModel.findCategoryBySlug(params.cat)) ||
-    ({} as CategoryData);
-  const categories = await categoryModel.getCategories();
-  const subjects = await itemRepo.getSubjects();
+    (await categoryModel.getCategoryBySlug(params.cat)) || ({} as CategoryData);
+  const subjectTitles = await subjectRepo.getSubjectTitles();
   const items = await itemRepo.getItems(current.id);
   const lists = await listModel.getLists();
-  return { props: { categories, current, items, lists, subjects } };
+
+  return { props: { current, items, lists, subjectTitles } };
 }

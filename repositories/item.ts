@@ -8,8 +8,10 @@ import {
 } from "../services/data";
 import { EndorsementModel } from "../models/endorsements";
 import { ListModel } from "../models/lists";
+import { CategoryModel } from "../models/categories";
 
 export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
+  category_slug: CategoryData["slug"];
   empty: boolean;
   endorsement: EndorsementSimple;
   source: SourceSimple;
@@ -28,7 +30,6 @@ export interface SourceSimple {
 }
 
 export type Items = Record<ItemData["subject_slug"], Item[]>;
-export type Subjects = Record<ItemData["subject_slug"], ItemData["subject"]>;
 
 const byListId = (a: ItemData, b: ItemData) =>
   (a.list_id as number) - (b.list_id as number);
@@ -63,39 +64,15 @@ const getSource = (itemData: ItemData, sources: SourceData[]): SourceSimple => {
 };
 
 export const ItemRepository = (service: typeof dataService = dataService) => {
+  const categoryModel = CategoryModel(service);
   const endorsementModel = EndorsementModel(service);
   const listModel = ListModel(service);
 
-  const getSubjects = (() => {
-    let subjects: Subjects | null = null;
-    return async () => {
-      if (!subjects) {
-        subjects = (await service.getItemsData()).reduce(
-          (acc: Subjects, itemData) => {
-            const { subject_slug } = itemData;
-            const current = acc[subject_slug];
-            if (!subject_slug || current) {
-              return acc;
-            }
-            return { ...acc, [subject_slug]: itemData.subject };
-          },
-          {}
-        );
-      }
-      return subjects;
-    };
-  })();
-
-  const getItems = async (id: ItemData["category_id"]): Promise<Items> => {
-    if (!id) {
-      return {};
-    }
+  const prepareItems = async (itemsData: ItemData[]) => {
+    const categories = await categoryModel.getCategories();
     const endorsements = await endorsementModel.getEndorsements();
     const lists = await listModel.getLists();
     const sources = await service.getSourcesData();
-    const itemsData = (await service.getItemsData())
-      .filter(isValidItem(id))
-      .sort(byListId);
     return itemsData.reduce((acc: Items, itemData) => {
       const { subject_slug } = itemData;
       const current = acc[subject_slug] || getDefaultItems(lists, subject_slug);
@@ -107,6 +84,8 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
       const listPosition = (itemData.list_id as number) - 1;
       current[listPosition] = {
         ...itemData,
+        category_slug:
+          categories.find((cat) => cat.id === itemData.category_id)?.slug || "",
         empty: false,
         uid: `${subject_slug}-${itemData.list_id}`,
         endorsement,
@@ -116,8 +95,30 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
     }, {});
   };
 
+  const getItems = async (id: ItemData["category_id"]): Promise<Items> => {
+    if (!id) {
+      return {};
+    }
+    const itemsData = (await service.getItemsData())
+      .filter(isValidItem(id))
+      .sort(byListId);
+    return prepareItems(itemsData);
+  };
+
+  const getItemsBySubjectSlug = async (
+    subject_slug: ItemData["subject_slug"]
+  ): Promise<Item[]> => {
+    if (!subject_slug) {
+      return [];
+    }
+    const itemsData = (await service.getItemsData())
+      .filter((item) => item.subject_slug === subject_slug)
+      .sort(byListId);
+    return (await prepareItems(itemsData))[subject_slug];
+  };
+
   return {
     getItems,
-    getSubjects,
+    getItemsBySubjectSlug,
   };
 };

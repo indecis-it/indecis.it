@@ -1,5 +1,5 @@
 import { createStyles, Group, Text } from "@mantine/core";
-import { grey3 } from "../colors";
+import { bluePP, grey3 } from "../colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -44,7 +44,7 @@ export const Footer = () => {
             target={"_blank"}
             rel={"noreferrer"}
             style={{
-              color: "#009FC4",
+              color: bluePP,
             }}
             href={"https://pop-eye.studio/"}
           >

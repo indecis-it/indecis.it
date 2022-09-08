@@ -4,7 +4,6 @@ import React from "react";
 import { DefaultProps } from "@mantine/styles";
 import { ListData } from "../services/data";
 import { useCommonStyles } from "../styles";
-import { grey, grey2, grey3 } from "../colors";
 
 interface Props extends DefaultProps {
   lists: ListData[];
@@ -12,7 +11,6 @@ interface Props extends DefaultProps {
 
 const useStyles = createStyles((theme) => ({
   swipe: {
-    color: "#009FC4",
     fontSize: 12,
     marginTop: 25,
     paddingLeft: 20,

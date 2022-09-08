@@ -1,5 +1,4 @@
 import {
-  Card,
   createStyles,
   Group,
   ScrollArea,
@@ -102,7 +101,7 @@ export const OnBoarding = ({ style }: Props) => {
                 paddingBottom: 0,
               }}
             >
-              2. Scorri i temi
+              2. Scorri gli argomenti
             </HomeSectionTitle>
             <div>
               <Image

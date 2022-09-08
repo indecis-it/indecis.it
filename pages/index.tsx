@@ -1,43 +1,84 @@
 import type { NextPage } from "next";
-import { createStyles, Group, Text, useMantineTheme } from "@mantine/core";
+import {
+  Button,
+  createStyles,
+  Divider,
+  Group,
+  Text,
+  useMantineTheme,
+} from "@mantine/core";
 import { CategoryModel, CategorySimple } from "../models/categories";
-import React from "react";
-import { CategorySelector } from "../components/CategorySelector";
-import Image from "next/image";
+import React, { ChangeEventHandler } from "react";
 import { DefaultProps } from "@mantine/styles";
 import { originalDescription, originalImage, siteName } from "../global/config";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { Main } from "../components/Main";
 import { useMediaQuery } from "@mantine/hooks";
+import { SubjectFinder } from "../components/SubjectFinder";
+import { SubjectRepository, SubjectSimple } from "../repositories/subject";
+import { grey } from "../colors";
+import { onBoardingFontSize } from "../styles";
+import { MainHeader } from "../components/MainHeader";
 
 interface Props extends DefaultProps {
   categories: CategorySimple[];
+  subjects: SubjectSimple[];
 }
 
 const useStyles = createStyles((theme) => ({
-  tagline: {
-    fontSize: 20,
-    // marginBottom: 60,
+  categories: {
+    justifyContent: "space-between",
+    marginBottom: 30,
+    paddingRight: 20,
+    paddingLeft: 20,
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      fontSize: 36,
-      marginTop: 120,
-      marginBottom: 0,
+      justifyContent: "center",
+      maxWidth: "90%",
+      marginRight: "auto",
+      marginBottom: 40,
+      marginLeft: "auto",
     },
   },
-  collaboration: {
-    margin: "0 auto",
-    width: 300,
-    justifyContent: "space-evenly",
+  categoryButton: {
+    flexBasis: 300,
+    flexGrow: 1,
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
-      position: "absolute",
-      top: 10,
-      right: 80,
+      flexBasis: 0,
+      flexGrow: 0,
+    },
+  },
+  pick: {
+    fontSize: onBoardingFontSize,
+    marginTop: 40,
+    marginBottom: 40,
+    textAlign: "center",
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      marginTop: 0,
+    },
+  },
+  subjectFinder: {
+    margin: "0 auto",
+    padding: 20,
+    paddingTop: 30,
+    maxWidth: 390,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      marginBottom: 40,
+      maxWidth: 580,
+    },
+  },
+  tagline: {
+    fontSize: 18,
+    marginTop: -20,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      fontSize: 36,
+      marginTop: 20,
+      marginBottom: 100,
     },
   },
 }));
 
-const Home: NextPage<Props> = ({ categories, style }: Props) => {
+const Home: NextPage<Props> = ({ categories, subjects, style }: Props) => {
   const router = useRouter();
   const currentUrl = `https://${siteName}${router.asPath}`;
   const title = `indecis.it | ${originalDescription}`;
@@ -47,7 +88,8 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
     `(min-width: ${theme.breakpoints.md}px)`,
     true
   );
-
+  const navigate = (category: CategorySimple["slug"]) =>
+    router.push(`/tematica/${category}`);
   return (
     <>
       <Head>
@@ -80,45 +122,59 @@ const Home: NextPage<Props> = ({ categories, style }: Props) => {
           key="ogdesc"
         />
       </Head>
-      <header
+      <MainHeader />
+      <Text align="center" size={"xl"} className={classes.tagline}>
+        I programmi elettorali a portata di click
+      </Text>
+      {largeScreen ? null : (
+        <Divider
+          my="sm"
+          style={{
+            borderTopColor: grey,
+            marginTop: 40,
+          }}
+        />
+      )}
+      <Text className={classes.pick}>Scegli una tematica</Text>
+      <Group position="center" className={classes.categories}>
+        {categories.map((category) => {
+          return (
+            <Button
+              key={category.id}
+              color="indigo-green.9"
+              size={largeScreen ? "xl" : "sm"}
+              variant="outline"
+              className={classes.categoryButton}
+              onClick={() => navigate(category.slug)}
+            >
+              {category.name}
+            </Button>
+          );
+        })}
+      </Group>
+      <Text
         style={{
-          ...style,
-          paddingTop: 20,
+          fontSize: onBoardingFontSize,
           textAlign: "center",
         }}
       >
-        <Image
-          src={`/indecis-it-logo-diff.svg`}
-          alt="Il logo di indecis.it"
-          height={largeScreen ? 150 : 90}
-          width={largeScreen ? 150 : 90}
-        />
-        <Text align="center" size={"xl"} className={classes.tagline}>
-          I programmi elettorali a portata di click
-        </Text>
-      </header>
-      <Group className={classes.collaboration}>
-        <Text align="center" size={"sm"}>
-          in collaborazione con
-        </Text>
-        <Image
-          src={`/pagella_politica_logo.svg`}
-          alt="Il logo di indecis.it"
-          height={100}
-          width={100}
-        />
-      </Group>
-      <CategorySelector
-        categories={categories}
+        {"oppure cerca un argomento di interesse"}
+      </Text>
+      <SubjectFinder
+        subjects={subjects}
         current={""}
         size={largeScreen ? "xl" : "md"}
-        style={{
-          margin: "0 auto",
-          padding: 20,
-          paddingTop: 30,
-          maxWidth: largeScreen ? 580 : 390,
-        }}
+        className={classes.subjectFinder}
       />
+      {largeScreen ? null : (
+        <Divider
+          my="sm"
+          style={{
+            borderTopColor: grey,
+            marginTop: 40,
+          }}
+        />
+      )}
       <Main />
     </>
   );
@@ -128,6 +184,8 @@ export default Home;
 
 export async function getStaticProps() {
   const categoryModel = CategoryModel();
+  const subjectRepository = SubjectRepository();
   const categories = await categoryModel.getCategories();
-  return { props: { categories } as Props };
+  const subjects = await subjectRepository.getSubjects();
+  return { props: { categories, subjects } as Props };
 }
