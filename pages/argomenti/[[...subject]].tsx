@@ -7,7 +7,6 @@ import {
   Paper,
   Text,
   Title,
-  useMantineTheme,
 } from "@mantine/core";
 import { ListModel } from "../../models/lists";
 import { Item, ItemRepository } from "../../repositories/item";
@@ -24,7 +23,6 @@ import { NextLink } from "@mantine/next";
 import { ListData } from "../../services/data";
 import { bluePP, grey } from "../../colors";
 import { ContentGroup } from "../../components/ContentGroup";
-import { useMediaQuery } from "@mantine/hooks";
 import { HomeSectionTitle } from "../../components/HomeSectionTitle";
 import { MainHeader } from "../../components/MainHeader";
 
@@ -45,7 +43,6 @@ const useStyles = createStyles((theme) => ({
   },
   furtherResources: {
     background: "#EAF5FA",
-    // paddingTop: 30,
     paddingBottom: "50px !important",
   },
   furtherResourcesContent: {
@@ -64,24 +61,14 @@ const itemRepo = ItemRepository();
 const listModel = ListModel();
 const subjectRepo = SubjectRepository();
 
-const App = ({ items, lists, subject }: Props) => {
+const App = ({ items, subject }: Props) => {
   const { classes } = useStyles();
   const router = useRouter();
-  const [{ category: currentCategory, category_slug: categorySlug }] = items;
+  const [{ category: currentCategory, categorySlug: categorySlug }] = items;
   const currentSubject = subject.subject;
   const currentUrl = `https://${siteName}${router.asPath}`;
   const description = categoryDescription(currentSubject.toLowerCase());
   const title = `Confronta i programmi elettorali su: ${currentSubject.toLowerCase()} | ${siteName} | ${originalDescription} `;
-  const theme = useMantineTheme();
-  const largeScreen = useMediaQuery(
-    `(min-width: ${theme.breakpoints.md}px)`,
-    true
-  );
-  const numberOfGroups = largeScreen ? 1 : 1;
-  const listsPerGroup = Math.ceil(items.length / numberOfGroups);
-  const groupedItems = new Array(numberOfGroups)
-    .fill("")
-    .map((_, i) => items.slice(i * listsPerGroup, (i + 1) * listsPerGroup));
   return (
     <>
       <Head>
@@ -123,18 +110,18 @@ const App = ({ items, lists, subject }: Props) => {
             marginBottom: 30,
           }}
         />
-        <NextLink href={`/tematica/${categorySlug}`}>
-          <Title
-            style={{
-              color: bluePP,
-              fontWeight: "normal",
-              textAlign: "center",
-            }}
-            order={6}
-          >
+        <Title
+          style={{
+            color: bluePP,
+            fontWeight: "normal",
+            textAlign: "center",
+          }}
+          order={6}
+        >
+          <NextLink href={`/tematica/${categorySlug}`}>
             {currentCategory}
-          </Title>
-        </NextLink>
+          </NextLink>
+        </Title>
         <Title
           style={{
             textAlign: "center",
@@ -178,9 +165,7 @@ const App = ({ items, lists, subject }: Props) => {
                 marginBottom: 40,
               }}
             />
-            {groupedItems.map((group, index) => {
-              return <ContentGroup key={index} group={group} lists={lists} />;
-            })}
+            <ContentGroup items={items} />;
           </div>
         </Grid>
         {subject.hasSources ? (

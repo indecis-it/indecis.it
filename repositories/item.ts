@@ -10,10 +10,15 @@ import { EndorsementModel } from "../models/endorsements";
 import { ListModel } from "../models/lists";
 import { CategoryModel } from "../models/categories";
 
-export interface Item extends Omit<Omit<ItemData, "endorsement">, "source"> {
-  category_slug: CategoryData["slug"];
+export interface Item
+  extends Omit<
+    Omit<Omit<Omit<ItemData, "endorsement">, "source">, "list">,
+    "list_id"
+  > {
+  categorySlug: CategoryData["slug"];
   empty: boolean;
   endorsement: EndorsementSimple;
+  list: ListData;
   source: SourceSimple;
   uid: string | -1;
 }
@@ -80,13 +85,16 @@ export const ItemRepository = (service: typeof dataService = dataService) => {
         itemData,
         endorsements
       );
+      const list =
+        lists.find((list) => list.id === itemData.list_id) || ({} as ListData);
       const source = getSource(itemData, sources);
       const listPosition = (itemData.list_id as number) - 1;
       current[listPosition] = {
         ...itemData,
-        category_slug:
+        categorySlug:
           categories.find((cat) => cat.id === itemData.category_id)?.slug || "",
         empty: false,
+        list,
         uid: `${subject_slug}-${itemData.list_id}`,
         endorsement,
         source,

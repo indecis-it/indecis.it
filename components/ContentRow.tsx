@@ -3,7 +3,7 @@ import { DefaultProps } from "@mantine/styles";
 import React, { useState } from "react";
 import { bluePP, grey3 } from "../colors";
 import { SourceBox } from "./SourceBox";
-import { Item, SourceSimple } from "../repositories/item";
+import { Item } from "../repositories/item";
 import { rowMinHeight, useCommonStyles } from "../styles";
 import { ItemContent } from "./ItemContent";
 import { NextLink } from "@mantine/next";
@@ -69,14 +69,12 @@ export const ContentRow = ({
   const { classes } = useStyles();
   const initialSelection = initialOpen ? items[0] : ({} as Item);
   const [selected, setSelected] = useState<Item>(initialSelection);
-
   const onItemSelected = (item: Item) => {
     if (selected.id === item.id) {
       return onResetSelection();
     }
     setSelected(item);
   };
-
   const onResetSelection = () => {
     setSelected({} as Item);
   };
@@ -98,8 +96,8 @@ export const ContentRow = ({
           </NextLink>
         </div>
         {items.map((item) => {
-          const { list_id, subject_slug } = item;
-          const uid = `${subject_slug}-${list_id}`;
+          const { list, subject_slug } = item;
+          const uid = `${subject_slug}-${list.id}`;
           return (
             <ItemContent
               key={uid}
@@ -113,6 +111,7 @@ export const ContentRow = ({
       <SourceBox
         className={scrollingWidth}
         source={selected.source}
+        url={`https://www.indecis.it/argomenti/${selected?.subject_slug}#${selected?.list?.slug}`}
         onClose={onResetSelection}
       />
     </>
