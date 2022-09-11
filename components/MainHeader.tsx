@@ -66,7 +66,7 @@ export const MainHeader = ({ className, style }: Props) => {
           <Text align="center" size={"sm"}>
             in collaborazione con
           </Text>
-          <a href="https://pagellapolitica.it/" target="_blank">
+          <a href="https://pagellapolitica.it/">
             <Image
               src={`/pagella_politica_logo.svg`}
               alt="Il logo di indecis.it"
