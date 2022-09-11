@@ -1,5 +1,12 @@
 import { grey2, grey3 } from "../colors";
-import { CloseButton, createStyles, Group, Text } from "@mantine/core";
+import {
+  Button,
+  CloseButton,
+  CopyButton,
+  createStyles,
+  Group,
+  Text,
+} from "@mantine/core";
 import React, { MouseEventHandler } from "react";
 import { DefaultProps } from "@mantine/styles";
 import { SourceSimple } from "../repositories/item";
@@ -7,6 +14,7 @@ import { SourceSimple } from "../repositories/item";
 interface Props extends DefaultProps {
   onClose: MouseEventHandler;
   source: SourceSimple | null;
+  url?: string;
 }
 
 const useStyles = createStyles((theme) => ({
@@ -30,7 +38,13 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-export const SourceBox = ({ className, onClose, source, style }: Props) => {
+export const SourceBox = ({
+  className,
+  onClose,
+  source,
+  style,
+  url,
+}: Props) => {
   const { classes } = useStyles();
   return (
     <div
@@ -86,6 +100,25 @@ export const SourceBox = ({ className, onClose, source, style }: Props) => {
               }
             </Text>
           ) : null}
+          <Group
+            position="center"
+            style={{
+              marginTop: 40,
+            }}
+          >
+            {url ? (
+              <CopyButton value={url}>
+                {({ copied, copy }) => (
+                  <Button
+                    color={copied ? "lobster-red" : "indigo-green"}
+                    onClick={copy}
+                  >
+                    {copied ? "Fatto" : "Copia l'URL e condividi"}
+                  </Button>
+                )}
+              </CopyButton>
+            ) : null}
+          </Group>
         </div>
       ) : null}
     </div>

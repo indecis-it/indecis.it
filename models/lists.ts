@@ -10,7 +10,8 @@ export const ListModel = (service: typeof dataService = dataService) => {
           if (excludeList || !list.symbol_url) {
             return acc;
           }
-          return [...acc, list];
+          const slug = list.slug.replaceAll(/\'/g, "-");
+          return [...acc, { ...list, slug }];
         }, [] as ListData[]);
       }
       return lists;

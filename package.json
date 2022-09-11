@@ -8,7 +8,7 @@
     "check": "tsc --noEmit",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch --no-cache"
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",

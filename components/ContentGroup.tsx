@@ -2,25 +2,27 @@ import { ListData } from "../services/data";
 import { Group, Modal, Text } from "@mantine/core";
 import Image from "next/image";
 import { ItemContent } from "./ItemContent";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DefaultProps } from "@mantine/styles";
 import { Item } from "../repositories/item";
+import { useRouter } from "next/router";
 
 interface Props extends DefaultProps {
-  group: Item[];
-  lists: ListData[];
+  items: Item[];
 }
 
-export const ContentGroup = ({ group, lists }: Props) => {
-  const [selected, setSelected] = useState<Item>({} as Item);
-
+export const ContentGroup = ({ items }: Props) => {
+  const router = useRouter();
+  const [, hash] = router.asPath.split("#");
+  const initialSelection =
+    items.find((item) => item.list.slug === hash) || ({} as Item);
+  const [selected, setSelected] = useState<Item>(initialSelection);
   const onItemSelected = (item: Item) => {
     if (selected.id === item.id) {
       return onResetSelection();
     }
     setSelected(item);
   };
-
   const onResetSelection = () => {
     setSelected({} as Item);
   };
@@ -28,12 +30,13 @@ export const ContentGroup = ({ group, lists }: Props) => {
   return (
     <>
       <Group position="center">
-        {group.map((item) => {
-          const uid = `${item.id}-${item.subject_slug}-${item.list_id}`;
-          const list =
-            lists.find((list) => list.id === item.list_id) || ({} as ListData);
+        {items.map((item) => {
+          const { list } = item;
+          const uid = `${item.id}-${item.subject_slug}-${list.id}`;
+          const anchor = list.slug;
           return (
             <Group
+              id={anchor}
               key={uid}
               style={{
                 display: "list-item",
@@ -66,9 +69,11 @@ export const ContentGroup = ({ group, lists }: Props) => {
         })}
       </Group>
       <Modal
+        centered
         opened={!!selected.id}
         onClose={onResetSelection}
-        title={selected.list}
+        title={selected?.list?.list}
+        size={500}
         style={{
           zIndex: 3000,
         }}
