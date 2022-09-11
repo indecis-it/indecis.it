@@ -51,7 +51,7 @@ Se è tutto chiaro, ma vuoi proporre delle modifiche, ad es.
 - suggerire una nuova fonte che possa colmare le conoscenze mancanti
 - suggerire un modo per colmare [alcune carenze del progetto](#cosa-manca)
 
-Puoi farlo compilando [questo form](https://docs.google.com/forms/d/e/1FAIpQLSe-34dHEjGaO3-8lc4JQDxdp7Yyditj9PycBL-lpARtTQPlGA/viewform).
+puoi farlo compilando [questo form](https://docs.google.com/forms/d/e/1FAIpQLSe-34dHEjGaO3-8lc4JQDxdp7Yyditj9PycBL-lpARtTQPlGA/viewform).
 
 #### 💻 ... sei una sviluppatrice (una esperta di UI/UX, una designer, una QA, ecc... )
 
