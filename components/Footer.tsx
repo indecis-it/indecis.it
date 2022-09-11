@@ -1,8 +1,9 @@
-import { createStyles, Group, Text } from "@mantine/core";
+import { createStyles, Group, Text, useMantineTheme } from "@mantine/core";
 import { bluePP, grey3 } from "../colors";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { NextLink } from "@mantine/next";
+import { useMediaQuery } from "@mantine/hooks";
 
 const useStyles = createStyles((theme) => ({
   footer: {
@@ -34,10 +35,15 @@ const useStyles = createStyles((theme) => ({
 
 export const Footer = () => {
   const { classes } = useStyles();
+  const theme = useMantineTheme();
+  const largeScreen = useMediaQuery(
+    `(min-width: ${theme.breakpoints.md}px)`,
+    true
+  );
 
   return (
     <footer className={classes.footer}>
-      <Group position="apart">
+      <Group position={largeScreen ? "apart" : "left"}>
         <Text size={"sm"} className={classes.credits}>
           Con il supporto di{" "}
           <a
@@ -52,16 +58,17 @@ export const Footer = () => {
           </a>
         </Text>
         <Text size={"sm"}>
-          <Link
+          <NextLink
             style={{
               textDecoration: "underline",
             }}
             href={"/"}
           >
             indecis.it
-          </Link>{" "}
+          </NextLink>{" "}
           &copy; {new Date().getFullYear()}
         </Text>
+        {largeScreen ? "" : "|"}
         <Text size={"sm"}>
           Maggiori info su{" "}
           <a
