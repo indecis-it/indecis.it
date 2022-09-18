@@ -1,6 +1,7 @@
 {
   "name": "indecisit",
   "version": "0.1.0",
+  "engines": {"node": ">=15"},
   "private": true,
   "scripts": {
     "dev": "next dev",
