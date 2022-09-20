@@ -115,7 +115,7 @@ const App = ({ current, items, lists, subjectTitles }: Props) => {
                 marginBottom: 0,
               }}
             />
-            {Object.keys(items).map((slug, key) => {
+            {Object.keys(items).map((slug, _) => {
               return (
                 <ContentRow
                   key={slug}
