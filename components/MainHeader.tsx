@@ -66,6 +66,7 @@ export const MainHeader = ({ className, style }: Props) => {
           <Text align="center" size={"sm"}>
             in collaborazione con
           </Text>
+          { /* eslint-disable react/jsx-no-target-blank */ }
           <a href="https://pagellapolitica.it/" target="_blank" rel="noopener">
             <Image
               src={`/pagella_politica_logo.svg`}
