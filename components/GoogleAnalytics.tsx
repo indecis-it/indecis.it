@@ -1,7 +1,8 @@
-import { getCookie } from "cookies-next";
 import Script from "next/script";
 import { useEffect, useState } from "react";
 import { COOKIE_KEY } from "../global/constants";
+import { getCookie } from "cookies-next";
+import { cookieDecode } from "../global/utils";
 
 export const GoogleAnalytics = () => {
   const [consent, setConsent] = useState(false);
@@ -10,7 +11,7 @@ export const GoogleAnalytics = () => {
     if (cookie) {
       const {
         purposes: { measurement },
-      } = JSON.parse(decodeURI(cookie));
+      } = cookieDecode(cookie);
       setConsent(measurement);
     }
   }, [cookie]);

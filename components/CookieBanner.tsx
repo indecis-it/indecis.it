@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import {
   Accordion,
@@ -10,18 +11,22 @@ import {
   Switch,
 } from "@mantine/core";
 import { COOKIE_KEY } from "../global/constants";
-import { getCookie, setCookie } from "cookies-next";
+import { hasCookie, getCookie, setCookie } from "cookies-next";
+import { cookieDecode } from "../global/utils";
 
 const useStyles = createStyles((theme) => ({
   banner: {
     backgroundColor: "white",
     width: "100%",
     position: "fixed",
-    bottom: 20,
+    bottom: 0,
     left: "50%",
     transform: "translateX(-50%)",
     maxWidth: 960,
     zIndex: 3000,
+    [`@media (min-width: ${theme.breakpoints.md}px)`]: {
+      bottom: 20,
+    },
   },
   content: {
     fontSize: 12,
@@ -50,18 +55,31 @@ const useStyles = createStyles((theme) => ({
       },
     },
   },
+  switches: {
+    display: "flex",
+    alignItems: "center",
+    "& input": {
+      cursor: "pointer",
+    },
+  },
 }));
 
 export const CookieBanner = () => {
-  const cookies = getCookie(COOKIE_KEY);
-  const initialCookieOptions = useMemo(() => {
-    return {
-      timestamp: Date.now(),
-      purposes: { necessary: true, measurement: false },
-    };
-  }, []);
+  const router = useRouter();
+  const hasCookies = hasCookie(COOKIE_KEY);
+  const cookies = getCookie(COOKIE_KEY) as string;
+  const initialCookieOptions = useMemo(
+    () =>
+      hasCookies
+        ? cookieDecode(cookies)
+        : {
+            timestamp: Date.now(),
+            purposes: { necessary: true, measurement: true },
+          },
+    [cookies, hasCookies]
+  );
   const { classes } = useStyles();
-  const [isCookieSet, setCookieSet] = useState(!!cookies);
+  const [isCookieSet, setCookieSet] = useState(hasCookies);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cookieOptions, setCookieOptions] = useState(initialCookieOptions);
   const [hydrated, setHydrated] = useState(false);
@@ -75,8 +93,10 @@ export const CookieBanner = () => {
       const cookieChoice = choice ? cookieOptions : initialCookieOptions;
       setCookie(COOKIE_KEY, cookieChoice, { path: "/" });
       setCookieSet(true);
+      setIsModalOpen(false);
+      router.push(router.asPath);
     },
-    [cookieOptions, initialCookieOptions]
+    [cookieOptions, initialCookieOptions, router]
   );
 
   const handleOpenPopup = useCallback(() => {
@@ -118,25 +138,10 @@ export const CookieBanner = () => {
           relative funzioni non disponibili.
         </p>
       </Group>
-      <Group position="right">
-        <Button onClick={handleOpenPopup} color="gray" size="sm">
-          Rifiuta tutto
-        </Button>
-        <Button onClick={handleOpenPopup} color="gray" size="sm">
-          Accetta tutto
-        </Button>
-      </Group>
-      <Divider
-        my="sm"
-        style={{
-          borderTopColor: "transparent",
-          marginTop: 20,
-        }}
-      />
       <Group>
         <Accordion chevronPosition="left" sx={{ width: "100%" }}>
           <Accordion.Item value="necessary">
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div className={classes.switches}>
               <Accordion.Control>Strettamente necessari</Accordion.Control>
               <Switch
                 disabled
@@ -152,7 +157,7 @@ export const CookieBanner = () => {
             </Accordion.Panel>
           </Accordion.Item>
           <Accordion.Item value="measurement">
-            <div style={{ display: "flex", alignItems: "center" }}>
+            <div className={classes.switches}>
               <Accordion.Control>Misurazione</Accordion.Control>
               <Switch
                 name="measurement"
@@ -180,11 +185,15 @@ export const CookieBanner = () => {
       <Group className={classes.buttons}>
         <div>
           <Button onClick={handleOpenPopup} color="gray" size="sm">
-            Salva e torna indietro
+            Torna indietro
           </Button>
         </div>
         <div>
-          <Button onClick={handleOpenPopup} color="indigo-green" size="sm">
+          <Button
+            onClick={() => handleCookieChoice(true)}
+            color="indigo-green"
+            size="sm"
+          >
             Salva e continua
           </Button>
         </div>
@@ -202,7 +211,7 @@ export const CookieBanner = () => {
   const CookieBanner = useMemo(
     () =>
       isCookieSet ? (
-        <div suppressHydrationWarning={true} className={classes.cookie}>
+        <div className={classes.cookie}>
           <Button onClick={handleOpenPopup} variant="subtle" size="xs">
             <h1>🍪</h1>
           </Button>
