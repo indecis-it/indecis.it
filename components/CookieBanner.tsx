@@ -74,7 +74,7 @@ export const CookieBanner = () => {
         ? cookieDecode(cookies)
         : {
             timestamp: Date.now(),
-            purposes: { necessary: true, measurement: true },
+            purposes: { necessary: true, measurement: false },
           },
     [cookies, hasCookies]
   );
