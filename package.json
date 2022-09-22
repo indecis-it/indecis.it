@@ -1,7 +1,9 @@
 {
   "name": "indecisit",
   "version": "0.1.0",
-  "engines": {"node": ">=15"},
+  "engines": {
+    "node": ">=15"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -21,6 +23,7 @@
     "@mantine/core": "^5.0.3",
     "@mantine/hooks": "^5.0.3",
     "@mantine/next": "^5.0.3",
+    "cookies-next": "^2.1.1",
     "next": "12.2.4",
     "react": "18.2.0",
     "react-dom": "18.2.0"
