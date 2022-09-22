@@ -88,15 +88,30 @@ export const CookieBanner = () => {
     setHydrated(true);
   }, []);
 
-  const handleCookieChoice = useCallback(
-    (choice: boolean) => {
-      const cookieChoice = choice ? cookieOptions : initialCookieOptions;
-      setCookie(COOKIE_KEY, cookieChoice, { path: "/" });
+  const handleSaveCookies = useCallback(
+    (cookieChoice?: object) => {
+      const choice = cookieChoice || cookieOptions;
+      setCookie(COOKIE_KEY, choice, { path: "/" });
       setCookieSet(true);
       setIsModalOpen(false);
       router.push(router.asPath);
     },
-    [cookieOptions, initialCookieOptions, router]
+    [cookieOptions, router]
+  );
+
+  const handleCookieChoice = useCallback(
+    (choice: boolean) => {
+      const cookieChoice = {
+        timestamp: Date.now(),
+        purposes: {
+          necessary: true,
+          measurement: choice,
+        },
+      };
+      setCookieOptions(cookieChoice);
+      handleSaveCookies(cookieChoice);
+    },
+    [handleSaveCookies]
   );
 
   const handleOpenPopup = useCallback(() => {
@@ -190,7 +205,7 @@ export const CookieBanner = () => {
         </div>
         <div>
           <Button
-            onClick={() => handleCookieChoice(true)}
+            onClick={() => handleSaveCookies()}
             color="indigo-green"
             size="sm"
           >
