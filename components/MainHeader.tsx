@@ -12,6 +12,10 @@ const useStyles = createStyles((theme) => ({
     alignItems: "self-end",
     flexDirection: "column",
     gap: 0,
+	height: 55,
+	[`@media (min-width: ${theme.breakpoints.md}px)`]: {
+		height: 75,
+	},
   },
   headerGroup: {
     display: "flex",
@@ -23,10 +27,12 @@ const useStyles = createStyles((theme) => ({
     width: "calc(100vw - 80px)",
   },
   logo: {
+    height: 90,
     [`@media (min-width: ${theme.breakpoints.md}px)`]: {
       margin: "0 auto",
       position: "relative",
       left: 80,
+      height: 150
     },
   },
 }));
