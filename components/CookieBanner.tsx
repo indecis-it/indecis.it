@@ -91,7 +91,10 @@ export const CookieBanner = () => {
   const handleSaveCookies = useCallback(
     (cookieChoice?: object) => {
       const choice = cookieChoice || cookieOptions;
-      setCookie(COOKIE_KEY, choice, { path: "/" });
+      setCookie(COOKIE_KEY, choice, {
+        path: "/",
+        expires: new Date(Date.now() + 31536000000),
+      });
       setCookieSet(true);
       setIsModalOpen(false);
       router.push(router.asPath);
