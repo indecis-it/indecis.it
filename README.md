@@ -98,9 +98,9 @@ molto spesso non spiegano come queste risorse saranno trovate. Di conseguenza, i
 ### La coerenza di un programma
 
 indecis.it non individua possibili incongruenze nei programmi elettorali. Prendiamo di nuovo l'esempio dell'assegno unico universale.
-Il programma di una lista potrebbe proporre questo e insieme la riduzione delle tasse. Le due iniziative non sono per forza incoerenti.
-Tuttavia, una lista che si impegni a supportarle entrambe si troverebbe nella posizione di dover spiegare
-come pensa di trovare maggiori risorse finanziare (assegno unico) mentre decide di reperirne di meno (taglio delle tasse).
+Il programma di una lista potrebbe proporre questa misura insieme alla riduzione delle tasse. Le due iniziative non sono necessariamente incoerenti.
+Tuttavia, una lista che si impegna a supportare entrambe si troverebbe nella posizione di dover spiegare
+come pensa di trovare maggiori risorse finanziare (assegno unico) mentre, allo stesso tempo, decide di reperirne di meno (taglio delle tasse).
 
 ## Il team
 
