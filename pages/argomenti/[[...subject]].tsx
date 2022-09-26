@@ -165,7 +165,7 @@ const App = ({ items, subject }: Props) => {
                 marginBottom: 40,
               }}
             />
-            <ContentGroup items={items} />;
+            <ContentGroup items={items} />
           </div>
         </Grid>
         {subject.hasSources ? (
