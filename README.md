@@ -31,6 +31,7 @@ In questa sezione ci occupiamo di alcuni aspetti importanti legati al progetto. 
 
 ### I dati
 
+- li abbiamo distribuiti in formato aperto: trovi gli open data in [indecis-it/data](https://github.com/indecis-it/data/)
 - provengono da diverse fonti (principalmente programmi elettorali). Le trovi elencate in [sources](https://github.com/indecis-it/data/blob/main/data/sources.csv); 
 - sono stati raccolti senza procedure automatizzate su un [Google Sheet](https://docs.google.com/spreadsheets/d/13YKVLtayxu0m2keOi1KHsLJqoshc9P279RLJ_sdhnAk/edit#gid=734919268);
 - sono esportati tramite una [GitHub Action](https://github.com/indecis-it/data/blob/main/.github/workflows/download.yml) che scarica e converte i fogli del [Google Sheet](https://docs.google.com/spreadsheets/d/13YKVLtayxu0m2keOi1KHsLJqoshc9P279RLJ_sdhnAk/edit#gid=734919268). Trovi il codice in [data repository](https://github.com/indecis-it/data/)
