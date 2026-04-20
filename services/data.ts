@@ -147,3 +147,5 @@ export const dataService = {
   getSourcesData,
   getSubjectsData,
 }
+
+export type DataService = typeof dataService
